@@ -8,35 +8,124 @@
 :root {
   --page-width: 820px;
   --page-height: 1160px;
-  --paper-bg: #f1f3f5;
+  --paper-bg: #07111f;
+  --resume-ink: #142033;
+  --resume-muted: #4f6175;
+  --resume-accent: #0f766e;
+  --resume-accent-2: #2563eb;
+  --resume-line: #dbe6f2;
+  --screen-page-extra: 18px;
+  --continuation-offset: 14px;
+  --page3-section-gap-fix: 44px;
+  --page3-gap-fix: 62px;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
   min-width: calc(var(--page-width) + 48px);
-  background: var(--paper-bg);
+  color: var(--resume-ink);
+  background:
+    linear-gradient(180deg, rgba(7, 17, 31, 0.78), rgba(7, 17, 31, 0.96)),
+    linear-gradient(120deg, transparent 0 52%, rgba(15, 118, 110, 0.18) 52.2% 52.7%, transparent 53%),
+    linear-gradient(65deg, transparent 0 34%, rgba(37, 99, 235, 0.15) 34.2% 34.7%, transparent 35%),
+    repeating-linear-gradient(0deg, rgba(148, 163, 184, 0.08) 0 1px, transparent 1px 46px),
+    repeating-linear-gradient(90deg, rgba(45, 212, 191, 0.08) 0 1px, transparent 1px 46px),
+    var(--paper-bg);
+  background-attachment: fixed;
   font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
 }
+body::before {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(90deg, transparent 0 12%, rgba(45, 212, 191, 0.16) 12% calc(12% + 1px), transparent calc(12% + 1px)),
+    linear-gradient(90deg, transparent 0 82%, rgba(96, 165, 250, 0.14) 82% calc(82% + 1px), transparent calc(82% + 1px)),
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 8px);
+  opacity: 0.7;
+}
 .resume {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  padding: 24px 0;
+  gap: 44px;
+  padding: 40px 0 48px;
 }
 .page {
   position: relative;
   width: var(--page-width);
-  height: var(--page-height);
+  height: calc(var(--page-height) + var(--screen-page-extra));
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 8px 24px rgba(20, 30, 40, 0.18);
+  background:
+    linear-gradient(90deg, rgba(15, 118, 110, 0.1) 0 9px, transparent 9px),
+    linear-gradient(145deg, rgba(37, 99, 235, 0.08), transparent 34%),
+    linear-gradient(315deg, rgba(15, 118, 110, 0.08), transparent 38%),
+    #fbfdff;
+  border: 1px solid rgba(191, 219, 254, 0.8);
+  border-radius: 18px;
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 0 46px rgba(45, 212, 191, 0.16);
+}
+.page::before,
+.page::after {
+  position: absolute;
+  pointer-events: none;
+  content: "";
+}
+.page::before {
+  inset: 0 0 auto 0;
+  height: 150px;
+  z-index: 0;
+  background:
+    linear-gradient(110deg, rgba(15, 118, 110, 0.17), transparent 36%),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.05), transparent 62%);
+}
+.page::after {
+  right: -96px;
+  top: -118px;
+  width: 285px;
+  height: 285px;
+  z-index: 0;
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(45, 212, 191, 0.18), transparent 62%),
+    repeating-conic-gradient(from 15deg, rgba(37, 99, 235, 0.12) 0 7deg, transparent 7deg 18deg);
+}
+.page + .page::before {
+  height: 66px;
+  background:
+    linear-gradient(110deg, rgba(15, 118, 110, 0.07), transparent 28%),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.025), transparent 56%);
+}
+.page + .page::after {
+  top: -178px;
+  opacity: 0.46;
+}
+.page + .page > .txt {
+  transform: translateY(calc(-0.82em + var(--continuation-offset)));
+}
+.page + .page > .shape {
+  transform: translateY(var(--continuation-offset));
+}
+.page:nth-of-type(3) > .txt:nth-child(n+5) {
+  transform: translateY(calc(-0.82em + var(--continuation-offset) - var(--page3-section-gap-fix)));
+}
+.page:nth-of-type(3) > .txt[style*="top:1088px"],
+.page:nth-of-type(3) > .txt[style*="top:1110px"],
+.page:nth-of-type(3) > .txt[style*="top:1138px"] {
+  transform: translateY(calc(-0.82em + var(--continuation-offset) - var(--page3-section-gap-fix) - var(--page3-gap-fix)));
 }
 .shape {
   position: absolute;
   z-index: 0;
+  border-radius: 999px;
 }
 .txt {
   position: absolute;
@@ -49,6 +138,40 @@ body {
   transform: translateY(-0.82em);
   transform-origin: left top;
 }
+.txt[style*="color:#284967"] {
+  color: #0f3f56 !important;
+}
+.txt[style*="font-size:24px"] {
+  color: #092f3f !important;
+  font-size: 30px !important;
+  letter-spacing: 0 !important;
+}
+.txt[style*="font-size:15px"][style*="font-weight:700"] {
+  color: #0f766e !important;
+  font-size: 16px !important;
+  letter-spacing: 0 !important;
+}
+.txt[style*="font-size:13px"][style*="font-weight:700"] {
+  color: #1f3347 !important;
+}
+.txt[style*="color:#555555"],
+.txt[style*="color:#404040"],
+.txt[style*="color:#333333"] {
+  color: var(--resume-muted) !important;
+}
+.txt[style*="color:#0066cc"] {
+  color: #0f766e !important;
+}
+.shape[style*="height:28px"] {
+  height: 34px !important;
+  background:
+    linear-gradient(90deg, rgba(15, 118, 110, 0.16), rgba(37, 99, 235, 0.08), transparent) !important;
+  border: 1px solid rgba(15, 118, 110, 0.16);
+  box-shadow: inset 4px 0 0 #0f766e;
+}
+.shape[style*="width:1px"] {
+  background: rgba(15, 118, 110, 0.28) !important;
+}
 @page { size: 615pt 870pt; margin: 0; }
 @media screen and (max-width: 900px) {
   body {
@@ -57,8 +180,8 @@ body {
   }
   .resume {
     width: 100%;
-    gap: 16px;
-    padding: 12px 0;
+    gap: 24px;
+    padding: 18px 0 28px;
     overflow-x: hidden;
   }
   .page {
@@ -69,8 +192,13 @@ body {
 }
 @media print {
   body { min-width: 0; background: #fff; }
+  body::before { display: none; }
   .resume { display: block; padding: 0; }
-  .page { transform: none !important; margin-bottom: 0 !important; box-shadow: none; break-after: page; page-break-after: always; }
+  .page { height: var(--page-height) !important; transform: none !important; margin-bottom: 0 !important; border: 0; border-radius: 0; box-shadow: none; break-after: page; page-break-after: always; }
+  .page::before,
+  .page::after { display: none; }
+  .page + .page > .txt { transform: translateY(-0.82em) !important; }
+  .page + .page > .shape { transform: none !important; }
   .page:last-child { break-after: auto; page-break-after: auto; }
 }
 </style>
@@ -441,7 +569,7 @@ body {
 (function () {
   const root = document.documentElement;
   const pageWidth = 820;
-  const pageHeight = 1160;
+  const pageHeight = 1178;
 
   function resetForPrint() {
     root.style.setProperty("--resume-scale", "1");
