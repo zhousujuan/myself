@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>外贸知识库 | 周素娟</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div id="appShell" class="app-shell">
+      <aside class="sidebar" aria-label="图谱筛选与路径导航">
+        <header class="brand">
+          <div class="brand-mark" aria-hidden="true">KG</div>
+          <div>
+            <h1>外贸获客知识图谱</h1>
+            <p>客户发现 · 需求信号 · 触达转化</p>
+          </div>
+        </header>
+
+        <a class="home-link" href="index.html">← 返回个人网站首页</a>
+
+        <nav class="view-switch" aria-label="界面切换">
+          <button class="view-button is-active" type="button" data-view="graph" aria-pressed="true">知识图谱</button>
+          <button class="view-button" type="button" data-view="google" aria-pressed="false">Google 路径</button>
+        </nav>
+
+        <div id="graphControls" class="sidebar-controls">
+          <div class="control-block">
+            <label class="control-label" for="searchInput">搜索节点</label>
+            <input id="searchInput" class="search-input" type="search" placeholder="国家、渠道、线索、CRM..." />
+          </div>
+
+          <div class="control-grid">
+            <label class="control-block" for="relationSelect">
+              <span class="control-label">关系主题</span>
+              <select id="relationSelect" class="select-input">
+                <option value="all">全部关系</option>
+              </select>
+            </label>
+
+            <label class="control-block" for="scoreSlider">
+              <span class="control-label">最低优先级 <strong id="scoreValue">0</strong></span>
+              <input id="scoreSlider" class="range-input" type="range" min="0" max="100" value="0" />
+            </label>
+          </div>
+
+          <section class="control-block" aria-labelledby="typeFilterTitle">
+            <div class="section-title" id="typeFilterTitle">节点类型</div>
+            <div id="typeFilters" class="filter-list"></div>
+          </section>
+
+          <section class="control-block" aria-labelledby="playbookTitle">
+            <div class="section-title" id="playbookTitle">获客路径</div>
+            <div id="playbookList" class="playbook-list"></div>
+          </section>
+        </div>
+
+        <div id="googleControls" class="sidebar-controls is-hidden">
+          <section class="control-block" aria-labelledby="googleStageTitle">
+            <div class="section-title" id="googleStageTitle">Google 获客阶段</div>
+            <div id="googleStageList" class="google-stage-list"></div>
+          </section>
+
+          <section class="control-block">
+            <div class="section-title">每日目标</div>
+            <div class="target-stack">
+              <div><strong>30</strong><span>家有效公司</span></div>
+              <div><strong>10</strong><span>个联系人</span></div>
+              <div><strong>5</strong><span>封个性化触达</span></div>
+            </div>
+          </section>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <section id="graphSurface" class="graph-surface" aria-label="知识图谱">
+          <div class="graph-toolbar">
+            <div class="graph-stats">
+              <span id="nodeCount">0 个节点</span>
+              <span id="edgeCount">0 条关系</span>
+            </div>
+            <div class="tool-actions" aria-label="图谱操作">
+              <button id="fitButton" class="icon-button" type="button" title="重置视图" aria-label="重置视图">
+                <span aria-hidden="true">⌖</span>
+              </button>
+              <button id="labelButton" class="icon-button" type="button" title="显示或隐藏标签" aria-label="显示或隐藏标签">
+                <span aria-hidden="true">Aa</span>
+              </button>
+              <button id="exportButton" class="icon-button" type="button" title="导出图谱数据" aria-label="导出图谱数据">
+                <span aria-hidden="true">⇩</span>
+              </button>
+            </div>
+          </div>
+
+          <svg id="graphSvg" class="graph-svg" viewBox="0 0 1120 720" role="img" aria-label="外贸获客知识图谱网络图"></svg>
+
+          <div id="pathBar" class="path-bar" aria-live="polite"></div>
+        </section>
+
+        <section id="googleView" class="google-view" aria-label="外贸员 Google 获客路径" hidden>
+          <header class="google-header">
+            <div>
+              <span class="eyebrow">Google prospecting workflow</span>
+              <h2>外贸员 Google 获客路径</h2>
+              <p>从关键词拆解到客户官网筛选、联系人挖掘、CRM 入库和个性化触达，把 Google 搜索变成一条可复用的开发流程。</p>
+            </div>
+            <div class="google-kpis" aria-label="路径指标">
+              <div><strong id="googleStageCount">0</strong><span>路径步骤</span></div>
+              <div><strong id="googleQueryCount">0</strong><span>搜索指令</span></div>
+              <div><strong id="googleOutputCount">0</strong><span>沉淀资产</span></div>
+            </div>
+          </header>
+
+          <div id="googlePathRail" class="google-path-rail"></div>
+
+          <section class="google-board">
+            <article class="stage-detail">
+              <span id="googleStageTag" class="stage-tag">准备</span>
+              <h3 id="googleStageHeading"></h3>
+              <p id="googleStageSummary"></p>
+
+              <div class="stage-meta-grid">
+                <div>
+                  <span>目标</span>
+                  <strong id="googleStageGoal"></strong>
+                </div>
+                <div>
+                  <span>产出</span>
+                  <strong id="googleStageOutput"></strong>
+                </div>
+              </div>
+
+              <div class="stage-columns">
+                <div>
+                  <div class="section-title">判断标准</div>
+                  <ul id="googleCheckList" class="compact-list"></ul>
+                </div>
+                <div>
+                  <div class="section-title">销售动作</div>
+                  <ol id="googleActionList" class="compact-list numbered"></ol>
+                </div>
+              </div>
+            </article>
+
+            <aside class="command-panel">
+              <div class="section-title">本阶段搜索指令</div>
+              <div id="googleQueryGrid" class="query-grid"></div>
+            </aside>
+          </section>
+
+          <section class="operator-section">
+            <div class="section-title">常用 Google 指令库</div>
+            <div id="googleOperatorGrid" class="operator-grid"></div>
+          </section>
+
+          <section class="routine-section">
+            <div class="section-title">外贸员日常执行节奏</div>
+            <div id="googleRoutineGrid" class="routine-grid"></div>
+          </section>
+        </section>
+      </main>
+
+      <aside id="detailsPanel" class="details" aria-label="节点详情">
+        <section class="detail-header">
+          <div id="detailType" class="detail-type">增长系统</div>
+          <h2 id="detailTitle">外贸获客增长系统</h2>
+          <p id="detailSummary"></p>
+        </section>
+
+        <section class="metric-stack" aria-label="节点评分">
+          <div class="metric-row">
+            <span>匹配度</span>
+            <div class="meter"><span id="fitMeter"></span></div>
+            <strong id="fitScore">0</strong>
+          </div>
+          <div class="metric-row">
+            <span>意图度</span>
+            <div class="meter"><span id="intentMeter"></span></div>
+            <strong id="intentScore">0</strong>
+          </div>
+          <div class="metric-row">
+            <span>可执行</span>
+            <div class="meter"><span id="effortMeter"></span></div>
+            <strong id="effortScore">0</strong>
+          </div>
+        </section>
+
+        <section class="detail-section">
+          <div class="section-title">关键判断</div>
+          <ul id="insightList" class="insight-list"></ul>
+        </section>
+
+        <section class="detail-section">
+          <div class="section-title">下一步动作</div>
+          <ol id="actionList" class="action-list"></ol>
+        </section>
+
+        <section class="detail-section">
+          <div class="section-title">相邻节点</div>
+          <div id="neighborList" class="neighbor-list"></div>
+        </section>
+      </aside>
+    </div>
+
+    <script src="data/graph.js"></script>
+    <script src="data/google-path.js"></script>
+    <script src="src/app.js"></script>
+  </body>
+</html>
