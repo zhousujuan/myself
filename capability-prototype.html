@@ -1,0 +1,1396 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>sujuan | 能力展示原型</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #05070d;
+        --panel: rgba(8, 18, 32, 0.82);
+        --panel-strong: rgba(11, 25, 44, 0.92);
+        --ink: #f8fafc;
+        --muted: #a7b7ca;
+        --line: rgba(125, 211, 252, 0.22);
+        --teal: #2dd4bf;
+        --blue: #60a5fa;
+        --rose: #fb7185;
+        --amber: #fbbf24;
+        --green: #86efac;
+        --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+        font-family:
+          Inter, "Segoe UI", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-width: 320px;
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(180deg, rgba(5, 7, 13, 0.5), rgba(5, 7, 13, 0.98)),
+          linear-gradient(112deg, transparent 0 52%, rgba(45, 212, 191, 0.13) 52.1% 52.45%, transparent 52.7%),
+          linear-gradient(64deg, transparent 0 18%, rgba(251, 191, 36, 0.11) 18.1% 18.35%, transparent 18.6%),
+          linear-gradient(147deg, transparent 0 76%, rgba(96, 165, 250, 0.14) 76.1% 76.42%, transparent 76.7%),
+          repeating-linear-gradient(0deg, rgba(148, 163, 184, 0.07) 0 1px, transparent 1px 46px),
+          repeating-linear-gradient(90deg, rgba(45, 212, 191, 0.07) 0 1px, transparent 1px 46px),
+          var(--bg);
+        background-attachment: fixed;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      body::before {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        content: "";
+        background:
+          radial-gradient(circle at 16% 18%, rgba(45, 212, 191, 0.16), transparent 24%),
+          radial-gradient(circle at 88% 16%, rgba(96, 165, 250, 0.14), transparent 24%),
+          repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.032) 0 1px, transparent 1px 7px);
+        mix-blend-mode: screen;
+        opacity: 0.72;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .site {
+        position: relative;
+        z-index: 1;
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        min-height: 76px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        font-weight: 900;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        color: #04111f;
+        background: linear-gradient(135deg, var(--teal), var(--blue));
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 8px;
+        font-weight: 950;
+      }
+
+      .nav {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px;
+        background: rgba(8, 18, 32, 0.68);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        backdrop-filter: blur(18px);
+      }
+
+      .nav a {
+        min-height: 34px;
+        padding: 8px 12px;
+        color: #cbd5e1;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .nav a:hover,
+      .nav a:focus-visible {
+        color: #fff;
+        background: rgba(45, 212, 191, 0.14);
+        outline: none;
+      }
+
+      .mode-switch {
+        display: inline-grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        min-width: 220px;
+        padding: 4px;
+        background: rgba(2, 6, 23, 0.68);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .mode-switch button {
+        min-height: 34px;
+        color: #cbd5e1;
+        background: transparent;
+        border: 0;
+        border-radius: 6px;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .mode-switch button[aria-pressed="true"] {
+        color: #03111f;
+        background: linear-gradient(90deg, var(--teal), var(--blue));
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.68fr);
+        gap: 28px;
+        align-items: stretch;
+        padding: 30px 0 38px;
+      }
+
+      .hero-copy {
+        min-width: 0;
+        padding-top: 28px;
+      }
+
+      .eyebrow {
+        margin: 0 0 14px;
+        color: var(--teal);
+        font-size: 13px;
+        font-weight: 950;
+        text-transform: uppercase;
+        letter-spacing: 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        overflow-wrap: anywhere;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin: 0;
+        color: #fff;
+        font-size: clamp(42px, 6.4vw, 76px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 720px;
+        margin: 24px 0 0;
+        color: #d7e4f2;
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 42px;
+        padding: 10px 14px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        color: #04111f;
+        background: linear-gradient(90deg, var(--teal), var(--blue));
+      }
+
+      .button.secondary {
+        color: #dbeafe;
+        background: rgba(15, 23, 42, 0.72);
+        border: 1px solid var(--line);
+      }
+
+      .signal-board {
+        min-width: 0;
+        padding: 18px;
+        background:
+          linear-gradient(150deg, rgba(45, 212, 191, 0.16), transparent 40%),
+          linear-gradient(320deg, rgba(251, 191, 36, 0.12), transparent 38%),
+          var(--panel-strong);
+        border: 1px solid rgba(125, 211, 252, 0.28);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+      }
+
+      .board-header,
+      .board-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: #cbd5e1;
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .board-screen {
+        position: relative;
+        min-height: 360px;
+        margin: 16px 0;
+        overflow: hidden;
+        border: 1px solid rgba(125, 211, 252, 0.24);
+        border-radius: 8px;
+        background:
+          linear-gradient(90deg, rgba(125, 211, 252, 0.08) 1px, transparent 1px),
+          linear-gradient(rgba(125, 211, 252, 0.08) 1px, transparent 1px),
+          rgba(2, 6, 23, 0.82);
+        background-size: 34px 34px;
+      }
+
+      .route {
+        position: absolute;
+        height: 3px;
+        background: linear-gradient(90deg, rgba(45, 212, 191, 0.24), rgba(96, 165, 250, 0.92), rgba(251, 191, 36, 0.34));
+        box-shadow: 0 0 18px rgba(96, 165, 250, 0.32);
+        transform-origin: left center;
+      }
+
+      .route-a {
+        left: 15%;
+        top: 34%;
+        width: 46%;
+        transform: rotate(20deg);
+      }
+
+      .route-b {
+        left: 24%;
+        top: 68%;
+        width: 40%;
+        transform: rotate(-24deg);
+      }
+
+      .route-c {
+        left: 54%;
+        top: 42%;
+        width: 28%;
+        transform: rotate(72deg);
+      }
+
+      .node {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        width: 74px;
+        height: 74px;
+        color: #04111f;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 950;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .node.fe {
+        left: 10%;
+        top: 18%;
+        background: var(--teal);
+      }
+
+      .node.ai {
+        right: 12%;
+        top: 24%;
+        background: var(--blue);
+      }
+
+      .node.prd {
+        left: 31%;
+        bottom: 15%;
+        background: var(--amber);
+      }
+
+      .node.ops {
+        right: 20%;
+        bottom: 10%;
+        background: var(--rose);
+      }
+
+      .metrics {
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .metric {
+        min-width: 0;
+        padding: 10px;
+        background: rgba(15, 23, 42, 0.72);
+        border: 1px solid rgba(125, 211, 252, 0.2);
+        border-radius: 6px;
+      }
+
+      .metric span {
+        display: block;
+        color: #eef6ff;
+        font-size: 18px;
+        font-weight: 950;
+      }
+
+      .metric small {
+        display: block;
+        margin-top: 4px;
+        color: #a7b7ca;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .section {
+        padding: 42px 0;
+      }
+
+      .advantage-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .position-card,
+      .argument-board,
+      .memory-card {
+        min-width: 0;
+        background: var(--panel);
+        border: 1px solid rgba(125, 211, 252, 0.22);
+        border-radius: 8px;
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.24);
+      }
+
+      .position-card {
+        display: grid;
+        align-content: space-between;
+        gap: 22px;
+        padding: 24px;
+        background:
+          linear-gradient(145deg, rgba(45, 212, 191, 0.16), transparent 46%),
+          var(--panel-strong);
+      }
+
+      .position-card h2 {
+        margin: 0;
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .position-card p {
+        margin: 16px 0 0;
+        color: #d7e4f2;
+        font-size: 16px;
+        line-height: 1.8;
+      }
+
+      .position-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .position-tags li {
+        padding: 8px 10px;
+        color: #e0f2fe;
+        background: rgba(2, 6, 23, 0.52);
+        border: 1px solid rgba(125, 211, 252, 0.2);
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .argument-board {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        overflow: hidden;
+      }
+
+      .argument {
+        min-width: 0;
+        padding: 22px;
+        border-right: 1px solid rgba(125, 211, 252, 0.14);
+        border-bottom: 1px solid rgba(125, 211, 252, 0.14);
+      }
+
+      .argument:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .argument:nth-last-child(-n + 2) {
+        border-bottom: 0;
+      }
+
+      .argument span {
+        display: inline-grid;
+        place-items: center;
+        min-width: 34px;
+        height: 28px;
+        color: #04111f;
+        background: linear-gradient(90deg, var(--teal), var(--blue));
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 950;
+      }
+
+      .argument h3 {
+        margin: 18px 0 10px;
+        font-size: 22px;
+        line-height: 1.18;
+      }
+
+      .argument p {
+        margin: 0;
+        color: #cbd5e1;
+        font-size: 14px;
+        line-height: 1.68;
+      }
+
+      .memory-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .memory-card {
+        padding: 20px;
+      }
+
+      .memory-card strong {
+        display: block;
+        color: #fff;
+        font-size: 20px;
+        line-height: 1.24;
+      }
+
+      .memory-card p {
+        margin: 12px 0 0;
+        color: #cbd5e1;
+        font-size: 14px;
+        line-height: 1.68;
+      }
+
+      .memory-card small {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 7px 9px;
+        color: #04111f;
+        background: linear-gradient(90deg, var(--amber), var(--green));
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 950;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 18px;
+      }
+
+      .section-head h2 {
+        max-width: 720px;
+        margin: 0;
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .section-note {
+        max-width: 340px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .capability-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .capability-card {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        min-width: 0;
+        min-height: 392px;
+        padding: 20px;
+        background:
+          linear-gradient(150deg, rgba(96, 165, 250, 0.12), transparent 45%),
+          var(--panel);
+        border: 1px solid rgba(125, 211, 252, 0.22);
+        border-radius: 8px;
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
+      }
+
+      .capability-card:nth-child(2) {
+        background:
+          linear-gradient(150deg, rgba(45, 212, 191, 0.12), transparent 45%),
+          var(--panel);
+      }
+
+      .capability-card:nth-child(3) {
+        background:
+          linear-gradient(150deg, rgba(251, 191, 36, 0.12), transparent 45%),
+          var(--panel);
+      }
+
+      .capability-card:nth-child(4) {
+        background:
+          linear-gradient(150deg, rgba(251, 113, 133, 0.12), transparent 45%),
+          var(--panel);
+      }
+
+      .card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .index {
+        display: inline-grid;
+        place-items: center;
+        min-width: 42px;
+        height: 34px;
+        padding: 0 9px;
+        color: #04111f;
+        background: linear-gradient(90deg, var(--teal), var(--blue));
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 950;
+      }
+
+      .badge {
+        color: #cbd5e1;
+        font-size: 12px;
+        font-weight: 850;
+      }
+
+      .capability-card h3 {
+        margin: 22px 0 10px;
+        font-size: 24px;
+        line-height: 1.16;
+        letter-spacing: 0;
+      }
+
+      .capability-card p {
+        margin: 0;
+        color: #cbd5e1;
+        font-size: 14px;
+        line-height: 1.68;
+      }
+
+      .deliverables {
+        display: grid;
+        gap: 10px;
+        margin: 18px 0 0;
+        padding: 0;
+        color: #dbeafe;
+        list-style: none;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .deliverables li {
+        display: grid;
+        grid-template-columns: 10px minmax(0, 1fr);
+        gap: 8px;
+      }
+
+      .deliverables li::before {
+        width: 6px;
+        height: 6px;
+        margin-top: 7px;
+        background: var(--teal);
+        border-radius: 50%;
+        content: "";
+      }
+
+      .proof-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 22px;
+      }
+
+      .proof-row span {
+        padding: 7px 9px;
+        color: #dbeafe;
+        background: rgba(2, 6, 23, 0.48);
+        border: 1px solid rgba(125, 211, 252, 0.18);
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 850;
+      }
+
+      .evidence-band {
+        display: grid;
+        grid-template-columns: minmax(0, 0.64fr) minmax(0, 1fr);
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .profile-panel,
+      .case-list,
+      .flow-panel {
+        min-width: 0;
+        background: var(--panel);
+        border: 1px solid rgba(125, 211, 252, 0.22);
+        border-radius: 8px;
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.24);
+      }
+
+      .profile-panel {
+        padding: 22px;
+      }
+
+      .profile-panel h3,
+      .flow-panel h3 {
+        margin: 0;
+        font-size: 24px;
+        line-height: 1.18;
+      }
+
+      .profile-panel p {
+        margin: 14px 0 0;
+        color: #cbd5e1;
+        font-size: 15px;
+        line-height: 1.76;
+      }
+
+      .score-list {
+        display: grid;
+        gap: 16px;
+        margin-top: 22px;
+      }
+
+      .score-item {
+        display: grid;
+        gap: 8px;
+      }
+
+      .score-item strong {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 13px;
+      }
+
+      .bar {
+        height: 8px;
+        overflow: hidden;
+        background: rgba(15, 23, 42, 0.8);
+        border-radius: 999px;
+      }
+
+      .bar span {
+        display: block;
+        height: 100%;
+        background: linear-gradient(90deg, var(--teal), var(--blue), var(--amber));
+        border-radius: inherit;
+      }
+
+      .case-list {
+        display: grid;
+        gap: 0;
+        overflow: hidden;
+      }
+
+      .case-list.detailed {
+        gap: 14px;
+        overflow: visible;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .case-list.detailed .case-item {
+        background: var(--panel);
+        border: 1px solid rgba(125, 211, 252, 0.22);
+        border-radius: 8px;
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.24);
+      }
+
+      .case-item {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        min-width: 0;
+        padding: 20px;
+        border-bottom: 1px solid rgba(125, 211, 252, 0.16);
+      }
+
+      .case-item:last-child {
+        border-bottom: 0;
+      }
+
+      .case-item h3 {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.2;
+      }
+
+      .case-item p {
+        margin: 10px 0 0;
+        color: #cbd5e1;
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .case-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .case-meta span {
+        min-height: 28px;
+        padding: 6px 9px;
+        color: #dbeafe;
+        background: rgba(2, 6, 23, 0.5);
+        border: 1px solid rgba(125, 211, 252, 0.18);
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 850;
+      }
+
+      .case-result {
+        display: grid;
+        place-items: center;
+        width: 88px;
+        min-height: 88px;
+        color: #04111f;
+        background: linear-gradient(135deg, var(--green), var(--teal));
+        border-radius: 8px;
+        font-size: 22px;
+        font-weight: 950;
+        text-align: center;
+      }
+
+      .case-proof {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .case-proof div {
+        min-width: 0;
+        padding: 12px;
+        background: rgba(2, 6, 23, 0.5);
+        border: 1px solid rgba(125, 211, 252, 0.16);
+        border-radius: 6px;
+      }
+
+      .case-proof b {
+        display: block;
+        color: #fff;
+        font-size: 13px;
+      }
+
+      .case-proof span {
+        display: block;
+        margin-top: 7px;
+        color: #a7b7ca;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .flow-panel {
+        padding: 22px;
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .flow-step {
+        min-width: 0;
+        padding: 16px;
+        background: rgba(2, 6, 23, 0.48);
+        border: 1px solid rgba(125, 211, 252, 0.18);
+        border-radius: 8px;
+      }
+
+      .flow-step span {
+        color: var(--teal);
+        font-size: 12px;
+        font-weight: 950;
+      }
+
+      .flow-step strong {
+        display: block;
+        margin-top: 10px;
+        font-size: 17px;
+        line-height: 1.25;
+      }
+
+      .flow-step p {
+        margin: 10px 0 0;
+        color: #cbd5e1;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 30px 0 36px;
+        color: var(--muted);
+        border-top: 1px solid rgba(125, 211, 252, 0.18);
+        font-size: 13px;
+      }
+
+      @media (max-width: 980px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 18px 0;
+        }
+
+        .hero,
+        .advantage-panel,
+        .evidence-band {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy {
+          padding-top: 8px;
+        }
+
+        .capability-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .memory-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .site {
+          width: min(100% - 24px, 640px);
+        }
+
+        .nav {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(58px, 1fr));
+          width: 100%;
+        }
+
+        .nav a {
+          padding: 8px 6px;
+          text-align: center;
+          font-size: 12px;
+        }
+
+        .mode-switch {
+          width: 100%;
+        }
+
+        h1 {
+          font-size: clamp(34px, 11vw, 46px);
+          line-height: 1.05;
+        }
+
+        .lead {
+          font-size: 16px;
+          line-height: 1.7;
+        }
+
+        .signal-board {
+          padding: 14px;
+        }
+
+        .board-screen {
+          min-height: 280px;
+        }
+
+        .metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .node {
+          width: 58px;
+          height: 58px;
+          font-size: 15px;
+        }
+
+        .section-head {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .capability-grid,
+        .argument-board,
+        .case-proof,
+        .flow {
+          grid-template-columns: 1fr;
+        }
+
+        .argument,
+        .argument:nth-child(2n),
+        .argument:nth-last-child(-n + 2) {
+          border-right: 0;
+          border-bottom: 1px solid rgba(125, 211, 252, 0.14);
+        }
+
+        .argument:last-child {
+          border-bottom: 0;
+        }
+
+        .capability-card {
+          min-height: auto;
+        }
+
+        .case-item {
+          grid-template-columns: 1fr;
+        }
+
+        .case-result {
+          width: 100%;
+          min-height: 54px;
+          font-size: 18px;
+        }
+
+        .footer {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site">
+      <header class="topbar" aria-label="页面导航">
+        <a class="brand" href="index.html" aria-label="返回首页">
+          <span class="brand-mark" aria-hidden="true">ZS</span>
+          <span>sujuan portfolio</span>
+        </a>
+        <nav class="nav" aria-label="原型导航">
+          <a href="#position">定位</a>
+          <a href="#advantage">优势</a>
+          <a href="#capability">能力</a>
+          <a href="#evidence">案例</a>
+          <a href="#flow">流程</a>
+        </nav>
+        <div class="mode-switch" aria-label="展示模式">
+          <button type="button" data-mode="job" aria-pressed="true">求职版</button>
+          <button type="button" data-mode="client" aria-pressed="false">项目版</button>
+        </div>
+      </header>
+
+      <main>
+        <section id="position" class="hero" aria-labelledby="heroTitle">
+          <div class="hero-copy">
+            <p class="eyebrow">Capability showroom</p>
+            <h1 id="heroTitle">不是只会写页面，而是能把产品、AI 和工程串起来</h1>
+            <p id="modeNote" class="lead">
+              你的个人优势适合包装成“产品意识强的全栈偏前端 / AI 应用研发”：能拆需求、做原型、定接口、搭页面、联调上线，还能把复杂项目复盘成可展示的证据。
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#evidence">查看项目证据 &gt;</a>
+              <a class="button secondary" href="resume.html">打开完整简历</a>
+            </div>
+          </div>
+
+          <aside class="signal-board" aria-label="能力关系图">
+            <div class="board-header">
+              <span>Project cockpit</span>
+              <span>2026</span>
+            </div>
+            <div class="board-screen">
+              <span class="route route-a"></span>
+              <span class="route route-b"></span>
+              <span class="route route-c"></span>
+              <span class="node fe">FE</span>
+              <span class="node ai">AI</span>
+              <span class="node prd">PRD</span>
+              <span class="node ops">OPS</span>
+              <div class="metrics">
+                <div class="metric">
+                  <span>5+</span>
+                  <small>年项目交付经验</small>
+                </div>
+                <div class="metric">
+                  <span>30%+</span>
+                  <small>组件复用提升表达</small>
+                </div>
+                <div class="metric">
+                  <span>AI</span>
+                  <small>智能体与知识库经验</small>
+                </div>
+              </div>
+            </div>
+            <div class="board-footer">
+              <span>前端工程</span>
+              <span>产品方案</span>
+              <span>AI 应用</span>
+            </div>
+          </aside>
+        </section>
+
+        <section id="advantage" class="section" aria-labelledby="advantageTitle">
+          <div class="advantage-panel">
+            <article class="position-card">
+              <div>
+                <p class="eyebrow">Personal advantage</p>
+                <h2 id="advantageTitle">你的核心卖点不是“会很多技术”，而是能跨角色推动项目落地</h2>
+                <p>
+                  页面需要把你塑造成一个能同时理解业务、产品、前端实现和 AI 应用场景的人。这样比单纯写 React、Vue、Django 更有记忆点。
+                </p>
+              </div>
+              <ul class="position-tags" aria-label="个人定位标签">
+                <li>产品意识强</li>
+                <li>全栈偏前端</li>
+                <li>AI 应用研发</li>
+                <li>复杂后台经验</li>
+                <li>可视化与工程化</li>
+              </ul>
+            </article>
+
+            <div class="argument-board">
+              <article class="argument">
+                <span>01</span>
+                <h3>能把需求拆清楚</h3>
+                <p>你参与过需求文档、原型二次设计、接口协议定义和功能验收，适合强调“不是只接任务，而是能判断怎么做”。</p>
+              </article>
+              <article class="argument">
+                <span>02</span>
+                <h3>能扛复杂前端</h3>
+                <p>你覆盖 React、Vue、Angular、微前端、ECharts、性能优化和老项目维护，适合展示“复杂系统交付能力”。</p>
+              </article>
+              <article class="argument">
+                <span>03</span>
+                <h3>能落地 AI 产品</h3>
+                <p>教育智能体、知识库、流式输出、多端管理后台，可以把 AI 经验从概念写成真实功能链路。</p>
+              </article>
+              <article class="argument">
+                <span>04</span>
+                <h3>能协同上线复盘</h3>
+                <p>你有接口联调、部署配置、日志排查、Docker/Nginx 基础经验，能说明自己懂交付闭环。</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="memoryTitle">
+          <div class="section-head">
+            <h2 id="memoryTitle">让别人记住你的三句话</h2>
+            <p class="section-note">这三句话可以放在首页、简历摘要和项目介绍开头，形成统一人设。</p>
+          </div>
+
+          <div class="memory-grid">
+            <article class="memory-card">
+              <strong>我不是单点前端，我能把需求变成完整功能链路。</strong>
+              <p>从用户场景、原型、接口、页面、联调到上线复盘，都能参与并推动。</p>
+              <small>适合求职摘要</small>
+            </article>
+            <article class="memory-card">
+              <strong>我能处理新项目，也能接住旧系统迁移和性能优化。</strong>
+              <p>React/Vue/Angular、多模块后台、微前端、可视化和构建优化都能形成证据。</p>
+              <small>适合技术优势</small>
+            </article>
+            <article class="memory-card">
+              <strong>我有 AI 应用真实落地经验，不只是会调用模型。</strong>
+              <p>智能体对话、知识库管理、流式输出、多端管理台更能体现你的实战价值。</p>
+              <small>适合项目亮点</small>
+            </article>
+          </div>
+        </section>
+
+        <section id="capability" class="section" aria-labelledby="capabilityTitle">
+          <div class="section-head">
+            <h2 id="capabilityTitle">四个能力入口，分别对应不同阅读场景</h2>
+            <p class="section-note">每个入口都用“职责、交付物、项目证据”表达，避免只堆技术名词。</p>
+          </div>
+
+          <div class="capability-grid">
+            <article class="capability-card">
+              <div class="card-top">
+                <span class="index">01</span>
+                <span class="badge">Frontend</span>
+              </div>
+              <h3>前端工程能力</h3>
+              <p>展示复杂页面、组件化、状态管理、性能优化和多端适配能力。</p>
+              <ul class="deliverables">
+                <li>后台系统、H5、可视化大屏页面实现</li>
+                <li>React、Vue、Angular 项目迁移与维护</li>
+                <li>首屏、渲染、缓存、构建链路优化</li>
+              </ul>
+              <div class="proof-row">
+                <span>组件拆分</span>
+                <span>ECharts</span>
+                <span>微前端</span>
+              </div>
+            </article>
+
+            <article class="capability-card">
+              <div class="card-top">
+                <span class="index">02</span>
+                <span class="badge">API</span>
+              </div>
+              <h3>后端协作能力</h3>
+              <p>展示接口协同、数据结构理解、权限边界和部署排查能力。</p>
+              <ul class="deliverables">
+                <li>接口字段、状态码、异常流和联调文档</li>
+                <li>数据表关系、权限模型、任务队列理解</li>
+                <li>Nginx、Docker、日志定位和基础运维</li>
+              </ul>
+              <div class="proof-row">
+                <span>RESTful</span>
+                <span>Django</span>
+                <span>Docker</span>
+              </div>
+            </article>
+
+            <article class="capability-card">
+              <div class="card-top">
+                <span class="index">03</span>
+                <span class="badge">Product</span>
+              </div>
+              <h3>产品方案能力</h3>
+              <p>展示需求判断、原型拆解、PRD 结构和指标意识。</p>
+              <ul class="deliverables">
+                <li>用户画像、痛点洞察、需求优先级</li>
+                <li>原型流程、验收标准、版本路线图</li>
+                <li>转化漏斗、增长指标和复盘结论</li>
+              </ul>
+              <div class="proof-row">
+                <span>PRD</span>
+                <span>原型</span>
+                <span>指标</span>
+              </div>
+            </article>
+
+            <article class="capability-card">
+              <div class="card-top">
+                <span class="index">04</span>
+                <span class="badge">Full stack</span>
+              </div>
+              <h3>全栈项目案例</h3>
+              <p>用一条完整项目线证明从需求到上线的综合交付能力。</p>
+              <ul class="deliverables">
+                <li>业务目标、架构图、核心功能清单</li>
+                <li>前后端边界、接口联调、发布流程</li>
+                <li>结果数据、问题复盘、下一步优化</li>
+              </ul>
+              <div class="proof-row">
+                <span>AI Agent</span>
+                <span>知识库</span>
+                <span>官网</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="evidence" class="section" aria-labelledby="evidenceTitle">
+          <div class="section-head">
+            <h2 id="evidenceTitle">项目证据区，负责让能力落地</h2>
+            <p class="section-note">这里可以接你的真实项目截图、线上地址、技术栈和结果数据。</p>
+          </div>
+
+          <div class="evidence-band">
+            <aside class="profile-panel">
+              <h3>推荐展示定位</h3>
+              <p>
+                以“产品意识强的全栈偏前端工程师”为主线，把 AI 应用、前端工程、后台系统和外贸知识库整合成一套完整作品集。
+              </p>
+              <div class="score-list">
+                <div class="score-item">
+                  <strong><span>前端工程</span><span>92%</span></strong>
+                  <div class="bar"><span style="width: 92%"></span></div>
+                </div>
+                <div class="score-item">
+                  <strong><span>产品方案</span><span>82%</span></strong>
+                  <div class="bar"><span style="width: 82%"></span></div>
+                </div>
+                <div class="score-item">
+                  <strong><span>后端协作</span><span>76%</span></strong>
+                  <div class="bar"><span style="width: 76%"></span></div>
+                </div>
+              </div>
+            </aside>
+
+            <div class="case-list detailed">
+              <article class="case-item">
+                <div>
+                  <h3>教育智能体平台</h3>
+                  <p>移动端和 PC 管理端，覆盖登录注册、智能体对话、知识库管理、内容发布和后台配置。</p>
+                  <div class="case-meta">
+                    <span>React</span>
+                    <span>TypeScript</span>
+                    <span>流式输出</span>
+                    <span>知识库</span>
+                  </div>
+                  <div class="case-proof">
+                    <div>
+                      <b>产品侧</b>
+                      <span>需求拆解、原型二次设计、功能流程梳理</span>
+                    </div>
+                    <div>
+                      <b>工程侧</b>
+                      <span>多端页面、对话交互、知识库管理功能</span>
+                    </div>
+                    <div>
+                      <b>亮点侧</b>
+                      <span>AI Agent、流式输出、多模态输入场景</span>
+                    </div>
+                  </div>
+                </div>
+                <strong class="case-result">AI 应用</strong>
+              </article>
+
+              <article class="case-item">
+                <div>
+                  <h3>企业管理后台与云平台</h3>
+                  <p>参与多模块后台研发、Angular 到 Vue 迁移、可视化监控、性能优化和微前端方案落地。</p>
+                  <div class="case-meta">
+                    <span>Vue</span>
+                    <span>Angular</span>
+                    <span>ECharts</span>
+                    <span>微前端</span>
+                  </div>
+                  <div class="case-proof">
+                    <div>
+                      <b>复杂度</b>
+                      <span>多模块后台、可视化面板、权限与配置类页面</span>
+                    </div>
+                    <div>
+                      <b>改造点</b>
+                      <span>Angular 到 Vue 迁移、组件复用、架构优化</span>
+                    </div>
+                    <div>
+                      <b>结果表达</b>
+                      <span>复用率 30%+、性能提升 20%+ 可作为页面数据</span>
+                    </div>
+                  </div>
+                </div>
+                <strong class="case-result">工程化</strong>
+              </article>
+
+              <article class="case-item">
+                <div>
+                  <h3>外贸获客知识库</h3>
+                  <p>沉淀 Google 搜索路径、客户筛选、CRM 入库、触达复盘和销售流程图谱。</p>
+                  <div class="case-meta">
+                    <span>知识图谱</span>
+                    <span>Google path</span>
+                    <span>销售流程</span>
+                    <span>数据结构</span>
+                  </div>
+                  <div class="case-proof">
+                    <div>
+                      <b>业务侧</b>
+                      <span>客户发现、筛选、入库、触达与复盘流程</span>
+                    </div>
+                    <div>
+                      <b>产品侧</b>
+                      <span>把经验沉淀成路径、图谱和可复用操作手册</span>
+                    </div>
+                    <div>
+                      <b>展示侧</b>
+                      <span>适合证明你有业务理解和知识产品化能力</span>
+                    </div>
+                  </div>
+                </div>
+                <strong class="case-result">增长线索</strong>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="flow" class="section" aria-labelledby="flowTitle">
+          <div class="flow-panel">
+            <h3 id="flowTitle">能力展示的页面流转</h3>
+            <div class="flow">
+              <article class="flow-step">
+                <span>Step 01</span>
+                <strong>先给定位</strong>
+                <p>一句话说明你是全栈偏前端、兼具产品意识和 AI 应用经验。</p>
+              </article>
+              <article class="flow-step">
+                <span>Step 02</span>
+                <strong>再给能力</strong>
+                <p>用四个入口承接前端、后端协作、产品方案和全栈项目。</p>
+              </article>
+              <article class="flow-step">
+                <span>Step 03</span>
+                <strong>补上证据</strong>
+                <p>放真实项目、技术栈、职责边界、线上链接和结果数据。</p>
+              </article>
+              <article class="flow-step">
+                <span>Step 04</span>
+                <strong>引导行动</strong>
+                <p>把访问者引到简历、项目详情、博客或联系方式。</p>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Prototype for sujuan portfolio</span>
+        <span>能力展示原型页面</span>
+      </footer>
+    </div>
+
+    <script>
+      (() => {
+        const notes = {
+          job: "你的个人优势适合包装成“产品意识强的全栈偏前端 / AI 应用研发”：能拆需求、做原型、定接口、搭页面、联调上线，还能把复杂项目复盘成可展示的证据。",
+          client: "如果面向项目合作，可以把你包装成“能从需求梳理到上线交付的独立执行者”：先明确目标和范围，再拆页面、接口、数据和发布节奏。",
+        };
+        const note = document.getElementById("modeNote");
+        const buttons = document.querySelectorAll("[data-mode]");
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            buttons.forEach((item) => item.setAttribute("aria-pressed", "false"));
+            button.setAttribute("aria-pressed", "true");
+            note.textContent = notes[button.dataset.mode];
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

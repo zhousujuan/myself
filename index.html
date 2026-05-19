@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="sujuan 的个人网站入口，聚合外贸知识库和个人简历介绍。"
+      content="sujuan 的个人作品集入口，展示产品意识、全栈偏前端、AI 应用研发、复杂后台和项目交付能力。"
     />
-    <title>sujuan | 个人网站</title>
-    <link rel="stylesheet" href="src/home.css?v=20260518-tech" />
+    <title>sujuan | 产品意识强的全栈偏前端</title>
+    <link rel="stylesheet" href="src/home.css?v=20260519-advantage" />
   </head>
   <body>
     <canvas id="particleField" class="particle-field" aria-hidden="true"></canvas>
@@ -16,175 +16,381 @@
       <header class="topbar" aria-label="站点导航">
         <a class="brand" href="index.html" aria-label="返回首页">
           <span class="brand-mark" aria-hidden="true">ZS</span>
-          <span>sujuan</span>
+          <span>sujuan portfolio</span>
         </a>
         <nav class="nav-links" aria-label="主要入口">
+          <a href="#advantage">个人优势</a>
+          <a href="#capability">能力矩阵</a>
+          <a href="#evidence">项目证据</a>
           <a href="trade.html">外贸知识库</a>
-          <a href="#capabilityTemplates">能力模板</a>
-          <a href="resume.html">个人简历</a>
+          <a href="resume.html">完整简历</a>
         </nav>
       </header>
 
       <main>
         <section class="hero" aria-labelledby="pageTitle">
           <div class="hero-copy">
-            <p class="eyebrow">Personal workspace</p>
-            <h1 id="pageTitle">sujuan 的个人网站</h1>
+            <p class="eyebrow">Product-minded frontend engineer</p>
+            <h1 id="pageTitle">把产品判断、AI 应用<br />和前端工程<br />串成可交付结果</h1>
             <p>
-              这里集中放置我的外贸获客知识沉淀、前后端开发、产品方案与 AI 项目经历，以及可持续更新的个人简历介绍。
+              我适合被理解为产品意识强的全栈偏前端 / AI 应用研发。能拆需求、做原型、定接口、搭页面、联调上线，也能把复杂项目复盘成清晰的作品集证据。
             </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#evidence">查看项目证据</a>
+              <a class="button secondary" href="resume.html">打开完整简历</a>
+            </div>
           </div>
 
-          <div class="site-visual" aria-label="站点内容概览">
-            <div class="visual-header">
-              <span>Portfolio</span>
+          <aside class="signal-board" aria-label="能力关系图">
+            <div class="board-header">
+              <span>Project cockpit</span>
               <span>2026</span>
             </div>
-            <div class="visual-grid" aria-hidden="true">
-              <span class="line line-a"></span>
-              <span class="line line-b"></span>
-              <span class="line line-c"></span>
-              <span class="line line-d"></span>
-              <span class="node node-a">贸</span>
-              <span class="node node-b">历</span>
-              <span class="node node-c">AI</span>
-              <span class="node node-d">品</span>
+            <div class="board-screen">
+              <span class="route route-a"></span>
+              <span class="route route-b"></span>
+              <span class="route route-c"></span>
+              <span class="node node-fe">FE</span>
+              <span class="node node-ai">AI</span>
+              <span class="node node-prd">PRD</span>
+              <span class="node node-ops">OPS</span>
+              <div class="metrics">
+                <div class="metric">
+                  <strong>5+</strong>
+                  <span>年项目交付经验</span>
+                </div>
+                <div class="metric">
+                  <strong>30%+</strong>
+                  <span>组件复用提升表达</span>
+                </div>
+                <div class="metric">
+                  <strong>AI</strong>
+                  <span>智能体与知识库经验</span>
+                </div>
+              </div>
             </div>
-            <div class="visual-footer">
-              <span>知识库</span>
-              <span>全栈产品</span>
-              <span>简历介绍</span>
+            <div class="board-footer">
+              <span>前端工程</span>
+              <span>产品方案</span>
+              <span>AI 应用</span>
+            </div>
+          </aside>
+        </section>
+
+        <section id="advantage" class="section advantage-section" aria-labelledby="advantageTitle">
+          <div class="advantage-panel">
+            <article class="position-card">
+              <div>
+                <p class="eyebrow">Personal advantage</p>
+                <h2 id="advantageTitle">核心卖点不是“会很多技术”，而是能跨角色推动项目落地</h2>
+                <p>
+                  首页要让访问者快速记住：我既能理解业务和产品，也能处理复杂前端、AI 功能和上线协作。这样比单纯列 React、Vue、Django 更有辨识度。
+                </p>
+              </div>
+              <ul class="position-tags" aria-label="个人定位标签">
+                <li>产品意识强</li>
+                <li>全栈偏前端</li>
+                <li>AI 应用研发</li>
+                <li>复杂后台经验</li>
+                <li>可视化与工程化</li>
+              </ul>
+            </article>
+
+            <div class="argument-board">
+              <article class="argument">
+                <span>01</span>
+                <h3>能把需求拆清楚</h3>
+                <p>参与过需求文档、原型二次设计、接口协议定义和功能验收，能从“怎么做”往前追到“为什么做”。</p>
+              </article>
+              <article class="argument">
+                <span>02</span>
+                <h3>能扛复杂前端</h3>
+                <p>覆盖 React、Vue、Angular、微前端、ECharts、性能优化和老项目维护，适合复杂系统交付场景。</p>
+              </article>
+              <article class="argument">
+                <span>03</span>
+                <h3>能落地 AI 产品</h3>
+                <p>教育智能体、知识库、流式输出、多端管理后台，让 AI 经验从概念变成真实功能链路。</p>
+              </article>
+              <article class="argument">
+                <span>04</span>
+                <h3>能协同上线复盘</h3>
+                <p>具备接口联调、部署配置、日志排查、Docker/Nginx 基础经验，能把交付闭环讲完整。</p>
+              </article>
             </div>
           </div>
         </section>
 
-        <section class="directory" aria-label="目录入口">
-          <a class="entry entry-trade" href="trade.html">
-            <span class="entry-number">01</span>
-            <div class="entry-copy">
-              <p>外贸知识库</p>
-              <h2>外贸获客知识图谱</h2>
-              <span>
-                梳理客户发现、Google 搜索路径、线索筛选、CRM 入库与触达复盘流程。
-              </span>
+        <section class="section" aria-labelledby="memoryTitle">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Interview memory</p>
+              <h2 id="memoryTitle">让别人记住我的三句话</h2>
             </div>
-            <ul class="entry-tags" aria-label="内容标签">
-              <li>Knowledge graph</li>
-              <li>Google path</li>
-              <li>Sales playbook</li>
-            </ul>
-            <span class="entry-action">进入知识库 <span aria-hidden="true">→</span></span>
-          </a>
-
-          <a class="entry entry-resume" href="resume.html">
-            <span class="entry-number">02</span>
-            <div class="entry-copy">
-              <p>个人简历介绍</p>
-              <h2>经历、技能与项目作品</h2>
-              <span>
-                展示前端工程、AI 应用研发、项目交付经历，以及个人技术博客与代码仓库入口。
-              </span>
-            </div>
-            <ul class="entry-tags" aria-label="内容标签">
-              <li>Resume</li>
-              <li>Frontend</li>
-              <li>AI product</li>
-            </ul>
-            <span class="entry-action">查看简历 <span aria-hidden="true">→</span></span>
-          </a>
-
-          <a class="entry entry-stack" href="#capabilityTemplates">
-            <span class="entry-number">03</span>
-            <div class="entry-copy">
-              <p>前后端开发能力</p>
-              <h2>全栈交付能力模板</h2>
-              <span>
-                用工程链路展示前端界面、后端接口、数据模型、部署运维与性能优化的完整交付能力。
-              </span>
-            </div>
-            <ul class="entry-tags" aria-label="内容标签">
-              <li>Frontend</li>
-              <li>Backend API</li>
-              <li>DevOps</li>
-            </ul>
-            <span class="entry-action">查看能力模板 <span aria-hidden="true">→</span></span>
-          </a>
-
-          <a class="entry entry-product" href="#capabilityTemplates">
-            <span class="entry-number">04</span>
-            <div class="entry-copy">
-              <p>产品设计能力</p>
-              <h2>产品方案与增长模板</h2>
-              <span>
-                用产品视角呈现用户洞察、需求拆解、PRD、原型设计、指标体系与迭代路线图。
-              </span>
-            </div>
-            <ul class="entry-tags" aria-label="内容标签">
-              <li>PRD</li>
-              <li>User journey</li>
-              <li>Roadmap</li>
-            </ul>
-            <span class="entry-action">查看产品模板 <span aria-hidden="true">→</span></span>
-          </a>
-        </section>
-
-        <section id="capabilityTemplates" class="template-section" aria-labelledby="templateTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Capability templates</p>
-            <h2 id="templateTitle">建议追加的能力展示模板</h2>
+            <p>这三句话统一首页、简历摘要和项目介绍，让个人优势变得更集中。</p>
           </div>
 
-          <div class="template-grid">
-            <article class="template-card">
-              <span class="template-index">01</span>
-              <h3>前端工程模板</h3>
-              <p>适合展示复杂后台、移动端 H5、可视化大屏、组件库与性能优化。</p>
-              <ul>
-                <li>页面截图 / 交互流程 / 技术栈</li>
-                <li>组件拆分 / 状态管理 / 性能指标</li>
-                <li>兼容性、移动端适配和工程化方案</li>
+          <div class="memory-grid">
+            <article class="memory-card">
+              <strong>我不是单点前端，我能把需求变成完整功能链路。</strong>
+              <p>从用户场景、原型、接口、页面、联调到上线复盘，都能参与并推动。</p>
+              <span>适合求职摘要</span>
+            </article>
+            <article class="memory-card">
+              <strong>我能处理新项目，也能接住旧系统迁移和性能优化。</strong>
+              <p>React/Vue/Angular、多模块后台、微前端、可视化和构建优化都能形成证据。</p>
+              <span>适合技术优势</span>
+            </article>
+            <article class="memory-card">
+              <strong>我有 AI 应用真实落地经验，不只是会调用模型。</strong>
+              <p>智能体对话、知识库管理、流式输出、多端管理台更能体现实战价值。</p>
+              <span>适合项目亮点</span>
+            </article>
+          </div>
+        </section>
+
+        <section id="capability" class="section" aria-labelledby="capabilityTitle">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Capability matrix</p>
+              <h2 id="capabilityTitle">四个能力入口，对应不同阅读场景</h2>
+            </div>
+            <p>每个入口都用职责、交付物、项目证据表达，避免只堆技术名词。</p>
+          </div>
+
+          <div class="capability-grid">
+            <article class="capability-card">
+              <div class="card-top">
+                <span class="index">01</span>
+                <span class="badge">Frontend</span>
+              </div>
+              <h3>前端工程能力</h3>
+              <p>展示复杂页面、组件化、状态管理、性能优化和多端适配能力。</p>
+              <ul class="deliverables">
+                <li>后台系统、H5、可视化大屏页面实现</li>
+                <li>React、Vue、Angular 项目迁移与维护</li>
+                <li>首屏、渲染、缓存、构建链路优化</li>
               </ul>
+              <div class="proof-row">
+                <span>组件拆分</span>
+                <span>ECharts</span>
+                <span>微前端</span>
+              </div>
             </article>
 
-            <article class="template-card">
-              <span class="template-index">02</span>
-              <h3>后端服务模板</h3>
-              <p>适合补充接口设计、数据库建模、权限体系、日志监控和部署能力。</p>
-              <ul>
-                <li>API 文档 / 数据表关系 / 权限模型</li>
-                <li>任务队列 / 文件处理 / 第三方集成</li>
-                <li>部署拓扑、异常告警与稳定性说明</li>
+            <article class="capability-card">
+              <div class="card-top">
+                <span class="index">02</span>
+                <span class="badge">API</span>
+              </div>
+              <h3>后端协作能力</h3>
+              <p>展示接口协同、数据结构理解、权限边界和部署排查能力。</p>
+              <ul class="deliverables">
+                <li>接口字段、状态码、异常流和联调文档</li>
+                <li>数据表关系、权限模型、任务队列理解</li>
+                <li>Nginx、Docker、日志定位和基础运维</li>
               </ul>
+              <div class="proof-row">
+                <span>RESTful</span>
+                <span>Django</span>
+                <span>Docker</span>
+              </div>
             </article>
 
-            <article class="template-card">
-              <span class="template-index">03</span>
-              <h3>产品方案模板</h3>
-              <p>适合把“会产品”表达成可落地的需求分析、方案设计和迭代管理。</p>
-              <ul>
-                <li>用户画像 / 痛点洞察 / 需求优先级</li>
-                <li>PRD 结构 / 原型流程 / 验收标准</li>
-                <li>北极星指标、转化漏斗和版本路线图</li>
+            <article class="capability-card">
+              <div class="card-top">
+                <span class="index">03</span>
+                <span class="badge">Product</span>
+              </div>
+              <h3>产品方案能力</h3>
+              <p>展示需求判断、原型拆解、PRD 结构和指标意识。</p>
+              <ul class="deliverables">
+                <li>用户画像、痛点洞察、需求优先级</li>
+                <li>原型流程、验收标准、版本路线图</li>
+                <li>转化漏斗、增长指标和复盘结论</li>
               </ul>
+              <div class="proof-row">
+                <span>PRD</span>
+                <span>原型</span>
+                <span>指标</span>
+              </div>
             </article>
 
-            <article class="template-card">
-              <span class="template-index">04</span>
-              <h3>全栈项目案例模板</h3>
-              <p>适合用一个项目串起产品判断、前端实现、后端服务和上线复盘。</p>
-              <ul>
-                <li>业务目标 / 架构图 / 核心功能清单</li>
-                <li>前后端职责边界、接口联调和发布流程</li>
-                <li>结果数据、问题复盘和下一步优化</li>
+            <article class="capability-card">
+              <div class="card-top">
+                <span class="index">04</span>
+                <span class="badge">Full stack</span>
+              </div>
+              <h3>全栈项目案例</h3>
+              <p>用一条完整项目线证明从需求到上线的综合交付能力。</p>
+              <ul class="deliverables">
+                <li>业务目标、架构图、核心功能清单</li>
+                <li>前后端边界、接口联调、发布流程</li>
+                <li>结果数据、问题复盘、下一步优化</li>
               </ul>
+              <div class="proof-row">
+                <span>AI Agent</span>
+                <span>知识库</span>
+                <span>官网</span>
+              </div>
             </article>
+          </div>
+        </section>
+
+        <section id="evidence" class="section" aria-labelledby="evidenceTitle">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Project evidence</p>
+              <h2 id="evidenceTitle">项目证据区，负责让能力落地</h2>
+            </div>
+            <p>这里把真实经历拆成产品侧、工程侧和亮点侧，面试官或合作方更容易判断价值。</p>
+          </div>
+
+          <div class="evidence-layout">
+            <aside class="profile-panel">
+              <h3>推荐展示定位</h3>
+              <p>
+                以“产品意识强的全栈偏前端工程师”为主线，把 AI 应用、前端工程、后台系统和外贸知识库整合成一套完整作品集。
+              </p>
+              <div class="score-list">
+                <div class="score-item">
+                  <strong><span>前端工程</span><span>92%</span></strong>
+                  <div class="bar"><span style="width: 92%"></span></div>
+                </div>
+                <div class="score-item">
+                  <strong><span>产品方案</span><span>82%</span></strong>
+                  <div class="bar"><span style="width: 82%"></span></div>
+                </div>
+                <div class="score-item">
+                  <strong><span>后端协作</span><span>76%</span></strong>
+                  <div class="bar"><span style="width: 76%"></span></div>
+                </div>
+              </div>
+            </aside>
+
+            <div class="case-list">
+              <article class="case-item">
+                <div>
+                  <h3>教育智能体平台</h3>
+                  <p>移动端和 PC 管理端，覆盖登录注册、智能体对话、知识库管理、内容发布和后台配置。</p>
+                  <div class="case-meta">
+                    <span>React</span>
+                    <span>TypeScript</span>
+                    <span>流式输出</span>
+                    <span>知识库</span>
+                  </div>
+                  <div class="case-proof">
+                    <div>
+                      <b>产品侧</b>
+                      <span>需求拆解、原型二次设计、功能流程梳理</span>
+                    </div>
+                    <div>
+                      <b>工程侧</b>
+                      <span>多端页面、对话交互、知识库管理功能</span>
+                    </div>
+                    <div>
+                      <b>亮点侧</b>
+                      <span>AI Agent、流式输出、多模态输入场景</span>
+                    </div>
+                  </div>
+                </div>
+                <strong class="case-result">AI 应用</strong>
+              </article>
+
+              <article class="case-item">
+                <div>
+                  <h3>企业管理后台与云平台</h3>
+                  <p>参与多模块后台研发、Angular 到 Vue 迁移、可视化监控、性能优化和微前端方案落地。</p>
+                  <div class="case-meta">
+                    <span>Vue</span>
+                    <span>Angular</span>
+                    <span>ECharts</span>
+                    <span>微前端</span>
+                  </div>
+                  <div class="case-proof">
+                    <div>
+                      <b>复杂度</b>
+                      <span>多模块后台、可视化面板、权限与配置类页面</span>
+                    </div>
+                    <div>
+                      <b>改造点</b>
+                      <span>Angular 到 Vue 迁移、组件复用、架构优化</span>
+                    </div>
+                    <div>
+                      <b>结果表达</b>
+                      <span>复用率 30%+、性能提升 20%+ 可作为页面数据</span>
+                    </div>
+                  </div>
+                </div>
+                <strong class="case-result">工程化</strong>
+              </article>
+
+              <article class="case-item">
+                <div>
+                  <h3>外贸获客知识库</h3>
+                  <p>沉淀 Google 搜索路径、客户筛选、CRM 入库、触达复盘和销售流程图谱。</p>
+                  <div class="case-meta">
+                    <span>知识图谱</span>
+                    <span>Google path</span>
+                    <span>销售流程</span>
+                    <span>数据结构</span>
+                  </div>
+                  <div class="case-proof">
+                    <div>
+                      <b>业务侧</b>
+                      <span>客户发现、筛选、入库、触达与复盘流程</span>
+                    </div>
+                    <div>
+                      <b>产品侧</b>
+                      <span>把经验沉淀成路径、图谱和可复用操作手册</span>
+                    </div>
+                    <div>
+                      <b>展示侧</b>
+                      <span>证明业务理解和知识产品化能力</span>
+                    </div>
+                  </div>
+                </div>
+                <strong class="case-result">增长线索</strong>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="flowTitle">
+          <div class="flow-panel">
+            <div class="section-heading compact">
+              <p class="eyebrow">Page narrative</p>
+              <h2 id="flowTitle">首页叙事路径</h2>
+            </div>
+            <div class="flow">
+              <article class="flow-step">
+                <span>Step 01</span>
+                <strong>先给定位</strong>
+                <p>说明自己是产品意识强的全栈偏前端，而不是泛泛列技能。</p>
+              </article>
+              <article class="flow-step">
+                <span>Step 02</span>
+                <strong>再给优势</strong>
+                <p>用需求、工程、AI、交付四个角度建立差异化。</p>
+              </article>
+              <article class="flow-step">
+                <span>Step 03</span>
+                <strong>补上证据</strong>
+                <p>放真实项目、技术栈、职责边界、结果数据和复盘。</p>
+              </article>
+              <article class="flow-step">
+                <span>Step 04</span>
+                <strong>引导行动</strong>
+                <p>把访问者引到简历、外贸知识库和后续项目详情。</p>
+              </article>
+            </div>
           </div>
         </section>
       </main>
 
       <footer class="site-footer">
         <span>© 2026 sujuan</span>
-        <span>个人知识与作品入口</span>
+        <span>个人知识、项目经验与作品集入口</span>
       </footer>
     </div>
     <script src="src/home-particles.js?v=20260518" defer></script>
