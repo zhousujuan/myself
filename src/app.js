@@ -1,11 +1,14 @@
 (function () {
   const data = window.TRADE_GRAPH_DATA;
   const googleData = window.GOOGLE_PATH_DATA;
+  const socialData = window.SOCIAL_PATH_DATA;
   const appShell = document.querySelector("#appShell");
   const graphControls = document.querySelector("#graphControls");
   const googleControls = document.querySelector("#googleControls");
+  const socialControls = document.querySelector("#socialControls");
   const graphSurface = document.querySelector("#graphSurface");
   const googleView = document.querySelector("#googleView");
+  const socialView = document.querySelector("#socialView");
   const detailsPanel = document.querySelector("#detailsPanel");
   const viewButtons = document.querySelectorAll(".view-button");
   const svg = document.querySelector("#graphSvg");
@@ -36,6 +39,21 @@
   const googleQueryGrid = document.querySelector("#googleQueryGrid");
   const googleOperatorGrid = document.querySelector("#googleOperatorGrid");
   const googleRoutineGrid = document.querySelector("#googleRoutineGrid");
+  const socialChannelList = document.querySelector("#socialChannelList");
+  const socialChannelRail = document.querySelector("#socialChannelRail");
+  const socialChannelCount = document.querySelector("#socialChannelCount");
+  const socialPromptCount = document.querySelector("#socialPromptCount");
+  const socialAssetCount = document.querySelector("#socialAssetCount");
+  const socialChannelTag = document.querySelector("#socialChannelTag");
+  const socialChannelHeading = document.querySelector("#socialChannelHeading");
+  const socialChannelSummary = document.querySelector("#socialChannelSummary");
+  const socialChannelAudience = document.querySelector("#socialChannelAudience");
+  const socialChannelGoal = document.querySelector("#socialChannelGoal");
+  const socialSignalList = document.querySelector("#socialSignalList");
+  const socialActionList = document.querySelector("#socialActionList");
+  const socialPromptGrid = document.querySelector("#socialPromptGrid");
+  const socialTacticGrid = document.querySelector("#socialTacticGrid");
+  const socialRoutineGrid = document.querySelector("#socialRoutineGrid");
 
   const detailType = document.querySelector("#detailType");
   const detailTitle = document.querySelector("#detailTitle");
@@ -60,6 +78,7 @@
     minScore: 0,
     selectedId: "growth-system",
     googleStageId: googleData.stages[0].id,
+    socialChannelId: socialData.channels[0].id,
     labelsVisible: true,
     playbookId: null,
     draggedId: null
@@ -80,6 +99,7 @@
   hydrateViewControls();
   hydrateControls();
   hydrateGooglePath();
+  hydrateSocialPath();
   render();
   selectNode("growth-system");
 
@@ -93,11 +113,14 @@
   function setView(view) {
     state.view = view;
     appShell.classList.toggle("is-google-view", view === "google");
+    appShell.classList.toggle("is-social-view", view === "social");
     graphControls.classList.toggle("is-hidden", view !== "graph");
     googleControls.classList.toggle("is-hidden", view !== "google");
+    socialControls.classList.toggle("is-hidden", view !== "social");
     graphSurface.hidden = view !== "graph";
     detailsPanel.hidden = view !== "graph";
     googleView.hidden = view !== "google";
+    socialView.hidden = view !== "social";
 
     viewButtons.forEach((button) => {
       const isActive = button.dataset.view === view;
@@ -107,6 +130,10 @@
 
     if (view === "google") {
       renderGooglePath();
+    }
+
+    if (view === "social") {
+      renderSocialPath();
     }
   }
 
@@ -253,6 +280,51 @@
     renderGooglePath();
   }
 
+  function hydrateSocialPath() {
+    socialChannelList.innerHTML = "";
+    socialData.channels.forEach((channel, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "social-channel-nav";
+      button.dataset.channel = channel.id;
+      button.innerHTML = `
+        <span>${String(index + 1).padStart(2, "0")}</span>
+        <strong>${channel.tag}</strong>
+      `;
+      button.addEventListener("click", () => {
+        state.socialChannelId = channel.id;
+        renderSocialPath();
+      });
+      socialChannelList.append(button);
+    });
+
+    socialTacticGrid.innerHTML = "";
+    socialData.tactics.forEach((tactic) => {
+      const card = document.createElement("article");
+      card.className = "operator-card";
+      card.innerHTML = `
+        <strong>${tactic.name}</strong>
+        <code>${tactic.command}</code>
+        <p>${tactic.note}</p>
+      `;
+      socialTacticGrid.append(card);
+    });
+
+    socialRoutineGrid.innerHTML = "";
+    socialData.routine.forEach((item) => {
+      const row = document.createElement("article");
+      row.className = "routine-row";
+      row.innerHTML = `
+        <span>${item.time}</span>
+        <strong>${item.task}</strong>
+        <p>${item.result}</p>
+      `;
+      socialRoutineGrid.append(row);
+    });
+
+    renderSocialPath();
+  }
+
   function renderGooglePath() {
     const activeStage = googleData.stages.find((stage) => stage.id === state.googleStageId) || googleData.stages[0];
     state.googleStageId = activeStage.id;
@@ -306,6 +378,59 @@
     });
   }
 
+  function renderSocialPath() {
+    const activeChannel = socialData.channels.find((channel) => channel.id === state.socialChannelId) || socialData.channels[0];
+    state.socialChannelId = activeChannel.id;
+
+    socialChannelCount.textContent = socialData.channels.length;
+    socialPromptCount.textContent = socialData.channels.reduce((sum, channel) => sum + channel.prompts.length, 0);
+    socialAssetCount.textContent = socialData.assets.length;
+
+    socialChannelList.querySelectorAll(".social-channel-nav").forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.channel === activeChannel.id);
+    });
+
+    socialChannelRail.innerHTML = "";
+    socialData.channels.forEach((channel) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "social-channel-card";
+      button.dataset.channel = channel.id;
+      button.innerHTML = `
+        <span class="stage-number">${channel.tag}</span>
+        <strong>${channel.title}</strong>
+        <p>${channel.signals.join(" / ")}</p>
+      `;
+      button.classList.toggle("is-active", channel.id === activeChannel.id);
+      button.addEventListener("click", () => {
+        state.socialChannelId = channel.id;
+        renderSocialPath();
+      });
+      socialChannelRail.append(button);
+    });
+
+    socialChannelTag.textContent = activeChannel.tag;
+    socialChannelHeading.textContent = activeChannel.title;
+    socialChannelSummary.textContent = activeChannel.summary;
+    socialChannelAudience.textContent = activeChannel.audience;
+    socialChannelGoal.textContent = activeChannel.goal;
+
+    renderList(socialSignalList, activeChannel.checks);
+    renderList(socialActionList, activeChannel.actions);
+
+    socialPromptGrid.innerHTML = "";
+    activeChannel.prompts.forEach((prompt) => {
+      const card = document.createElement("article");
+      card.className = "query-card";
+      card.innerHTML = `
+        <span>${prompt.label}</span>
+        <code>${prompt.text}</code>
+        <p>${prompt.use}</p>
+      `;
+      socialPromptGrid.append(card);
+    });
+  }
+
   function renderList(container, items) {
     container.innerHTML = "";
     items.forEach((text) => {
@@ -325,8 +450,8 @@
       .forEach((type) => {
         const nodes = data.nodes.filter((node) => node.type === type);
         const baseAngle = (groupAngles[type] * Math.PI) / 180;
-        const spread = 0.42;
-        const radius = type === "metric" ? 420 : 330;
+        const spread = nodes.length > 6 ? 0.72 : 0.42;
+        const radius = type === "metric" ? 420 : type === "channel" && nodes.length > 6 ? 350 : 330;
         nodes.forEach((node, index) => {
           const offset = nodes.length === 1 ? 0 : (index / (nodes.length - 1) - 0.5) * spread;
           const angle = baseAngle + offset;

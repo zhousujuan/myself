@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>外贸 WhatsApp 触达方案</title>
+  <style>
+    :root {
+      --bg: #f7f8f5;
+      --paper: #ffffff;
+      --ink: #17211f;
+      --muted: #60706b;
+      --line: #dbe2dd;
+      --green: #0f8b6f;
+      --green-soft: #e4f4ee;
+      --coral: #d8583a;
+      --coral-soft: #fff0ea;
+      --blue: #2f6fb3;
+      --blue-soft: #e9f1fb;
+      --gold: #b57a1a;
+      --gold-soft: #fff5db;
+      --shadow: 0 18px 45px rgba(23, 33, 31, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 34px 0 54px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 22px;
+      align-items: stretch;
+      margin-bottom: 22px;
+    }
+
+    .panel,
+    .card,
+    .message,
+    .metric,
+    .step-box {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      padding: 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(32px, 5vw, 58px);
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .hero-copy {
+      margin-top: 18px;
+      max-width: 800px;
+      font-size: 17px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .summary-item {
+      min-height: 108px;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fbfcfa;
+    }
+
+    .summary-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .summary-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .side-list {
+      display: grid;
+      gap: 12px;
+      height: 100%;
+    }
+
+    .mini {
+      padding: 18px;
+    }
+
+    .mini .tag {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 3px 10px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .tag.green {
+      background: var(--green-soft);
+      color: #0d6e58;
+    }
+
+    .tag.blue {
+      background: var(--blue-soft);
+      color: #245c94;
+    }
+
+    .tag.gold {
+      background: var(--gold-soft);
+      color: #83570f;
+    }
+
+    .section {
+      margin-top: 22px;
+    }
+
+    .section > .panel {
+      padding: 26px;
+    }
+
+    .flow-wrap {
+      overflow-x: auto;
+      padding: 8px 0 2px;
+    }
+
+    svg.flow {
+      width: 100%;
+      min-width: 960px;
+      height: auto;
+      display: block;
+    }
+
+    .flow-card {
+      fill: #ffffff;
+      stroke: #cfd9d3;
+      stroke-width: 1.2;
+      rx: 8;
+    }
+
+    .flow-card.green {
+      fill: #e7f5ef;
+      stroke: #8ec8b5;
+    }
+
+    .flow-card.blue {
+      fill: #eaf2fb;
+      stroke: #9bbddd;
+    }
+
+    .flow-card.gold {
+      fill: #fff4d6;
+      stroke: #dfbe70;
+    }
+
+    .flow-card.coral {
+      fill: #fff0ea;
+      stroke: #dfa08f;
+    }
+
+    .flow-title {
+      fill: #17211f;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .flow-sub {
+      fill: #60706b;
+      font-size: 12px;
+    }
+
+    .arrow {
+      stroke: #83918d;
+      stroke-width: 1.8;
+      fill: none;
+      marker-end: url(#arrowhead);
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .step-box {
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr);
+      gap: 16px;
+      padding: 18px;
+      box-shadow: none;
+    }
+
+    .day {
+      display: grid;
+      place-items: center;
+      width: 62px;
+      height: 62px;
+      border-radius: 999px;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 800;
+      background: var(--green);
+    }
+
+    .day.blue {
+      background: var(--blue);
+    }
+
+    .day.coral {
+      background: var(--coral);
+    }
+
+    .message-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .message {
+      padding: 18px;
+      box-shadow: none;
+    }
+
+    .message header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .message header span {
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    pre {
+      margin: 0;
+      padding: 16px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #f4f7f3;
+      border: 1px solid #dfe7e1;
+      border-radius: 8px;
+      color: #1f2c29;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .rules {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      padding: 18px;
+      box-shadow: none;
+    }
+
+    .card ul,
+    .panel ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .card li,
+    .panel li {
+      margin: 6px 0;
+    }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .matrix th,
+    .matrix td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    .matrix th {
+      background: #eef4ef;
+      color: #23312e;
+      font-weight: 800;
+    }
+
+    .matrix tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      padding: 18px;
+      box-shadow: none;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 28px;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .note {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--coral);
+      background: var(--coral-soft);
+      color: #6a3226;
+      border-radius: 0 8px 8px 0;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        width: min(100% - 24px, 760px);
+        padding-top: 20px;
+      }
+
+      .hero,
+      .split-grid,
+      .rules,
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        padding: 22px;
+      }
+
+      .step-box {
+        grid-template-columns: 58px minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .day {
+        width: 50px;
+        height: 50px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="panel">
+        <div class="eyebrow">
+          <span>WhatsApp Outreach Plan</span>
+        </div>
+        <h1>外贸 WhatsApp 触达方案</h1>
+        <p class="hero-copy">
+          这套方案适用于外贸开发客户时的 WhatsApp 私域触达。核心目标不是群发广告，而是用低打扰、强上下文的方式，让客户愿意回复、愿意接收资料，并把对话推进到询盘、报价、样品或转介绍。
+        </p>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <strong>触达原则</strong>
+            <span>先说明来源，再请求许可。少发长文、少发附件、少催客户。</span>
+          </div>
+          <div class="summary-item">
+            <strong>触达次数</strong>
+            <span>陌生客户最多 3 次；有互动后再进入正常销售跟进。</span>
+          </div>
+          <div class="summary-item">
+            <strong>消息节奏</strong>
+            <span>第 1 天开场，第 3 天补价值，第 7-10 天礼貌收尾。</span>
+          </div>
+          <div class="summary-item">
+            <strong>转化目标</strong>
+            <span>优先拿到许可、采购负责人、邮箱、需求信息，而不是立刻成交。</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-list">
+        <div class="card mini">
+          <span class="tag green">适合客户</span>
+          <h3>询盘、展会、社媒、官网线索</h3>
+          <p>客户已经留下手机号，或主页/官网公开展示 WhatsApp 联系方式，并且产品匹配度较高。</p>
+        </div>
+        <div class="card mini">
+          <span class="tag blue">不适合做法</span>
+          <h3>群发目录和报价单</h3>
+          <p>直接丢 PDF、九宫格图片和硬广文案，容易被忽略、拉黑或举报。</p>
+        </div>
+        <div class="card mini">
+          <span class="tag gold">最佳定位</span>
+          <h3>邮件和社媒之后的承接工具</h3>
+          <p>WhatsApp 更适合快速确认、补充资料、推动回复和跟进样品细节。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2>整体流程图</h2>
+        <p>从线索判断到三次触达，再到回复后的下一步动作，可以按下面的流程执行。</p>
+        <div class="flow-wrap" aria-label="WhatsApp 外贸触达流程图">
+          <svg class="flow" viewBox="0 0 1120 560" role="img">
+            <defs>
+              <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L8,3 L0,6 Z" fill="#83918d"></path>
+              </marker>
+            </defs>
+
+            <rect class="flow-card green" x="30" y="42" width="180" height="86"></rect>
+            <text class="flow-title" x="120" y="76" text-anchor="middle">客户线索进入</text>
+            <text class="flow-sub" x="120" y="102" text-anchor="middle">邮件 / INS / LinkedIn</text>
+            <text class="flow-sub" x="120" y="120" text-anchor="middle">展会 / 官网 / 广告</text>
+
+            <path class="arrow" d="M210 85 H270"></path>
+
+            <rect class="flow-card blue" x="270" y="42" width="190" height="86"></rect>
+            <text class="flow-title" x="365" y="76" text-anchor="middle">判断是否有上下文</text>
+            <text class="flow-sub" x="365" y="102" text-anchor="middle">客户是否认识你</text>
+            <text class="flow-sub" x="365" y="120" text-anchor="middle">是否发过邮件</text>
+
+            <path class="arrow" d="M460 85 H520"></path>
+
+            <rect class="flow-card gold" x="520" y="42" width="190" height="86"></rect>
+            <text class="flow-title" x="615" y="76" text-anchor="middle">第 1 条开场</text>
+            <text class="flow-sub" x="615" y="102" text-anchor="middle">说明身份和来源</text>
+            <text class="flow-sub" x="615" y="120" text-anchor="middle">请求发送资料许可</text>
+
+            <path class="arrow" d="M615 128 V178"></path>
+
+            <rect class="flow-card" x="520" y="178" width="190" height="86"></rect>
+            <text class="flow-title" x="615" y="212" text-anchor="middle">客户是否回复？</text>
+            <text class="flow-sub" x="615" y="238" text-anchor="middle">Yes / No / Not relevant</text>
+
+            <path class="arrow" d="M520 221 H430"></path>
+            <text class="flow-sub" x="473" y="210" text-anchor="middle">Yes</text>
+            <rect class="flow-card green" x="240" y="178" width="190" height="86"></rect>
+            <text class="flow-title" x="335" y="212" text-anchor="middle">进入需求确认</text>
+            <text class="flow-sub" x="335" y="238" text-anchor="middle">产品 / 数量 / 市场</text>
+            <text class="flow-sub" x="335" y="256" text-anchor="middle">认证 / 交期 / 预算</text>
+
+            <path class="arrow" d="M710 221 H800"></path>
+            <text class="flow-sub" x="756" y="210" text-anchor="middle">No</text>
+            <rect class="flow-card blue" x="800" y="178" width="190" height="86"></rect>
+            <text class="flow-title" x="895" y="212" text-anchor="middle">第 2 条补价值</text>
+            <text class="flow-sub" x="895" y="238" text-anchor="middle">给出市场痛点</text>
+            <text class="flow-sub" x="895" y="256" text-anchor="middle">询问采购负责人</text>
+
+            <path class="arrow" d="M895 264 V318"></path>
+
+            <rect class="flow-card" x="800" y="318" width="190" height="86"></rect>
+            <text class="flow-title" x="895" y="352" text-anchor="middle">客户是否回复？</text>
+            <text class="flow-sub" x="895" y="378" text-anchor="middle">回复则进入需求确认</text>
+
+            <path class="arrow" d="M800 361 H706"></path>
+            <path class="arrow" d="M706 361 V264"></path>
+            <text class="flow-sub" x="753" y="350" text-anchor="middle">Yes</text>
+
+            <path class="arrow" d="M895 404 V454"></path>
+            <text class="flow-sub" x="915" y="433">No</text>
+
+            <rect class="flow-card coral" x="800" y="454" width="190" height="76"></rect>
+            <text class="flow-title" x="895" y="486" text-anchor="middle">第 3 条收尾</text>
+            <text class="flow-sub" x="895" y="512" text-anchor="middle">不打扰，留入口</text>
+
+            <path class="arrow" d="M335 264 V318"></path>
+
+            <rect class="flow-card green" x="240" y="318" width="190" height="86"></rect>
+            <text class="flow-title" x="335" y="352" text-anchor="middle">发送匹配资料</text>
+            <text class="flow-sub" x="335" y="378" text-anchor="middle">目录 / 报价 / 案例</text>
+            <text class="flow-sub" x="335" y="396" text-anchor="middle">只发客户需要的内容</text>
+
+            <path class="arrow" d="M335 404 V454"></path>
+
+            <rect class="flow-card gold" x="240" y="454" width="190" height="76"></rect>
+            <text class="flow-title" x="335" y="486" text-anchor="middle">推进下一动作</text>
+            <text class="flow-sub" x="335" y="512" text-anchor="middle">邮件 / 样品 / 会议 / PI</text>
+
+            <rect class="flow-card coral" x="30" y="318" width="160" height="86"></rect>
+            <text class="flow-title" x="110" y="352" text-anchor="middle">明确拒绝</text>
+            <text class="flow-sub" x="110" y="378" text-anchor="middle">停止跟进</text>
+            <text class="flow-sub" x="110" y="396" text-anchor="middle">记录原因</text>
+            <path class="arrow" d="M240 361 H190"></path>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section split-grid">
+      <div class="panel">
+        <h2>三次触达节奏</h2>
+        <div class="timeline">
+          <div class="step-box">
+            <div class="day">Day 1</div>
+            <div>
+              <h3>第 1 条：开场和许可</h3>
+              <p>说明你是谁、从哪里找到客户、为什么联系他。目标是拿到“可以发资料”的许可。</p>
+            </div>
+          </div>
+          <div class="step-box">
+            <div class="day blue">Day 3</div>
+            <div>
+              <h3>第 2 条：补价值</h3>
+              <p>不要重复催问。给一个具体市场痛点、采购利益点或产品匹配理由，并询问负责人。</p>
+            </div>
+          </div>
+          <div class="step-box">
+            <div class="day coral">Day 7</div>
+            <div>
+              <h3>第 3 条：礼貌收尾</h3>
+              <p>表达不再打扰，保留未来入口。发完停止，避免被拉黑和举报。</p>
+            </div>
+          </div>
+        </div>
+        <div class="note">
+          如果客户有回复，不再按固定三条走，而是切换到需求确认：产品规格、目标市场、采购数量、认证要求、交期、包装、目标价。
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>三条消息模板</h2>
+        <div class="message-list">
+          <article class="message">
+            <header>
+              <h3>第 1 条：陌生触达开场</h3>
+              <span>目标：请求许可</span>
+            </header>
+            <pre>Hi David, this is Lily from ABC Company.
+
+I found your company while checking [行业/产品] distributors in [国家].
+We manufacture [产品] for [目标客户类型].
+
+May I send you 2-3 suitable options here?</pre>
+          </article>
+
+          <article class="message">
+            <header>
+              <h3>第 2 条：补充价值点</h3>
+              <span>目标：触发回复</span>
+            </header>
+            <pre>Hi David, just a quick follow-up.
+
+For [产品], many buyers in [市场] care most about [认证/MOQ/交期/定制/价格稳定].
+We can support [你的具体优势].
+
+Are you currently sourcing this product, or is there someone else responsible for purchasing?</pre>
+          </article>
+
+          <article class="message">
+            <header>
+              <h3>第 3 条：收尾和转介绍</h3>
+              <span>目标：体面停止</span>
+            </header>
+            <pre>Hi David, I don’t want to disturb you.
+
+If [产品] is not relevant to your business now, no problem.
+I’ll stop following up here.
+
+If you’re not the right person, could you kindly tell me who handles sourcing for [产品]?</pre>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2>不同线索来源的打法</h2>
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th>线索来源</th>
+              <th>第一条怎么写</th>
+              <th>跟进强度</th>
+              <th>重点目标</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>发过邮件后</td>
+              <td>提醒邮件已发送，并询问是否方便在 WhatsApp 发简短摘要。</td>
+              <td>中等，可以 3 次。</td>
+              <td>确认客户是否收到邮件，换到更高回复率的沟通渠道。</td>
+            </tr>
+            <tr>
+              <td>展会名片</td>
+              <td>写清楚展会名称、见面时间和对方问过的具体产品。</td>
+              <td>较高，当天或第二天必须跟。</td>
+              <td>延续现场记忆，推动报价、样品或会议。</td>
+            </tr>
+            <tr>
+              <td>Instagram / LinkedIn</td>
+              <td>说明双方在社媒上的连接或互动，并确认是否可发资料。</td>
+              <td>中等，先轻后重。</td>
+              <td>把社媒弱关系转成私域对话。</td>
+            </tr>
+            <tr>
+              <td>官网公开号码</td>
+              <td>必须更克制，说明从官网看到联系方式，并询问是否找对负责人。</td>
+              <td>低，最多 1-2 次。</td>
+              <td>判断是否匹配，拿到正确邮箱或采购联系人。</td>
+            </tr>
+            <tr>
+              <td>老客户唤醒</td>
+              <td>提到之前合作订单、产品或年份，再引出新品或价格变化。</td>
+              <td>可长期，但频率低。</td>
+              <td>复购、新品推荐、补单、转介绍。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2>执行规范</h2>
+        <div class="rules">
+          <div class="card">
+            <h3>发送前检查</h3>
+            <ul>
+              <li>客户行业和产品是否匹配。</li>
+              <li>手机号来源是否清楚。</li>
+              <li>是否准备好 2-3 个匹配产品。</li>
+              <li>是否知道客户国家、职位或公司类型。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>消息写法</h3>
+            <ul>
+              <li>第一条控制在 4-5 行内。</li>
+              <li>只问一个问题，降低回复成本。</li>
+              <li>少用 dear、best price、high quality。</li>
+              <li>客户同意后再发目录和报价。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>停止规则</h3>
+            <ul>
+              <li>客户明确拒绝，立即停止。</li>
+              <li>三次未回复，停止 WhatsApp 跟进。</li>
+              <li>被要求邮件沟通，就转邮件。</li>
+              <li>不要连续发送图片、PDF 或语音。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2>团队记录字段和指标</h2>
+        <div class="metrics">
+          <div class="metric">
+            <strong>30%+</strong>
+            <p>有上下文线索的目标回复率，可作为早期参考。</p>
+          </div>
+          <div class="metric">
+            <strong>10%-20%</strong>
+            <p>陌生官网号码回复率通常更低，重点看线索质量。</p>
+          </div>
+          <div class="metric">
+            <strong>3 次</strong>
+            <p>陌生客户 WhatsApp 最大触达次数，超过后建议停止。</p>
+          </div>
+          <div class="metric">
+            <strong>24h</strong>
+            <p>高意向询盘建议当天响应，越早越容易接上需求。</p>
+          </div>
+        </div>
+        <div class="note">
+          CRM 建议记录：客户来源、国家、产品、职位、手机号来源、首次触达时间、三次消息状态、是否回复、客户标签、下一步动作、停止原因。
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      外贸 WhatsApp 触达方案 | 建议结合邮件、LinkedIn、Instagram、展会和 CRM 一起使用
+    </footer>
+  </main>
+</body>
+</html>

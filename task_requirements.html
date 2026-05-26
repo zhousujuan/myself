@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>外贸获客工具任务需求清单</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #1f2937;
+      --muted: #64748b;
+      --line: #d8e0ea;
+      --head: #eef4ff;
+      --p0: #b91c1c;
+      --p1: #b45309;
+      --p2: #2563eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 24px 48px;
+    }
+
+    header {
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .meta {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+    }
+
+    table {
+      width: 100%;
+      min-width: 1180px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th:last-child,
+    td:last-child {
+      border-right: 0;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: var(--head);
+      color: #0f172a;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fbfdff;
+    }
+
+    .id {
+      white-space: nowrap;
+      font-family: Consolas, "Courier New", monospace;
+      color: #334155;
+    }
+
+    .priority {
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .p0 {
+      color: var(--p0);
+    }
+
+    .p1 {
+      color: var(--p1);
+    }
+
+    .p2 {
+      color: var(--p2);
+    }
+
+    .module,
+    .status {
+      white-space: nowrap;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      main {
+        max-width: none;
+        padding: 0;
+      }
+
+      .table-wrap {
+        overflow: visible;
+        border: 0;
+        box-shadow: none;
+      }
+
+      table {
+        min-width: 0;
+        font-size: 11px;
+      }
+
+      th,
+      td {
+        padding: 6px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>外贸获客工具任务需求清单</h1>
+      <p class="meta">来源：2026年5月19日外贸获客工具沟通会议记录</p>
+    </header>
+
+    <section class="table-wrap" aria-label="任务需求清单">
+      <table>
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>优先级</th>
+            <th>模块</th>
+            <th>需求/问题</th>
+            <th>会议反馈要点</th>
+            <th>建议处理方式</th>
+            <th>状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="id">REQ-001</td>
+            <td class="priority p0">P0</td>
+            <td class="module">AI 获客</td>
+            <td>提升潜客匹配精准度</td>
+            <td>出现品类、材质、行业不匹配的客户，如不锈钢橱柜搜到珠宝、大牌等。</td>
+            <td>优化行业打标、关键词匹配、材质识别和大牌过滤逻辑。</td>
+            <td class="status">待优化</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-002</td>
+            <td class="priority p0">P0</td>
+            <td class="module">AI 获客</td>
+            <td>支持按强/中/弱匹配排序</td>
+            <td>用户希望强匹配客户排在前面，一般或弱匹配客户靠后。</td>
+            <td>在客户列表中增加匹配等级排序与筛选。</td>
+            <td class="status">已在排版中</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-003</td>
+            <td class="priority p0">P0</td>
+            <td class="module">AI 获客</td>
+            <td>增加“不感兴趣/移到后面”功能</td>
+            <td>用户不想关注大量客户，只想把明显不精准的客户踩下去。</td>
+            <td>增加负反馈按钮，支持移后、隐藏或降低推荐权重。</td>
+            <td class="status">待评估</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-004</td>
+            <td class="priority p0">P0</td>
+            <td class="module">获客任务</td>
+            <td>解决任务长时间卡住问题</td>
+            <td>部分获客任务运行一两个小时，甚至一直卡住或显示评分中。</td>
+            <td>增加任务超时机制、失败提示、重跑入口和后台监控。</td>
+            <td class="status">待排查</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-005</td>
+            <td class="priority p0">P0</td>
+            <td class="module">邮箱/联系人</td>
+            <td>提升邮箱准确度和有效率</td>
+            <td>部分客户没有有效邮箱，公共邮箱较多，自动回复较多。</td>
+            <td>接入新数据源，优化 KP 联系人识别和邮箱验证。</td>
+            <td class="status">进行中</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-006</td>
+            <td class="priority p1">P1</td>
+            <td class="module">类目选择</td>
+            <td>优化行业类目推荐</td>
+            <td>不锈钢橱柜、户外橱柜等行业找不到强相关类目。</td>
+            <td>根据产品描述自动推荐类目，减少用户手动选择成本。</td>
+            <td class="status">规划中</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-007</td>
+            <td class="priority p1">P1</td>
+            <td class="module">类目选择</td>
+            <td>优化类目示例说明</td>
+            <td>现有示例让用户误解，不知道该如何选择行业。</td>
+            <td>调整示例文案，增加更明确的行业路径和产品示例。</td>
+            <td class="status">待优化</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-008</td>
+            <td class="priority p1">P1</td>
+            <td class="module">获客流程</td>
+            <td>支持国家批量选择</td>
+            <td>用户反馈每次手动填写国家比较耗时。</td>
+            <td>增加国家批量选择、常用国家组、历史选择记忆。</td>
+            <td class="status">待评估</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-009</td>
+            <td class="priority p1">P1</td>
+            <td class="module">获客流程</td>
+            <td>优化同时任务数量限制</td>
+            <td>当前只能同时触达 3 个获客任务，影响效率。</td>
+            <td>增加任务队列、排队状态展示，或按账号权益提升并发数。</td>
+            <td class="status">待评估</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-010</td>
+            <td class="priority p1">P1</td>
+            <td class="module">潜客同步</td>
+            <td>强化潜客同步提示</td>
+            <td>用户不知道需要手动同步到潜客公海，也不清楚积分消耗。</td>
+            <td>增加明显提示、确认弹窗、积分扣除说明和同步成功反馈。</td>
+            <td class="status">待优化</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-011</td>
+            <td class="priority p1">P1</td>
+            <td class="module">邮件生成</td>
+            <td>提升邮件内容差异化</td>
+            <td>用户反馈邮件大差不差，主题和正文同质化明显。</td>
+            <td>增加更多邮件主题、开发角度、语气风格和场景策略。</td>
+            <td class="status">待优化</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-012</td>
+            <td class="priority p1">P1</td>
+            <td class="module">邮件生成</td>
+            <td>支持公共邮箱转介绍话术</td>
+            <td>部分联系人不是采购，希望能请求对方转给负责人。</td>
+            <td>增加公共邮箱/非关键联系人专用邮件模板。</td>
+            <td class="status">待设计</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-013</td>
+            <td class="priority p1">P1</td>
+            <td class="module">背调报告</td>
+            <td>增强报告可行动性</td>
+            <td>用户觉得报告太官方，看完仍不知道下一步怎么开发客户。</td>
+            <td>增加“开发切入点”“邮件建议”“客户痛点”“推荐话术”等内容。</td>
+            <td class="status">待优化</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-014</td>
+            <td class="priority p1">P1</td>
+            <td class="module">背调报告</td>
+            <td>将背调结果用于邮件生成</td>
+            <td>当前背调对邮件生成的帮助不明显。</td>
+            <td>生成邮件时自动引用背调中的客户痛点、产品匹配点和官网信息。</td>
+            <td class="status">规划中</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-015</td>
+            <td class="priority p2">P2</td>
+            <td class="module">图片素材</td>
+            <td>支持邮件多图上传</td>
+            <td>当前只能选一张图片，用户希望可上传多张产品或工厂图片。</td>
+            <td>支持多图选择、排序和插入位置配置。</td>
+            <td class="status">待评估</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-016</td>
+            <td class="priority p2">P2</td>
+            <td class="module">图片素材</td>
+            <td>支持图片分类和标签管理</td>
+            <td>图片较多时筛选困难，只能靠人工查看。</td>
+            <td>增加图片标签、分类、用途说明和搜索筛选。</td>
+            <td class="status">待设计</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-017</td>
+            <td class="priority p2">P2</td>
+            <td class="module">邮件触达</td>
+            <td>支持邮件签名/尾签设置</td>
+            <td>用户希望使用固定签名图片或尾签内容。</td>
+            <td>确认第三方邮件接口是否支持独立签名设置，再设计入口。</td>
+            <td class="status">待调研</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-018</td>
+            <td class="priority p2">P2</td>
+            <td class="module">推荐关键词</td>
+            <td>优化推荐关键词加载速度</td>
+            <td>用户点击产品推荐关键词时反馈很慢。</td>
+            <td>排查接口性能、缓存策略和网络/VPN 影响。</td>
+            <td class="status">修复中</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-019</td>
+            <td class="priority p2">P2</td>
+            <td class="module">反馈入口</td>
+            <td>增强意见反馈入口可见性</td>
+            <td>当前反馈入口较隐蔽，用户不容易发现。</td>
+            <td>在主要页面增加明显反馈按钮，支持截图上传和问题分类。</td>
+            <td class="status">待优化</td>
+          </tr>
+          <tr>
+            <td class="id">REQ-020</td>
+            <td class="priority p2">P2</td>
+            <td class="module">客户端</td>
+            <td>上线 Mac 版获客小助手</td>
+            <td>用户询问 Mac 版什么时候上线，会议中提到预计下周。</td>
+            <td>完成 Mac 版打包、测试和发布说明。</td>
+            <td class="status">预计下周</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

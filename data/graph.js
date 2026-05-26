@@ -208,14 +208,36 @@ window.TRADE_GRAPH_DATA = {
     },
     {
       id: "linkedin",
-      label: "LinkedIn 开发",
+      label: "领英 LinkedIn 开发",
       type: "channel",
       priority: 85,
       summary: "基于职位、公司、行业、事件和互动数据做关系建立、内容触达和定向开发。",
       metrics: { fit: 83, intent: 70, effort: 82 },
-      tags: ["社媒", "ABM"],
+      tags: ["领英", "LinkedIn", "社媒", "ABM"],
       insights: ["LinkedIn 更适合找到角色和建立信任，而不是第一条消息就强推报价。", "个性化程度决定回复率。"],
       actions: ["创建目标职位筛选器。", "按行业场景准备连接话术。", "把互动同步到 CRM。"]
+    },
+    {
+      id: "instagram",
+      label: "Instagram / Ins 开发",
+      type: "channel",
+      priority: 73,
+      summary: "用视觉内容、标签、竞品粉丝、行业账号和私信互动发现对产品场景感兴趣的品牌方、零售商和设计型客户。",
+      metrics: { fit: 72, intent: 63, effort: 79 },
+      tags: ["Ins", "Instagram", "社媒", "内容种草"],
+      insights: ["Instagram 更适合外观、应用场景和案例可视化强的产品。", "先通过点赞、评论、收藏和案例内容建立熟悉感，再进入私信会更自然。"],
+      actions: ["整理目标标签和竞品账号。", "发布场景案例、工厂短视频和客户使用图。", "把高互动账号加入轻触达名单。"]
+    },
+    {
+      id: "facebook",
+      label: "Facebook 开发",
+      type: "channel",
+      priority: 75,
+      summary: "通过行业群组、本地经销商主页、活动页面和再营销受众寻找区域客户，并用内容和私信承接沟通。",
+      metrics: { fit: 74, intent: 66, effort: 77 },
+      tags: ["Facebook", "社群", "再营销"],
+      insights: ["Facebook 适合按国家、城市和行业社群做本地化开发。", "群组互动要先贡献问题解答和案例经验，避免一上来像广告。"],
+      actions: ["加入目标国家的行业群组。", "跟踪经销商、协会和展会主页。", "把网站访问者与主页互动者纳入再营销。"]
     },
     {
       id: "b2b-platforms",
@@ -408,10 +430,16 @@ window.TRADE_GRAPH_DATA = {
     { source: "tenders", target: "local-distributors", relation: "validate", weight: 3 },
     { source: "expansion-events", target: "cold-email", relation: "activate", weight: 4 },
     { source: "social-engagement", target: "linkedin", relation: "activate", weight: 5 },
+    { source: "social-engagement", target: "instagram", relation: "activate", weight: 4 },
+    { source: "social-engagement", target: "facebook", relation: "activate", weight: 4 },
     { source: "web-visit", target: "lead-scoring", relation: "validate", weight: 4 },
     { source: "seo", target: "solution-pages", relation: "convert", weight: 5 },
     { source: "google-ads", target: "solution-pages", relation: "convert", weight: 4 },
     { source: "linkedin", target: "social-engagement", relation: "validate", weight: 4 },
+    { source: "instagram", target: "web-visit", relation: "validate", weight: 3 },
+    { source: "instagram", target: "solution-pages", relation: "convert", weight: 3 },
+    { source: "facebook", target: "followup-cadence", relation: "activate", weight: 3 },
+    { source: "facebook", target: "web-visit", relation: "validate", weight: 3 },
     { source: "b2b-platforms", target: "inquiry-intent", relation: "validate", weight: 5 },
     { source: "cold-email", target: "reply-rate", relation: "measure", weight: 4 },
     { source: "trade-followup", target: "crm-stages", relation: "convert", weight: 4 },
@@ -441,6 +469,11 @@ window.TRADE_GRAPH_DATA = {
       id: "abm-outbound",
       label: "ABM 主动开发",
       nodes: ["icp", "import-data", "abm-list", "buyer-roles", "linkedin", "cold-email", "reply-rate"]
+    },
+    {
+      id: "social-media",
+      label: "社媒获客路径",
+      nodes: ["icp", "buyer-roles", "linkedin", "instagram", "facebook", "social-engagement", "lead-scoring", "followup-cadence"]
     },
     {
       id: "high-intent",
