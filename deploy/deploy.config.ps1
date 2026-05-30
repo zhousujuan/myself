@@ -1,4 +1,6 @@
 # Server connection
+# Production hardening tip: use a dedicated deploy user instead of root when the
+# server permissions are ready.
 $ServerHost = "159.75.236.209"
 $ServerUser = "root"
 $ServerPort = 22

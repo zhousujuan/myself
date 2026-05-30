@@ -1,0 +1,18 @@
+# Local browser / QA profiles
+.chrome*/
+review-*.png
+*-shot.png
+
+# Temporary extracted documents and notes
+.tmp*
+*.tmp
+
+# Local assistant / editor state
+.claude/
+
+# Deployment artifacts
+trade-kg-deploy.tar.gz
+
+# OS noise
+Thumbs.db
+.DS_Store

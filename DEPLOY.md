@@ -1,111 +1,89 @@
-# 部署到 CentOS 服务器
+# 部署到 Nginx 服务器
 
-这个项目是纯静态页面，只需要 Nginx 即可部署。以下示例默认服务器系统为 CentOS，站点目录为 `/var/www/trade-kg`。
+这个项目是纯静态页面，只需要 Nginx。当前部署脚本的服务器、目录和 Nginx 路径统一从 `deploy/deploy.config.ps1` 读取。
 
-## 1. 在腾讯云放通端口
+## 1. 修改部署配置
 
-在轻量云服务器控制台进入当前实例，检查防火墙/安全组：
-
-- 放通 TCP `80` 端口，用于 HTTP 访问。
-- 如果后续绑定域名并配置 HTTPS，再放通 TCP `443` 端口。
-
-## 2. 连接服务器
-
-在本地 PowerShell 里连接服务器：
+先确认 `deploy/deploy.config.ps1`：
 
 ```powershell
-ssh root@159.75.236.209
+$ServerHost = "159.75.236.209"
+$ServerUser = "root"
+$ServerPort = 22
+$ServerName = "159.75.236.209"
+
+$RemoteRoot = "/www/wwwroot/trade-kg"
+$RemoteArchive = "/root/trade-kg-deploy.tar.gz"
+$NginxConfPath = "/www/server/panel/vhost/nginx/trade-kg.conf"
+$NginxBin = "/www/server/nginx/sbin/nginx"
 ```
 
-如果你不是 `root` 用户，把 `root` 换成你的服务器用户名。
+如果绑定域名，把 `$ServerName` 改成域名；如果不使用宝塔面板，把 `$RemoteRoot`、`$NginxConfPath` 和 `$NginxBin` 改成你的服务器实际路径。
 
-## 3. 安装 Nginx
+生产环境建议使用非 `root` 用户，并给该用户配置站点目录和 Nginx reload 权限。
 
-CentOS 常用命令：
+## 2. 确认服务器端口
 
-```bash
-yum install -y nginx
-systemctl enable nginx
-systemctl start nginx
-```
+在云服务器安全组 / 防火墙中放通：
 
-如果提示 `yum` 不可用，可以尝试：
+- TCP `80`：HTTP 访问。
+- TCP `443`：后续启用 HTTPS 时使用。
 
-```bash
-dnf install -y nginx
-systemctl enable nginx
-systemctl start nginx
-```
-
-## 4. 上传项目文件
-
-在服务器上创建站点目录：
-
-```bash
-mkdir -p /var/www/trade-kg
-```
-
-在本地项目目录执行上传：
-
-```powershell
-scp -r index.html trade.html resume.html data src README.md root@159.75.236.209:/var/www/trade-kg/
-scp deploy/nginx-trade-kg.conf root@159.75.236.209:/etc/nginx/conf.d/trade-kg.conf
-```
-
-## 5. 启用站点
-
-回到服务器 SSH 里执行：
-
-```bash
-nginx -t
-systemctl reload nginx
-```
-
-然后访问：
-
-```text
-http://159.75.236.209
-```
-
-## 6. 后续更新
-
-每次本地改完页面后，重新上传静态文件即可：
-
-```powershell
-scp -r index.html trade.html resume.html data src README.md root@159.75.236.209:/var/www/trade-kg/
-```
-
-## 一键部署更新脚本
-
-项目已内置 PowerShell 部署脚本：
-
-- `deploy/deploy.config.ps1`：服务器地址、部署目录和 Nginx 路径。
-- `deploy/deploy.ps1`：本地打包、上传、服务器解压、生成 Nginx 配置并重载。
-
-首次使用前，确认本地电脑可以通过 SSH 登录服务器。没有密码时，可以在腾讯云控制台重置密码，或给服务器配置 SSH 密钥。
-
-只本地打包测试：
+## 3. 本地打包测试
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\deploy\deploy.ps1 -PackageOnly
 ```
 
-部署并更新服务器：
+执行后会生成 `trade-kg-deploy.tar.gz`，该产物已加入 `.gitignore`，不需要提交。
+
+打包前脚本会自动执行 `deploy/build-home.ps1`，把 `src/home.template.html`、`src/page.template.html` 和 `src/home-sections/` 合成为最终的首页与子页面。
+
+## 4. 一键部署
+
+确认本地能 SSH 登录服务器后执行：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\deploy\deploy.ps1
 ```
 
-如果你绑定了域名，修改 `deploy/deploy.config.ps1` 里的 `$ServerName`，例如：
+脚本会完成：
 
-```powershell
-$ServerName = "example.com"
+1. 根据模板和片段合成 `index.html`、`advantage.html`、`capability.html`、`evidence.html`、`workflow.html`。
+2. 打包首页、子页面、`trade.html`、`resume.html`、运行所需 CSS / JS 和文档文件。
+3. 上传压缩包到 `$RemoteArchive`。
+4. 解压到 `$RemoteRoot`。
+5. 写入 Nginx 配置到 `$NginxConfPath`。
+6. 执行 `nginx -t` 并 reload。
+
+部署完成后访问：
+
+```text
+http://159.75.236.209
 ```
 
-## 绑定域名和 HTTPS
+如果配置了域名，则访问 `http://你的域名` 或后续 HTTPS 地址。
 
-如果你要绑定域名：
+## 5. 手动部署参考
 
-1. 在域名 DNS 中添加 A 记录，指向服务器 IP。
-2. 把 `deploy/nginx-trade-kg.conf` 里的 `server_name _;` 改成你的域名。
-3. 按腾讯云和服务器所在地要求完成域名备案、证书申请和 HTTPS 配置。
+如果不用脚本，手动上传核心文件即可：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\deploy\build-home.ps1
+scp -r index.html advantage.html capability.html evidence.html workflow.html trade.html resume.html src/home.css src/home-particles.js src/trade.css src/trade.js README.md DEPLOY.md root@159.75.236.209:/www/wwwroot/trade-kg/
+```
+
+然后在服务器上测试并重载 Nginx：
+
+```bash
+/www/server/nginx/sbin/nginx -t
+/www/server/nginx/sbin/nginx -s reload
+```
+
+## 6. HTTPS 与域名
+
+绑定域名时：
+
+1. 在 DNS 中添加 A 记录指向服务器 IP。
+2. 把 `deploy/deploy.config.ps1` 里的 `$ServerName` 改成域名。
+3. 按云厂商和服务器面板要求申请证书并开启 HTTPS。

@@ -37,16 +37,24 @@ Require-Command "ssh"
 
 Set-Location $ProjectRoot
 
+& (Join-Path $PSScriptRoot "build-home.ps1") -ProjectRoot $ProjectRoot
+
 if (Test-Path $ArtifactPath) {
   Remove-Item -LiteralPath $ArtifactPath -Force
 }
 
 $PackageItems = @(
   "index.html",
+  "advantage.html",
+  "capability.html",
+  "evidence.html",
+  "workflow.html",
   "trade.html",
   "resume.html",
-  "data",
-  "src",
+  "src/home.css",
+  "src/home-particles.js",
+  "src/trade.css",
+  "src/trade.js",
   "README.md",
   "DEPLOY.md"
 )

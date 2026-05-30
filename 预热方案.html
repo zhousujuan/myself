@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>多域名邮箱命名与手动预热方案</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel-2:#1c2230; --line:#2a3340;
+    --text:#e6edf3; --muted:#9aa7b4; --accent:#4f9cff; --accent-2:#3ad6a0;
+    --warn:#f5a623; --danger:#ff6b6b; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:radial-gradient(1200px 600px at 80% -10%, #16263d 0%, var(--bg) 55%);
+    color:var(--text); font:15px/1.7 -apple-system,"Segoe UI",Roboto,"Helvetica Neue","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:980px; margin:0 auto; padding:48px 24px 96px}
+  header.hero{margin-bottom:40px}
+  .kicker{display:inline-block; font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--accent); border:1px solid var(--line); padding:4px 12px; border-radius:999px; background:var(--panel)}
+  h1{font-size:30px; line-height:1.25; margin:18px 0 10px}
+  .sub{color:var(--muted); font-size:15px; max-width:720px}
+  .meta{margin-top:18px; display:flex; flex-wrap:wrap; gap:10px}
+  .chip{background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:13px; color:var(--muted)}
+  .chip b{color:var(--text)}
+  section{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 28px; margin:22px 0}
+  h2{font-size:21px; margin:0 0 6px; display:flex; align-items:center; gap:10px}
+  h2 .n{flex:none; width:30px; height:30px; border-radius:8px; background:linear-gradient(135deg,var(--accent),#2f6fd0);
+    color:#fff; font-size:15px; display:grid; place-items:center; font-weight:700}
+  h3{font-size:16px; margin:24px 0 8px; color:var(--text)}
+  p{margin:8px 0}
+  .lead{color:var(--muted); margin:0 0 8px}
+  ul,ol{margin:8px 0 8px; padding-left:22px}
+  li{margin:5px 0}
+  code{background:#0a0e14; border:1px solid var(--line); padding:1px 6px; border-radius:6px; font-size:13px; color:#8fd3ff}
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px}
+  th,td{border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top}
+  th{background:var(--panel-2); color:var(--text); font-weight:600}
+  td{color:var(--muted)}
+  td b{color:var(--text)}
+  .tree{background:#0a0e14; border:1px solid var(--line); border-radius:10px; padding:18px 20px;
+    font:13px/1.7 ui-monospace,"SFMono-Regular",Consolas,monospace; color:#cbd5e1; overflow:auto}
+  .tree .d{color:var(--accent)} .tree .s{color:var(--accent-2)} .tree .m{color:#e6edf3}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--panel-2); border:1px solid var(--line); border-radius:10px; padding:16px 18px}
+  .card h4{margin:0 0 6px; font-size:14px}
+  .card p{margin:0; color:var(--muted); font-size:13.5px}
+  .callout{border-left:3px solid var(--accent); background:rgba(79,156,255,.07); padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0}
+  .callout.warn{border-color:var(--warn); background:rgba(245,166,35,.08)}
+  .callout.danger{border-color:var(--danger); background:rgba(255,107,107,.08)}
+  .callout b{color:var(--text)}
+  .pill{display:inline-block; font-size:11.5px; padding:2px 9px; border-radius:6px; font-weight:600}
+  .ok{background:rgba(58,214,160,.15); color:var(--accent-2)}
+  .mid{background:rgba(245,166,35,.15); color:var(--warn)}
+  .hot{background:rgba(255,107,107,.15); color:var(--danger)}
+  .check{list-style:none; padding-left:0}
+  .check li{padding-left:28px; position:relative}
+  .check li::before{content:"☐"; position:absolute; left:4px; color:var(--accent); font-size:15px}
+  .foot{color:var(--muted); font-size:12.5px; text-align:center; margin-top:40px; border-top:1px solid var(--line); padding-top:20px}
+  .tag-good::before{content:"✓ "; color:var(--accent-2)}
+  .tag-bad::before{content:"✕ "; color:var(--danger)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="kicker">外贸冷邮件 · 发信基础设施</span>
+    <h1>多域名邮箱命名 & 手动预热方案</h1>
+    <p class="sub">面向 <code>test1.com</code> / <code>test2.com</code> 两个主域名，规划「子域名 → 真实感邮箱」的发信矩阵，并用零第三方成本的手动方式完成域名/邮箱预热，把发信信誉养到可稳定触达收件箱。</p>
+    <div class="meta">
+      <span class="chip">主域名 <b>2</b></span>
+      <span class="chip">子域名 <b>2 × 5 = 10</b></span>
+      <span class="chip">邮箱 <b>10 × 10 = 100</b></span>
+      <span class="chip">预热周期 <b>4–8 周</b></span>
+      <span class="chip">第三方成本 <b>¥0</b></span>
+    </div>
+  </header>
+
+  <!-- 0 概览 -->
+  <section>
+    <h2><span class="n">0</span>结构概览与口径对齐</h2>
+    <p class="lead">先把"两个域名 → 5 个子域名 → 每个子域名 10 个邮箱"的层级落成清单，统一总量口径，后续命名和预热都按此矩阵推进。</p>
+    <div class="tree">
+<span class="d">test1.com</span>  (主域名，<b>不直接发信</b>，仅做品牌/落地，保护根域信誉)
+├─ <span class="s">go.test1.com</span>      → 10 个邮箱  m1 … m10
+├─ <span class="s">mail.test1.com</span>    → 10 个邮箱
+├─ <span class="s">hi.test1.com</span>      → 10 个邮箱
+├─ <span class="s">team.test1.com</span>    → 10 个邮箱
+└─ <span class="s">reach.test1.com</span>   → 10 个邮箱
+<span class="d">test2.com</span>
+├─ <span class="s">go.test2.com</span>      → 10 个邮箱
+├─ <span class="s">mail.test2.com</span>    → 10 个邮箱
+├─ <span class="s">hi.test2.com</span>      → 10 个邮箱
+├─ <span class="s">team.test2.com</span>    → 10 个邮箱
+└─ <span class="s">reach.test2.com</span>   → 10 个邮箱
+    </div>
+    <div class="callout warn">
+      <b>关键决策：发信走子域名，根域名不发信。</b> 用 <code>子域名@</code> 发冷邮件，一旦某个子域名信誉被打坏，根域名 <code>test1.com</code> 不受牵连、可随时弃用重建——这是保护主资产的标准做法。代价是 <code>john@go.test1.com</code> 比 <code>john@test1.com</code> 略"不像个人邮箱"，下一节用命名和子域名取名来弥补。
+    </div>
+  </section>
+
+  <!-- 1 命名 -->
+  <section>
+    <h2><span class="n">1</span>邮箱命名：让它"像真人在用的邮箱"</h2>
+    <p class="lead">真实感由三层组成：① 子域名取名 ② 邮箱前缀（local part） ③ 显示名 + 签名 + 头像。三者一致，才像"某个真实的人"。</p>
+
+    <h3>1.1 子域名取名原则</h3>
+    <ul>
+      <li><span class="tag-good">用短、自然、像业务前缀的词</span>：<code>go.</code> <code>mail.</code> <code>hi.</code> <code>team.</code> <code>reach.</code> <code>hello.</code> <code>get.</code> ——这些在 SaaS/营销邮件里极常见，收件人不会觉得异常。</li>
+      <li><span class="tag-bad">不要用</span> <code>smtp.</code> <code>bulk.</code> <code>mass.</code> <code>send1.</code> <code>noreply.</code> 这类"一看就是群发机器"的词。</li>
+      <li>同一主域下 5 个子域名风格保持一致，但彼此不同，分散风险（一个被封不影响其余）。</li>
+    </ul>
+
+    <h3>1.2 邮箱前缀（local part）命名规则</h3>
+    <p class="lead">核心：<b>用真实的人名</b>，外贸面向欧美客户 → 用英文名。避免任何"营销/系统"气味的前缀。</p>
+    <table>
+      <thead><tr><th>模式</th><th>示例</th><th>真实感</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td><code>firstname.lastname</code></td><td>john.miller@</td><td><span class="pill ok">高</span></td><td>最像企业真人邮箱，首选</td></tr>
+        <tr><td><code>firstnamelastname</code></td><td>emmacarter@</td><td><span class="pill ok">高</span></td><td>Gmail/个人风格</td></tr>
+        <tr><td><code>f.lastname</code> / <code>firstname.l</code></td><td>j.miller@ / emma.c@</td><td><span class="pill ok">高</span></td><td>缩写，自然</td></tr>
+        <tr><td><code>firstname</code></td><td>sophia@</td><td><span class="pill mid">中</span></td><td>短域名可用，纯名字略显刻意</td></tr>
+        <tr><td><code>sales / info / contact</code></td><td>sales@</td><td><span class="pill hot">低</span></td><td><b>禁用</b>，角色邮箱进垃圾箱率极高</td></tr>
+        <tr><td>含数字/随机串</td><td>john2024 / a7x9@</td><td><span class="pill hot">低</span></td><td><b>禁用</b>，机器感、典型 spam 特征</td></tr>
+      </tbody>
+    </table>
+
+    <h3>1.3 给 100 个邮箱批量生成"人设"</h3>
+    <p class="lead">每个邮箱 = 一个虚拟业务员人设（Persona），固定一套：英文名 + 显示名 + 头像 + 签名。建议用一张表统一管理。</p>
+    <table>
+      <thead><tr><th>邮箱地址</th><th>显示名</th><th>头像</th><th>签名落款</th></tr></thead>
+      <tbody>
+        <tr><td>john.miller@go.test1.com</td><td>John Miller</td><td>真人风格头像</td><td>John Miller / Sales Manager</td></tr>
+        <tr><td>emma.carter@mail.test1.com</td><td>Emma Carter</td><td>真人风格头像</td><td>Emma Carter / Account Executive</td></tr>
+        <tr><td>… 共 100 行</td><td>…</td><td>…</td><td>…</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <b>批量生成技巧：</b> 用公开英文名库（first name × last name 笛卡尔积）随机组合 100 个不重复人名；头像用一致风格的合成人像（避免直接盗用真人照片）；签名统一模板但人名/职位各异。整张表存为 CSV，作为后续配置和预热追踪的主数据。
+    </div>
+    <div class="callout warn">
+      <b>真实感 ≠ 冒充特定真人。</b> 这些是"你自有域名下的虚拟业务员身份"，不要克隆某个真实存在的客户/公司的姓名+域名组合，否则涉及冒充。命名像"一个普通业务员"即可，不要像"某个具体的真实他人"。
+    </div>
+  </section>
+
+  <!-- 2 发信前置配置 -->
+  <section>
+    <h2><span class="n">2</span>发信前置：认证配置（预热前必须做）</h2>
+    <p class="lead">没有正确的认证记录，预热都是白费——邮件直接进垃圾箱甚至被拒收。每个<b>发信子域名</b>都要单独配置以下记录。</p>
+    <table>
+      <thead><tr><th>记录</th><th>作用</th><th>配置要点</th></tr></thead>
+      <tbody>
+        <tr><td><b>MX</b></td><td>接收邮件</td><td>指向你的邮件服务商（自建/邮箱托管）</td></tr>
+        <tr><td><b>SPF</b></td><td>声明谁能代表本域发信</td><td><code>v=spf1 include:... -all</code>，只授权实际发信 IP</td></tr>
+        <tr><td><b>DKIM</b></td><td>邮件签名防篡改</td><td>每个子域名生成独立密钥并发布公钥 TXT</td></tr>
+        <tr><td><b>DMARC</b></td><td>对齐策略 + 报告</td><td>起步 <code>p=none</code> 收报告，稳定后升 <code>quarantine</code></td></tr>
+        <tr><td><b>rDNS / PTR</b></td><td>发信 IP 反向解析</td><td>IP → 主机名可解析，否则严重扣分</td></tr>
+        <tr><td><b>Tracking 域</b></td><td>打开/点击追踪</td><td>用自有子域 CNAME，<b>别用服务商共享追踪域</b></td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      配置完成后，用 <code>mail-tester.com</code> 给每个子域名发一封测试邮件，确保得分 <b>10/10</b>（SPF/DKIM/DMARC 全绿、无 spam 关键词、无黑名单）再进入预热。也可用 <code>mxtoolbox.com</code> 检查黑名单与记录。
+    </div>
+  </section>
+
+  <!-- 3 预热原理 -->
+  <section>
+    <h2><span class="n">3</span>手动预热：原理与三条主线</h2>
+    <p class="lead">预热的本质：在收件方（Gm/Outlook/Yahoo）眼里，把这些新地址从"陌生 → 行为正常、被人期待、有人互动"的可信发件人。第三方预热工具贵，只是把下面三件事自动化了，我们手动做即可。</p>
+    <div class="grid">
+      <div class="card"><h4>① 量要慢慢加</h4><p>新域名第一天只发个位数，之后每天小幅递增。突然放量 = 最典型的 spam 信号。</p></div>
+      <div class="card"><h4>② 互动要做足</h4><p>收到的预热邮件要<b>回复、标星、移出垃圾箱、标记重要</b>。高互动是养信誉最强的正向信号。</p></div>
+      <div class="card"><h4>③ 投诉/退信压到极低</h4><p>垃圾投诉率 &lt; 0.1%、硬退信 &lt; 2%。一旦超标立即降速，否则前功尽弃。</p></div>
+    </div>
+
+    <h3>3.1 三条手动预热主线</h3>
+    <ol>
+      <li><b>内部互发网络（Peer Warmup）：</b>100 个邮箱之间互相发信并<b>真实回复</b>，形成对话线程。这是零成本养互动的主力。建议每个邮箱每天和不同的几个"同伴"通信，内容像真人闲聊/业务沟通，不要复制同一句话。</li>
+      <li><b>种子收件箱（Seed Accounts）：</b>在 Gmail / Outlook / Yahoo 各注册若干真实收件箱作为"外部种子"。给它们发信，然后在种子箱里<b>打开 → 回复 → 标星 → 若进垃圾箱手动拖回收件箱</b>。这是直接教会大邮商"这个发件人是好人"。</li>
+      <li><b>真实低风险联系人：</b>给已认识、愿意配合的同事/合作方发友好邮件并请其回复。真实人际互动权重最高。</li>
+    </ol>
+
+    <h3>3.2 内容怎么写才不像群发</h3>
+    <ul>
+      <li>主题和正文要<b>多样化</b>，不要 100 个邮箱发同一模板（指纹一致会被识别为批量）。</li>
+      <li>纯文本为主，预热期<b>少图片、少链接、不带附件</b>，链接尤其是短链会拉低分。</li>
+      <li>像真人对话：短、自然、有来有回，避免任何促销/营销词（free、discount、$$$、!!!）。</li>
+      <li>预热期<b>绝不混入真实营销/推广内容</b>，纯养号，养成后再逐步引入真实业务邮件。</li>
+    </ul>
+  </section>
+
+  <!-- 4 排期表 -->
+  <section>
+    <h2><span class="n">4</span>每个邮箱的发信量爬坡表（核心 SOP）</h2>
+    <p class="lead">下表是<b>单个邮箱</b>的每日发信上限节奏。100 个邮箱并行执行同一节奏。前期以内部互发+种子互动为主，第 5 周起才逐步引入真实业务邮件。</p>
+    <table>
+      <thead><tr><th>阶段</th><th>时间</th><th>每邮箱/天</th><th>主要动作</th><th>互动要求</th></tr></thead>
+      <tbody>
+        <tr><td><b>P1 冷启动</b></td><td>第 1–3 天</td><td><span class="pill ok">3–5</span></td><td>仅内部互发 + 种子箱</td><td>100% 回复 + 标星</td></tr>
+        <tr><td><b>P2 起量</b></td><td>第 4–7 天</td><td><span class="pill ok">6–12</span></td><td>内部 + 种子，加联系人</td><td>≥ 80% 回复</td></tr>
+        <tr><td><b>P3 爬坡</b></td><td>第 2 周</td><td><span class="pill mid">15–25</span></td><td>扩大种子覆盖面</td><td>≥ 50% 回复</td></tr>
+        <tr><td><b>P4 巩固</b></td><td>第 3–4 周</td><td><span class="pill mid">25–40</span></td><td>维持互动，监控指标</td><td>≥ 30% 回复</td></tr>
+        <tr><td><b>P5 引入真实</b></td><td>第 5–6 周</td><td><span class="pill mid">40–50</span></td><td>预热占比降，真实业务邮件 10%→30%</td><td>保持互动</td></tr>
+        <tr><td><b>P6 转正</b></td><td>第 7–8 周起</td><td><span class="pill hot">≤ 50</span></td><td>正式发信，预热降为日常维持</td><td>盯指标动态调</td></tr>
+      </tbody>
+    </table>
+    <div class="callout warn">
+      <b>每日上限是"软上限"，看指标动态调。</b> 任一天如果出现进垃圾箱比例上升、退信升高、被投诉 → <b>当天减半、停止加量 2–3 天</b>，回稳后再继续。养号宁慢勿快，单封"成本"远低于烧掉一个域名。
+    </div>
+    <div class="callout">
+      <b>每天保留少量"维持发信"。</b> 转正后也别让邮箱长期静默，否则信誉会衰减——每个邮箱每天保留几封互动邮件作为"心跳"。
+    </div>
+  </section>
+
+  <!-- 5 监控 -->
+  <section>
+    <h2><span class="n">5</span>监控与追踪（全部免费工具）</h2>
+    <div class="grid">
+      <div class="card"><h4>Google Postmaster Tools</h4><p>免费看发往 Gmail 的域名信誉、垃圾投诉率、认证通过率。预热目标：信誉 High/Medium。</p></div>
+      <div class="card"><h4>mail-tester.com</h4><p>每周给每个子域名打一次分，盯住 10/10。掉分立即查原因。</p></div>
+      <div class="card"><h4>mxtoolbox.com</h4><p>检查 SPF/DKIM/DMARC 记录、是否被列入黑名单（RBL）。</p></div>
+      <div class="card"><h4>自建追踪表（CSV/表格）</h4><p>逐邮箱记录每日发量、进箱率、回复率、退信、投诉，形成趋势线。</p></div>
+    </div>
+    <h3>5.1 健康红线（任一触发即降速）</h3>
+    <table>
+      <thead><tr><th>指标</th><th>健康</th><th>警戒</th><th>危险（立即停加量）</th></tr></thead>
+      <tbody>
+        <tr><td>垃圾投诉率</td><td>&lt; 0.1%</td><td>0.1–0.3%</td><td>&gt; 0.3%</td></tr>
+        <tr><td>硬退信率</td><td>&lt; 2%</td><td>2–5%</td><td>&gt; 5%</td></tr>
+        <tr><td>进收件箱率</td><td>&gt; 90%</td><td>70–90%</td><td>&lt; 70%</td></tr>
+        <tr><td>Postmaster 域信誉</td><td>High</td><td>Medium</td><td>Low / Bad</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 6 执行清单 -->
+  <section>
+    <h2><span class="n">6</span>落地执行清单</h2>
+    <h3>准备阶段（第 0 周）</h3>
+    <ul class="check">
+      <li>创建 2×5=10 个发信子域名，主域名保留不发信</li>
+      <li>每个子域名配置 MX / SPF / DKIM / DMARC(p=none) / rDNS / 自有追踪域</li>
+      <li>生成 100 个不重复英文人名 + 显示名 + 头像 + 签名，落成主数据 CSV</li>
+      <li>在每个子域名下开通 10 个邮箱，绑定对应人设</li>
+      <li>注册 Gmail/Outlook/Yahoo 种子收件箱若干</li>
+      <li>每个子域名跑一次 mail-tester，确认 10/10</li>
+      <li>开通 Google Postmaster Tools 并验证域名</li>
+    </ul>
+    <h3>预热阶段（第 1–8 周）</h3>
+    <ul class="check">
+      <li>按 P1–P6 爬坡表逐周加量，100 邮箱并行</li>
+      <li>每天执行内部互发 + 种子互动，做满"回复/标星/拖出垃圾箱"</li>
+      <li>每天更新追踪表，每周看一次 Postmaster + mail-tester</li>
+      <li>任一红线触发 → 当天减半、暂停加量 2–3 天</li>
+      <li>第 5 周起按比例引入真实业务邮件，预热降为维持</li>
+    </ul>
+    <h3>转正后（持续）</h3>
+    <ul class="check">
+      <li>每个邮箱保留每日"心跳"互动，防信誉衰减</li>
+      <li>DMARC 由 p=none 升级到 quarantine</li>
+      <li>持续监控，发现某子域名变差即停用并用新子域名替补</li>
+    </ul>
+  </section>
+
+  <div class="callout danger">
+    <b>合规与边界提醒：</b> 本方案用于「自有域名下的发信信誉养成 + 提升正常外贸触达率」。请确保：① 邮箱身份是"自有虚拟业务员"，不冒充某个真实存在的具体他人或其域名；② 真实发信阶段遵守目标市场反垃圾邮件法规（如美国 CAN-SPAM、欧盟 GDPR/PECR）——含真实可识别发件人、有效退订、不发送给明确拒绝的收件人。预热的目的是让<b>合规邮件</b>顺利进箱，而不是规避这些规则。
+  </div>
+
+  <div class="foot">多域名邮箱命名 &amp; 手动预热方案 · 生成于 2026-05-30 · 共 2 主域 / 10 子域 / 100 邮箱 / 4–8 周周期</div>
+
+</div>
+</body>
+</html>

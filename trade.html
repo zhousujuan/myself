@@ -3,1968 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="外贸获客与触达知识库，覆盖市场选择、ICP、线索发现、CRM 入库、邮件和社媒触达、复盘沉淀。"
+    />
     <title>外贸知识合集 | 获客与触达增长驾驶舱</title>
-    <style>
-      :root {
-        color-scheme: dark;
-        --bg: #070a10;
-        --bg-deep: #05070b;
-        --surface: #0d1320;
-        --surface-2: #111a2a;
-        --surface-3: #152233;
-        --ink: #f6f8fb;
-        --muted: #94a2b7;
-        --soft: #c8d2e2;
-        --line: rgba(194, 212, 232, 0.16);
-        --line-strong: rgba(99, 229, 255, 0.42);
-        --cyan: #32d9ff;
-        --mint: #2fe6a8;
-        --amber: #f6c85f;
-        --rose: #ff6f86;
-        --violet: #a993ff;
-        --blue: #5c9dff;
-        --shadow: 0 22px 70px rgba(0, 0, 0, 0.36);
-        font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        min-height: 100vh;
-        margin: 0;
-        color: var(--ink);
-        background:
-          linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-          linear-gradient(180deg, #070a10 0%, #0a101b 44%, #070a10 100%);
-        background-size: 48px 48px, 48px 48px, auto;
-      }
-
-      body::before {
-        position: fixed;
-        inset: 0;
-        z-index: -1;
-        content: "";
-        background:
-          linear-gradient(115deg, rgba(50, 217, 255, 0.14), transparent 32%),
-          linear-gradient(245deg, rgba(47, 230, 168, 0.13), transparent 36%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 42%);
-        pointer-events: none;
-      }
-
-      a {
-        color: inherit;
-      }
-
-      button,
-      input {
-        font: inherit;
-      }
-
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
-      }
-
-      p {
-        color: var(--muted);
-        line-height: 1.78;
-      }
-
-      .app-shell {
-        display: grid;
-        grid-template-columns: 292px minmax(0, 1fr);
-        gap: 22px;
-        width: min(1520px, 100%);
-        min-height: 100vh;
-        margin: 0 auto;
-        padding: 20px;
-      }
-
-      .sidebar {
-        position: sticky;
-        top: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        height: calc(100vh - 40px);
-        padding: 18px;
-        overflow: auto;
-        background: rgba(10, 16, 27, 0.84);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(18px);
-      }
-
-      .brand {
-        display: grid;
-        grid-template-columns: 48px minmax(0, 1fr);
-        gap: 12px;
-        align-items: center;
-      }
-
-      .brand-mark {
-        display: grid;
-        place-items: center;
-        width: 48px;
-        height: 48px;
-        color: #061015;
-        background: linear-gradient(135deg, var(--cyan), var(--mint));
-        border: 1px solid rgba(255, 255, 255, 0.36);
-        border-radius: 8px;
-        font-size: 18px;
-        font-weight: 900;
-        box-shadow: 0 0 26px rgba(50, 217, 255, 0.34);
-      }
-
-      .brand h1 {
-        margin: 0;
-        font-size: 18px;
-        line-height: 1.25;
-        letter-spacing: 0;
-      }
-
-      .brand p {
-        margin: 6px 0 0;
-        font-size: 12px;
-      }
-
-      .home-link {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 38px;
-        padding: 8px 12px;
-        color: var(--cyan);
-        text-decoration: none;
-        background: rgba(50, 217, 255, 0.08);
-        border: 1px solid rgba(50, 217, 255, 0.22);
-        border-radius: 8px;
-        font-size: 13px;
-        font-weight: 800;
-      }
-
-      .home-link:hover,
-      .home-link:focus-visible {
-        color: #fff;
-        border-color: var(--cyan);
-        outline: none;
-      }
-
-      .nav-block {
-        display: grid;
-        gap: 8px;
-      }
-
-      .section-label {
-        color: var(--cyan);
-        font-size: 11px;
-        font-weight: 900;
-        letter-spacing: 0;
-        text-transform: uppercase;
-      }
-
-      .nav-link {
-        display: grid;
-        grid-template-columns: 9px minmax(0, 1fr) auto;
-        gap: 10px;
-        align-items: center;
-        min-height: 42px;
-        padding: 10px;
-        color: var(--soft);
-        text-decoration: none;
-        background: rgba(255, 255, 255, 0.045);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        font-size: 13px;
-        font-weight: 800;
-      }
-
-      .nav-link::before {
-        width: 9px;
-        height: 9px;
-        content: "";
-        background: var(--mint);
-        border-radius: 2px;
-        box-shadow: 0 0 14px rgba(47, 230, 168, 0.5);
-      }
-
-      .nav-link:nth-of-type(3)::before {
-        background: var(--cyan);
-      }
-
-      .nav-link:nth-of-type(4)::before {
-        background: var(--amber);
-      }
-
-      .nav-link:nth-of-type(5)::before {
-        background: var(--rose);
-      }
-
-      .nav-link:nth-of-type(6)::before {
-        background: var(--violet);
-      }
-
-      .nav-link span:last-child {
-        color: var(--muted);
-        font-size: 11px;
-        font-weight: 800;
-      }
-
-      .nav-link.is-active,
-      .nav-link:hover,
-      .nav-link:focus-visible {
-        color: #fff;
-        background: rgba(50, 217, 255, 0.1);
-        border-color: rgba(50, 217, 255, 0.36);
-        outline: none;
-      }
-
-      .side-card {
-        display: grid;
-        gap: 12px;
-        padding: 14px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      .side-card h2,
-      .side-card h3,
-      .side-card p {
-        margin: 0;
-      }
-
-      .side-card h2,
-      .side-card h3 {
-        font-size: 15px;
-        line-height: 1.4;
-      }
-
-      .pulse-stack {
-        display: grid;
-        gap: 8px;
-      }
-
-      .pulse-row {
-        display: grid;
-        grid-template-columns: 44px minmax(0, 1fr);
-        gap: 10px;
-        align-items: center;
-        min-height: 56px;
-        padding: 10px;
-        background: rgba(9, 15, 25, 0.72);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      .pulse-row strong {
-        color: var(--mint);
-        font-size: 21px;
-        line-height: 1;
-      }
-
-      .pulse-row span {
-        color: var(--muted);
-        font-size: 12px;
-        line-height: 1.45;
-      }
-
-      .workspace {
-        display: grid;
-        align-content: start;
-        gap: 18px;
-        min-width: 0;
-      }
-
-      .view,
-      .overview-companion {
-        animation: viewIn 220ms ease both;
-      }
-
-      .view[hidden],
-      .overview-companion[hidden] {
-        display: none !important;
-      }
-
-      @keyframes viewIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .hero {
-        position: relative;
-        overflow: hidden;
-        min-height: 620px;
-        padding: 34px;
-        background:
-          linear-gradient(135deg, rgba(17, 26, 42, 0.94), rgba(7, 10, 16, 0.92)),
-          linear-gradient(90deg, rgba(50, 217, 255, 0.18), transparent 45%, rgba(47, 230, 168, 0.16));
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        box-shadow: var(--shadow);
-      }
-
-      .hero::after {
-        position: absolute;
-        inset: auto 26px 26px auto;
-        width: 42%;
-        height: 52%;
-        content: "";
-        background:
-          linear-gradient(90deg, rgba(50, 217, 255, 0.14) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(47, 230, 168, 0.12) 1px, transparent 1px);
-        background-size: 26px 26px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        opacity: 0.5;
-        mask-image: linear-gradient(135deg, transparent 0%, #000 34%, #000 70%, transparent 100%);
-        pointer-events: none;
-      }
-
-      .hero-layout {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
-        gap: 28px;
-        align-items: stretch;
-        height: 100%;
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        min-height: 26px;
-        padding: 4px 10px;
-        color: var(--cyan);
-        background: rgba(50, 217, 255, 0.1);
-        border: 1px solid rgba(50, 217, 255, 0.24);
-        border-radius: 8px;
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: 0;
-        text-transform: uppercase;
-      }
-
-      .hero h1 {
-        max-width: 840px;
-        margin: 18px 0 18px;
-        font-size: 52px;
-        line-height: 1.12;
-        letter-spacing: 0;
-      }
-
-      .lead {
-        max-width: 820px;
-        margin-bottom: 28px;
-        color: #cbd5e4;
-        font-size: 17px;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 30px;
-      }
-
-      .action-link {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 42px;
-        padding: 10px 14px;
-        color: #051015;
-        text-decoration: none;
-        background: var(--cyan);
-        border: 1px solid rgba(255, 255, 255, 0.28);
-        border-radius: 8px;
-        font-size: 13px;
-        font-weight: 900;
-      }
-
-      .action-link.secondary {
-        color: var(--ink);
-        background: rgba(255, 255, 255, 0.08);
-        border-color: var(--line);
-      }
-
-      .signal-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
-      }
-
-      .signal {
-        min-height: 112px;
-        padding: 14px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      .signal strong {
-        display: block;
-        color: #fff;
-        font-size: 28px;
-        line-height: 1;
-      }
-
-      .signal span {
-        display: block;
-        margin-top: 10px;
-        color: var(--muted);
-        font-size: 12px;
-        line-height: 1.45;
-      }
-
-      .radar-panel {
-        display: grid;
-        gap: 16px;
-        align-content: stretch;
-        min-height: 100%;
-      }
-
-      .radar-board {
-        position: relative;
-        display: grid;
-        min-height: 370px;
-        padding: 18px;
-        overflow: hidden;
-        background: rgba(5, 9, 15, 0.68);
-        border: 1px solid rgba(50, 217, 255, 0.22);
-        border-radius: 8px;
-      }
-
-      .radar-board::before {
-        position: absolute;
-        inset: 24px;
-        content: "";
-        background:
-          linear-gradient(90deg, rgba(50, 217, 255, 0.18) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(50, 217, 255, 0.18) 1px, transparent 1px);
-        background-size: 30px 30px;
-        opacity: 0.28;
-        pointer-events: none;
-      }
-
-      .radar-line {
-        position: absolute;
-        left: 8%;
-        right: 8%;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(50, 217, 255, 0.9), transparent);
-        box-shadow: 0 0 18px rgba(50, 217, 255, 0.7);
-        animation: scan 4s linear infinite;
-      }
-
-      @keyframes scan {
-        0% {
-          top: 12%;
-          opacity: 0.18;
-        }
-
-        50% {
-          opacity: 1;
-        }
-
-        100% {
-          top: 88%;
-          opacity: 0.18;
-        }
-      }
-
-      .node-map {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-        align-content: end;
-      }
-
-      .node {
-        min-height: 76px;
-        padding: 12px;
-        background: rgba(10, 18, 30, 0.84);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 8px;
-      }
-
-      .node strong {
-        display: block;
-        margin-bottom: 6px;
-        color: #fff;
-        font-size: 14px;
-      }
-
-      .node span {
-        color: var(--muted);
-        font-size: 12px;
-        line-height: 1.5;
-      }
-
-      .section {
-        display: grid;
-        gap: 16px;
-        scroll-margin-top: 24px;
-      }
-
-      .section-head {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 16px;
-        align-items: end;
-      }
-
-      .section-head h2 {
-        max-width: 880px;
-        margin: 10px 0 8px;
-        font-size: 32px;
-        line-height: 1.22;
-        letter-spacing: 0;
-      }
-
-      .section-head p {
-        max-width: 820px;
-        margin-bottom: 0;
-      }
-
-      .status-chip {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 30px;
-        padding: 5px 10px;
-        color: #071018;
-        background: var(--mint);
-        border-radius: 8px;
-        font-size: 12px;
-        font-weight: 900;
-        white-space: nowrap;
-      }
-
-      .status-chip.cyan {
-        background: var(--cyan);
-      }
-
-      .status-chip.amber {
-        background: var(--amber);
-      }
-
-      .status-chip.rose {
-        color: #fff;
-        background: var(--rose);
-      }
-
-      .status-chip.violet {
-        color: #fff;
-        background: var(--violet);
-      }
-
-      .process-grid {
-        display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 10px;
-      }
-
-      .process-step {
-        position: relative;
-        min-height: 176px;
-        padding: 16px;
-        background: rgba(13, 19, 32, 0.9);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      .process-step::after {
-        position: absolute;
-        right: -10px;
-        top: 34px;
-        z-index: 1;
-        width: 10px;
-        height: 1px;
-        content: "";
-        background: rgba(50, 217, 255, 0.5);
-      }
-
-      .process-step:nth-child(5)::after,
-      .process-step:last-child::after {
-        display: none;
-      }
-
-      .step-num {
-        display: inline-grid;
-        place-items: center;
-        width: 34px;
-        height: 34px;
-        margin-bottom: 14px;
-        color: #061015;
-        background: var(--cyan);
-        border-radius: 8px;
-        font-size: 12px;
-        font-weight: 900;
-      }
-
-      .process-step h3,
-      .channel-card h3,
-      .play-card h3,
-      .handoff-card h3 {
-        margin-bottom: 8px;
-        font-size: 17px;
-        line-height: 1.35;
-        letter-spacing: 0;
-      }
-
-      .process-step p,
-      .channel-card p,
-      .play-card p,
-      .handoff-card p {
-        margin-bottom: 0;
-        font-size: 13px;
-      }
-
-      .theme-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .theme-card {
-        display: grid;
-        gap: 14px;
-        min-height: 286px;
-        padding: 22px;
-        color: inherit;
-        text-decoration: none;
-        background: rgba(13, 19, 32, 0.86);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      .theme-card[data-theme="acquire"] {
-        border-color: rgba(47, 230, 168, 0.28);
-        background:
-          linear-gradient(135deg, rgba(47, 230, 168, 0.12), transparent 45%),
-          rgba(13, 19, 32, 0.9);
-      }
-
-      .theme-card[data-theme="flow"] {
-        border-color: rgba(50, 217, 255, 0.3);
-        background:
-          linear-gradient(135deg, rgba(50, 217, 255, 0.13), transparent 45%),
-          rgba(13, 19, 32, 0.9);
-      }
-
-      .theme-card[data-theme="touch"] {
-        border-color: rgba(255, 111, 134, 0.3);
-        background:
-          linear-gradient(135deg, rgba(255, 111, 134, 0.13), transparent 45%),
-          rgba(13, 19, 32, 0.9);
-      }
-
-      .theme-card[data-theme="handoff"] {
-        border-color: rgba(169, 147, 255, 0.32);
-        background:
-          linear-gradient(135deg, rgba(169, 147, 255, 0.14), transparent 45%),
-          rgba(13, 19, 32, 0.9);
-      }
-
-      .theme-card:hover,
-      .theme-card:focus-visible {
-        border-color: rgba(50, 217, 255, 0.5);
-        outline: none;
-        transform: translateY(-2px);
-        transition: border-color 160ms ease, transform 160ms ease;
-      }
-
-      .theme-top {
-        display: flex;
-        gap: 12px;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 18px;
-      }
-
-      .theme-card h3 {
-        margin: 10px 0 10px;
-        font-size: 24px;
-        line-height: 1.28;
-        letter-spacing: 0;
-      }
-
-      .entry-meta {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: auto;
-        color: var(--cyan);
-        font-size: 12px;
-        font-weight: 900;
-      }
-
-      .micro-flow {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-      }
-
-      .micro-flow span {
-        display: grid;
-        place-items: center;
-        min-height: 44px;
-        padding: 8px;
-        color: var(--soft);
-        text-align: center;
-        background: rgba(255, 255, 255, 0.055);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        font-size: 12px;
-        font-weight: 800;
-      }
-
-      .channel-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .channel-card {
-        display: grid;
-        gap: 12px;
-        min-height: 286px;
-        padding: 18px;
-        background: rgba(13, 19, 32, 0.88);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      .channel-card:hover {
-        border-color: rgba(50, 217, 255, 0.42);
-        transform: translateY(-2px);
-        transition: border-color 160ms ease, transform 160ms ease;
-      }
-
-      .card-index {
-        display: flex;
-        gap: 8px;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .card-index strong {
-        display: inline-grid;
-        place-items: center;
-        width: 34px;
-        height: 34px;
-        color: var(--cyan);
-        background: rgba(50, 217, 255, 0.08);
-        border: 1px solid rgba(50, 217, 255, 0.24);
-        border-radius: 8px;
-        font-size: 12px;
-      }
-
-      .tag {
-        display: inline-flex;
-        align-items: center;
-        min-height: 26px;
-        padding: 4px 9px;
-        color: var(--soft);
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        font-size: 11px;
-        font-weight: 900;
-        white-space: nowrap;
-      }
-
-      .channel-card ul,
-      .play-card ul,
-      .handoff-card ul {
-        margin: 0;
-        padding-left: 18px;
-        color: var(--muted);
-        font-size: 13px;
-        line-height: 1.68;
-      }
-
-      .channel-card li,
-      .play-card li,
-      .handoff-card li {
-        margin: 5px 0;
-      }
-
-      .playbook-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .play-card {
-        min-height: 256px;
-        padding: 18px;
-        background: rgba(13, 19, 32, 0.88);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      .sequence {
-        display: grid;
-        grid-template-columns: 0.8fr 1.2fr;
-        gap: 16px;
-        align-items: start;
-        padding: 20px;
-        background: rgba(13, 19, 32, 0.88);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      .timeline {
-        display: grid;
-        gap: 10px;
-      }
-
-      .time-row {
-        display: grid;
-        grid-template-columns: 76px minmax(0, 1fr);
-        gap: 10px;
-        align-items: start;
-        min-height: 72px;
-        padding: 12px;
-        background: rgba(255, 255, 255, 0.045);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      .time-row strong {
-        color: var(--amber);
-        font-size: 13px;
-      }
-
-      .time-row span {
-        color: var(--muted);
-        font-size: 13px;
-        line-height: 1.6;
-      }
-
-      .message-stack {
-        display: grid;
-        gap: 10px;
-      }
-
-      .message {
-        padding: 14px;
-        color: #dfe8f6;
-        background: #090f19;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        font-family: Consolas, "Courier New", monospace;
-        font-size: 13px;
-        line-height: 1.62;
-        white-space: pre-wrap;
-      }
-
-      .handoff-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .handoff-card {
-        min-height: 210px;
-        padding: 18px;
-        background: rgba(13, 19, 32, 0.88);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      .table-wrap {
-        overflow-x: auto;
-        background: rgba(13, 19, 32, 0.88);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      table {
-        width: 100%;
-        min-width: 760px;
-        border-collapse: collapse;
-      }
-
-      th,
-      td {
-        padding: 14px;
-        text-align: left;
-        vertical-align: top;
-        border-bottom: 1px solid var(--line);
-        font-size: 14px;
-      }
-
-      th {
-        color: #071018;
-        background: linear-gradient(90deg, var(--cyan), var(--mint));
-        font-weight: 900;
-      }
-
-      tr:last-child td {
-        border-bottom: 0;
-      }
-
-      td {
-        color: var(--soft);
-      }
-
-      footer {
-        padding: 8px 0 26px;
-        color: var(--muted);
-        text-align: center;
-        font-size: 13px;
-      }
-
-      @media (max-width: 1280px) {
-        .app-shell {
-          grid-template-columns: 1fr;
-        }
-
-        .sidebar {
-          position: relative;
-          top: auto;
-          height: auto;
-        }
-
-        .nav-block {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-
-        .nav-block .section-label {
-          grid-column: 1 / -1;
-        }
-
-        .hero-layout,
-        .sequence {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 1080px) {
-        .process-grid,
-        .channel-grid,
-        .theme-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .process-step::after {
-          display: none;
-        }
-
-        .playbook-grid,
-        .handoff-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .signal-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 760px) {
-        .app-shell {
-          gap: 16px;
-          padding: 12px;
-        }
-
-        .sidebar,
-        .hero {
-          padding: 16px;
-        }
-
-        .hero {
-          min-height: auto;
-        }
-
-        .hero h1 {
-          font-size: 35px;
-        }
-
-        .section-head {
-          grid-template-columns: 1fr;
-        }
-
-        .section-head h2 {
-          font-size: 27px;
-        }
-
-        .nav-block,
-        .theme-grid,
-        .process-grid,
-        .channel-grid,
-        .playbook-grid,
-        .handoff-grid,
-        .signal-grid,
-        .micro-flow,
-        .node-map {
-          grid-template-columns: 1fr;
-        }
-
-        .process-step,
-        .channel-card,
-        .play-card,
-        .handoff-card,
-        .theme-card {
-          min-height: auto;
-        }
-
-        .time-row {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* === SOP 完整版卡片样式（A01 样板） === */
-      .channel-card--full {
-        grid-column: 1 / -1;
-        display: grid;
-        gap: 18px;
-        min-height: 0;
-        padding: 22px;
-        background:
-          linear-gradient(135deg, rgba(47, 230, 168, 0.07), transparent 42%),
-          rgba(13, 19, 32, 0.94);
-        border-color: rgba(47, 230, 168, 0.32);
-      }
-
-      .sop-header {
-        display: grid;
-        gap: 10px;
-        padding-bottom: 14px;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .sop-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        align-items: center;
-      }
-
-      .sop-id {
-        display: inline-grid;
-        place-items: center;
-        min-width: 38px;
-        height: 28px;
-        padding: 0 8px;
-        color: var(--cyan);
-        background: rgba(50, 217, 255, 0.1);
-        border: 1px solid rgba(50, 217, 255, 0.28);
-        border-radius: 8px;
-        font-size: 12px;
-      }
-
-      .tag--sample {
-        color: var(--mint);
-        background: rgba(47, 230, 168, 0.1);
-        border-color: rgba(47, 230, 168, 0.32);
-      }
-
-      .channel-card--full h3 {
-        margin: 4px 0 0;
-        font-size: 22px;
-        line-height: 1.3;
-      }
-
-      .sop-summary {
-        margin: 0;
-        color: var(--soft);
-        font-size: 14px;
-        line-height: 1.7;
-      }
-
-      .sop-body {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 12px;
-      }
-
-      .sop-block {
-        display: grid;
-        gap: 10px;
-        padding: 14px;
-        background: rgba(9, 14, 23, 0.6);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      .sop-block--wide {
-        grid-column: 1 / -1;
-      }
-
-      .sop-block--warn {
-        background: rgba(246, 200, 95, 0.05);
-        border-color: rgba(246, 200, 95, 0.3);
-      }
-
-      .sop-block--done {
-        background: rgba(47, 230, 168, 0.06);
-        border-color: rgba(47, 230, 168, 0.32);
-      }
-
-      .sop-block h4 {
-        margin: 0;
-        color: var(--mint);
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: 0.4px;
-        text-transform: uppercase;
-      }
-
-      .sop-block--warn h4 {
-        color: var(--amber);
-      }
-
-      .sop-block ul,
-      .sop-block ol {
-        margin: 0;
-        padding-left: 18px;
-        color: var(--soft);
-        font-size: 13px;
-        line-height: 1.68;
-      }
-
-      .sop-block li {
-        margin: 4px 0;
-      }
-
-      .check-list {
-        padding: 0;
-        list-style: none;
-      }
-
-      .check-list li {
-        margin: 0;
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
-      }
-
-      .check-list li:last-child {
-        border-bottom: 0;
-      }
-
-      .check-list label {
-        display: flex;
-        gap: 8px;
-        align-items: flex-start;
-        padding: 7px 2px;
-        cursor: pointer;
-        line-height: 1.55;
-      }
-
-      .check-list input[type="checkbox"] {
-        flex-shrink: 0;
-        margin: 3px 0 0;
-        width: 14px;
-        height: 14px;
-        accent-color: var(--mint);
-        cursor: pointer;
-      }
-
-      .check-list label:has(input:checked) {
-        color: var(--muted);
-        text-decoration: line-through;
-        opacity: 0.7;
-      }
-
-      .field-list {
-        list-style: none;
-        padding: 0;
-      }
-
-      .field-list li {
-        position: relative;
-        padding: 4px 0 4px 14px;
-      }
-
-      .field-list li::before {
-        position: absolute;
-        left: 0;
-        top: 11px;
-        width: 5px;
-        height: 5px;
-        content: "";
-        background: var(--cyan);
-        border-radius: 2px;
-      }
-
-      .query-list {
-        display: grid;
-        gap: 6px;
-      }
-
-      .query-list code {
-        position: relative;
-        display: block;
-        padding: 9px 78px 9px 12px;
-        color: var(--cyan);
-        background: #060a12;
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        font-family: Consolas, "Courier New", monospace;
-        font-size: 12px;
-        line-height: 1.55;
-        word-break: break-all;
-        cursor: pointer;
-        transition: border-color 140ms ease;
-      }
-
-      .query-list code:hover {
-        border-color: rgba(50, 217, 255, 0.46);
-      }
-
-      .query-list code::after {
-        position: absolute;
-        right: 8px;
-        top: 50%;
-        transform: translateY(-50%);
-        content: "复制";
-        padding: 2px 8px;
-        color: var(--muted);
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        font-size: 10px;
-        font-weight: 800;
-        letter-spacing: 0.5px;
-      }
-
-      .query-list code.is-copied {
-        border-color: rgba(47, 230, 168, 0.5);
-      }
-
-      .query-list code.is-copied::after {
-        content: "已复制";
-        color: var(--mint);
-        background: rgba(47, 230, 168, 0.1);
-        border-color: rgba(47, 230, 168, 0.4);
-      }
-
-      .sop-tip {
-        margin: 0;
-        padding: 8px 10px;
-        color: var(--muted);
-        background: rgba(255, 255, 255, 0.03);
-        border-left: 2px solid var(--cyan);
-        border-radius: 4px;
-        font-size: 12px;
-        line-height: 1.6;
-      }
-
-      .sop-footer {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 12px;
-        color: var(--muted);
-        font-size: 12px;
-        border-top: 1px solid var(--line);
-      }
-
-      .sop-reset {
-        margin-left: auto;
-        padding: 5px 10px;
-        color: var(--muted);
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: 0.3px;
-        cursor: pointer;
-        transition: color 140ms ease, border-color 140ms ease;
-      }
-
-      .sop-reset:hover {
-        color: var(--rose);
-        border-color: rgba(255, 111, 134, 0.4);
-      }
-
-      @media (max-width: 760px) {
-        .channel-card--full {
-          padding: 16px;
-        }
-
-        .sop-body {
-          grid-template-columns: 1fr;
-        }
-
-        .sop-block--wide {
-          grid-column: auto;
-        }
-
-        .query-list code {
-          padding-right: 64px;
-        }
-      }
-
-      /* === 流程阶段 SOP 卡 + 导航条 === */
-      .stage-strip {
-        display: grid;
-        grid-template-columns: repeat(10, minmax(0, 1fr));
-        gap: 6px;
-        padding: 12px;
-        background: rgba(13, 19, 32, 0.88);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      .stage-strip a {
-        display: grid;
-        place-items: center;
-        gap: 3px;
-        min-height: 54px;
-        padding: 6px 4px;
-        color: var(--soft);
-        text-decoration: none;
-        background: rgba(50, 217, 255, 0.06);
-        border: 1px solid rgba(50, 217, 255, 0.18);
-        border-radius: 6px;
-        font-size: 11px;
-        font-weight: 800;
-        text-align: center;
-        line-height: 1.25;
-      }
-
-      .stage-strip a strong {
-        display: block;
-        color: var(--cyan);
-        font-size: 13px;
-        font-weight: 900;
-      }
-
-      .stage-strip a:hover,
-      .stage-strip a:focus-visible {
-        color: #fff;
-        background: rgba(50, 217, 255, 0.16);
-        border-color: rgba(50, 217, 255, 0.42);
-        outline: none;
-      }
-
-      .process-stack {
-        display: grid;
-        gap: 16px;
-      }
-
-      .process-stage--full {
-        background:
-          linear-gradient(135deg, rgba(50, 217, 255, 0.07), transparent 42%),
-          rgba(13, 19, 32, 0.94);
-        border-color: rgba(50, 217, 255, 0.32);
-      }
-
-      .process-stage--full .sop-id {
-        color: var(--cyan);
-        background: rgba(50, 217, 255, 0.12);
-        border-color: rgba(50, 217, 255, 0.34);
-      }
-
-      .process-stage--full .sop-block h4 {
-        color: var(--cyan);
-      }
-
-      .stage-next {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        padding: 4px 10px;
-        color: var(--cyan);
-        background: rgba(50, 217, 255, 0.1);
-        border: 1px solid rgba(50, 217, 255, 0.28);
-        border-radius: 6px;
-        font-size: 11px;
-        font-weight: 900;
-        text-decoration: none;
-      }
-
-      .stage-next:hover {
-        color: #fff;
-        background: rgba(50, 217, 255, 0.2);
-      }
-
-      @media (max-width: 1080px) {
-        .stage-strip {
-          grid-template-columns: repeat(5, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 600px) {
-        .stage-strip {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-
-      /* === CRM 交接 SOP 卡 (violet 主色) === */
-      .handoff-stage--full {
-        background:
-          linear-gradient(135deg, rgba(169, 147, 255, 0.08), transparent 42%),
-          rgba(13, 19, 32, 0.94);
-        border-color: rgba(169, 147, 255, 0.34);
-      }
-
-      .handoff-stage--full .sop-id {
-        color: var(--violet);
-        background: rgba(169, 147, 255, 0.12);
-        border-color: rgba(169, 147, 255, 0.34);
-      }
-
-      .handoff-stage--full .sop-block h4 {
-        color: var(--violet);
-      }
-
-      .handoff-stack {
-        display: grid;
-        gap: 16px;
-      }
-
-      .pipeline-strip {
-        display: grid;
-        grid-template-columns: repeat(7, minmax(0, 1fr));
-        gap: 6px;
-        padding: 12px;
-        background: rgba(13, 19, 32, 0.88);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        margin-bottom: 12px;
-      }
-
-      .pipeline-strip span.pipe {
-        display: grid;
-        place-items: center;
-        gap: 2px;
-        min-height: 50px;
-        padding: 6px 4px;
-        color: var(--soft);
-        background: rgba(169, 147, 255, 0.06);
-        border: 1px solid rgba(169, 147, 255, 0.18);
-        border-radius: 6px;
-        font-size: 11px;
-        font-weight: 800;
-        text-align: center;
-        line-height: 1.25;
-      }
-
-      .pipeline-strip span.pipe strong {
-        display: block;
-        color: var(--violet);
-        font-size: 12px;
-      }
-
-      table.pipeline-table th {
-        background: linear-gradient(90deg, var(--violet), var(--cyan));
-      }
-
-      table.lost-reason-table th {
-        background: linear-gradient(90deg, var(--rose), var(--amber));
-      }
-
-      .table-stack {
-        display: grid;
-        gap: 16px;
-      }
-
-      .table-section-title {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin: 6px 0 0;
-        color: var(--ink);
-        font-size: 16px;
-        font-weight: 900;
-      }
-
-      .table-section-title::before {
-        width: 6px;
-        height: 18px;
-        content: "";
-        background: var(--violet);
-        border-radius: 2px;
-      }
-
-      .lost-reason-table .table-section-title::before {
-        background: var(--rose);
-      }
-
-      @media (max-width: 1080px) {
-        .pipeline-strip {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 600px) {
-        .pipeline-strip {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-
-      /* === 锚点跳转：为顶部 sticky 栏让出空间 === */
-      .channel-card--full[id] {
-        scroll-margin-top: 96px;
-      }
-
-      .process-stage--full[id],
-      .handoff-stage--full[id] {
-        scroll-margin-top: 24px;
-      }
-
-      /* === 详情页模式 === */
-      .detail-bar {
-        position: sticky;
-        top: 8px;
-        z-index: 6;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 16px;
-        background: rgba(13, 19, 32, 0.94);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        backdrop-filter: blur(14px);
-      }
-
-      .detail-bar[hidden] {
-        display: none;
-      }
-
-      .detail-back {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 8px 14px;
-        color: var(--cyan);
-        background: rgba(50, 217, 255, 0.1);
-        border: 1px solid rgba(50, 217, 255, 0.32);
-        border-radius: 6px;
-        font-size: 13px;
-        font-weight: 800;
-        cursor: pointer;
-        transition: color 140ms ease, background 140ms ease;
-      }
-
-      .detail-back:hover {
-        color: #fff;
-        background: rgba(50, 217, 255, 0.2);
-      }
-
-      .detail-context {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        flex: 1;
-        justify-content: center;
-        color: var(--soft);
-        font-size: 13px;
-        font-weight: 800;
-        min-width: 0;
-      }
-
-      .detail-position {
-        flex-shrink: 0;
-        padding: 4px 10px;
-        color: var(--muted);
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        font-size: 12px;
-        font-weight: 800;
-      }
-
-      .detail-title {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        color: var(--ink);
-      }
-
-      .detail-nav {
-        display: flex;
-        gap: 6px;
-      }
-
-      .detail-prev,
-      .detail-next {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        padding: 8px 12px;
-        color: var(--soft);
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        font-size: 12px;
-        font-weight: 800;
-        cursor: pointer;
-        transition: color 140ms ease, border-color 140ms ease;
-      }
-
-      .detail-prev:disabled,
-      .detail-next:disabled {
-        opacity: 0.32;
-        cursor: not-allowed;
-      }
-
-      .detail-prev:hover:not(:disabled),
-      .detail-next:hover:not(:disabled) {
-        color: #fff;
-        border-color: var(--cyan);
-      }
-
-      /* 详情模式下隐藏列表组件 */
-      body[data-detail-card] .channel-strip,
-      body[data-detail-card] .stage-strip,
-      body[data-detail-card] .pipeline-strip,
-      body[data-detail-card] .section-toolbar,
-      body[data-detail-card] .table-wrap,
-      body[data-detail-card] .table-stack,
-      body[data-detail-card] .table-section-title,
-      body[data-detail-card] .playbook-grid,
-      body[data-detail-card] .sequence {
-        display: none;
-      }
-
-      .channel-card--full.detail-hidden {
-        display: none !important;
-      }
-
-      /* 详情模式下隐藏每张卡的折叠按钮（已强制全展开） */
-      body[data-detail-card] .sop-toggle {
-        display: none;
-      }
-
-      /* 列表模式下，获客 / 触达的渠道卡全部不在列表里显示。
-         只通过快跳条或对比矩阵点击进详情页查看。 */
-      .channel-grid > .channel-card--full {
-        display: none;
-      }
-
-      body[data-detail-card] .channel-grid > .channel-card--full:not(.detail-hidden) {
-        display: grid;
-      }
-
-      /* 详情模式下，卡片放宽一点 */
-      body[data-detail-card] .channel-card--full[id] {
-        scroll-margin-top: 96px;
-      }
-
-      @media (max-width: 760px) {
-        .detail-context {
-          order: 3;
-          flex: 0 0 100%;
-          justify-content: flex-start;
-        }
-      }
-
-      /* === 渠道快跳导航条 === */
-      .channel-strip {
-        position: sticky;
-        top: 8px;
-        z-index: 5;
-        display: grid;
-        grid-template-columns: repeat(7, minmax(0, 1fr));
-        gap: 6px;
-        padding: 12px;
-        background: rgba(13, 19, 32, 0.92);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        backdrop-filter: blur(14px);
-      }
-
-      .channel-strip a {
-        display: grid;
-        place-items: center;
-        gap: 2px;
-        min-height: 52px;
-        padding: 6px 4px;
-        color: var(--soft);
-        text-decoration: none;
-        background: rgba(47, 230, 168, 0.06);
-        border: 1px solid rgba(47, 230, 168, 0.2);
-        border-radius: 6px;
-        font-size: 11px;
-        font-weight: 800;
-        text-align: center;
-        line-height: 1.25;
-      }
-
-      .channel-strip a strong {
-        display: block;
-        color: var(--mint);
-        font-size: 12px;
-      }
-
-      .channel-strip a:hover,
-      .channel-strip a:focus-visible {
-        color: #fff;
-        background: rgba(47, 230, 168, 0.16);
-        border-color: rgba(47, 230, 168, 0.46);
-        outline: none;
-      }
-
-      .channel-strip--touch a {
-        background: rgba(255, 111, 134, 0.06);
-        border-color: rgba(255, 111, 134, 0.22);
-      }
-
-      .channel-strip--touch a strong {
-        color: var(--rose);
-      }
-
-      .channel-strip--touch a:hover {
-        background: rgba(255, 111, 134, 0.16);
-        border-color: rgba(255, 111, 134, 0.46);
-      }
-
-      @media (max-width: 1080px) {
-        .channel-strip {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 600px) {
-        .channel-strip {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-
-      /* === 区段工具栏（全部展开/折叠 + 对比表） === */
-      .section-toolbar {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 14px;
-        background: rgba(13, 19, 32, 0.7);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-      }
-
-      .section-toolbar .toolbar-label {
-        color: var(--muted);
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 0.4px;
-        text-transform: uppercase;
-      }
-
-      .section-toolbar button {
-        padding: 6px 12px;
-        color: var(--soft);
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        font-size: 12px;
-        font-weight: 800;
-        cursor: pointer;
-        transition: color 140ms ease, border-color 140ms ease;
-      }
-
-      .section-toolbar button:hover {
-        color: #fff;
-        border-color: var(--cyan);
-      }
-
-      .section-tools {
-        display: flex;
-        gap: 8px;
-      }
-
-      /* === 比较矩阵表 === */
-      table.compare-table {
-        min-width: 880px;
-      }
-
-      table.compare-table th {
-        padding: 12px 14px;
-        font-size: 12px;
-      }
-
-      table.compare-table td {
-        padding: 10px 14px;
-        font-size: 13px;
-      }
-
-      table.compare-table--touch th {
-        background: linear-gradient(90deg, var(--rose), var(--amber));
-      }
-
-      table.compare-table td:first-child a {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        color: var(--cyan);
-        text-decoration: none;
-        font-weight: 900;
-      }
-
-      table.compare-table td:first-child a:hover {
-        color: #fff;
-        text-decoration: underline;
-      }
-
-      .compare-pill {
-        display: inline-flex;
-        align-items: center;
-        padding: 2px 8px;
-        border-radius: 5px;
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: 0.3px;
-      }
-
-      .compare-pill--hi {
-        color: #051015;
-        background: var(--mint);
-      }
-
-      .compare-pill--mid {
-        color: #051015;
-        background: var(--cyan);
-      }
-
-      .compare-pill--lo {
-        color: var(--muted);
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid var(--line);
-      }
-
-      /* === 卡片折叠机制 === */
-      .channel-card--full[data-collapsed="true"] .sop-block:not(.sop-block--always) {
-        display: none;
-      }
-
-      .sop-toggle {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 7px 14px;
-        color: var(--cyan);
-        background: rgba(50, 217, 255, 0.08);
-        border: 1px solid rgba(50, 217, 255, 0.32);
-        border-radius: 6px;
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: 0.3px;
-        cursor: pointer;
-      }
-
-      .sop-toggle:hover {
-        color: #fff;
-        background: rgba(50, 217, 255, 0.18);
-      }
-
-      .sop-toggle::after {
-        content: "▾";
-        transition: transform 160ms ease;
-      }
-
-      .channel-card--full[data-collapsed="false"] .sop-toggle::after {
-        transform: rotate(180deg);
-      }
-
-      .channel-card--full[data-collapsed="false"] .toggle-label-collapsed {
-        display: none;
-      }
-
-      .channel-card--full[data-collapsed="true"] .toggle-label-expanded {
-        display: none;
-      }
-
-      /* === ⑤ 完成标准强化 === */
-      .sop-block--done {
-        background: rgba(47, 230, 168, 0.1);
-        border-color: rgba(47, 230, 168, 0.5);
-        border-left: 4px solid var(--mint);
-      }
-
-      .sop-block--done h4 {
-        color: var(--mint);
-        font-size: 13px;
-      }
-
-      /* === ⑥ 衔接降级 === */
-      .sop-block--handoff {
-        background: rgba(255, 255, 255, 0.025);
-        border-color: rgba(194, 212, 232, 0.1);
-      }
-
-      .sop-block--handoff h4 {
-        color: var(--muted);
-        font-size: 11px;
-      }
-
-      .sop-block--handoff ul {
-        color: var(--muted);
-        font-size: 12px;
-      }
-
-      /* === ② 操作步骤里的 ⚠ 避免子块 === */
-      .sub-warn {
-        margin-top: 12px;
-        padding: 10px 12px;
-        background: rgba(246, 200, 95, 0.08);
-        border-left: 3px solid var(--amber);
-        border-radius: 4px;
-      }
-
-      .sub-warn h5 {
-        margin: 0 0 6px;
-        color: var(--amber);
-        font-size: 11px;
-        font-weight: 900;
-        letter-spacing: 0.4px;
-        text-transform: uppercase;
-      }
-
-      .sub-warn ul {
-        margin: 0;
-        padding-left: 18px;
-        color: var(--soft);
-        font-size: 12px;
-        line-height: 1.65;
-      }
-
-      /* === ⑤ 里嵌套 CRM 必填字段子块 === */
-      .sub-fields {
-        margin-top: 14px;
-        padding-top: 12px;
-        border-top: 1px dashed rgba(47, 230, 168, 0.25);
-      }
-
-      .sub-fields h5 {
-        margin: 0 0 8px;
-        color: var(--mint);
-        font-size: 11px;
-        font-weight: 900;
-        letter-spacing: 0.4px;
-        text-transform: uppercase;
-      }
-    </style>
+    <link rel="stylesheet" href="src/trade.css?v=20260527" />
   </head>
   <body>
     <div class="app-shell">
@@ -1978,6 +22,10 @@
         </header>
 
         <a class="home-link" href="index.html">返回个人网站首页</a>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle-label">深色主题</span>
+        </button>
 
         <nav class="nav-block" aria-label="页面导航">
           <div class="section-label">Knowledge map</div>
@@ -2054,11 +102,11 @@
                   <span>从市场选择到复盘沉淀的关键阶段</span>
                 </div>
                 <div class="signal">
-                  <strong>14</strong>
+                  <strong>15</strong>
                   <span>常用获客渠道统一归档</span>
                 </div>
                 <div class="signal">
-                  <strong>12</strong>
+                  <strong>13</strong>
                   <span>触达渠道与组合打法</span>
                 </div>
               </div>
@@ -2147,7 +195,7 @@
               </div>
               <div class="entry-meta">
                 <span>进入获客界面</span>
-                <span>14 channels</span>
+                <span>15 channels</span>
               </div>
             </a>
 
@@ -2168,7 +216,7 @@
               </div>
               <div class="entry-meta">
                 <span>进入触达界面</span>
-                <span>12 channels</span>
+                <span>13 channels</span>
               </div>
             </a>
 
@@ -2270,7 +318,7 @@
                     <code data-copy>Statista / IBISWorld — 行业报告 + 市场规模</code>
                     <code data-copy>Google Trends — 关键词热度地理分布</code>
                     <code data-copy>World Bank Doing Business — 营商环境 + 跨境物流</code>
-                    <code data-copy>调 A07 海关数据反查 → 验证候选国是否真在进口</code>
+                    <code data-copy>调 A08 海关数据反查 → 验证候选国是否真在进口</code>
                   </div>
                 </section>
 
@@ -2338,7 +386,7 @@
                   <h4>② 关键动作</h4>
                   <ol>
                     <li>假设 2–3 个客户类型（进口商 / 品牌 / 连锁 / 工程 / 代理）。</li>
-                    <li>用 A07 海关 + A01 Google + A02 LinkedIn 验证存在性。</li>
+                    <li>用 A08 海关 + A01 Google + A02 LinkedIn 验证存在性。</li>
                     <li>收敛到 1–2 个最优画像。</li>
                     <li>画决策人地图（采购 / 老板 / 类目 / 技术 / 财务谁拍板）。</li>
                     <li>写一句 30 秒能说清的 ICP 公式。</li>
@@ -2431,11 +479,11 @@
                 <section class="sop-block sop-block--wide">
                   <h4>③ 渠道矩阵参考（点击进入对应 SOP）</h4>
                   <div class="query-list">
-                    <code data-copy>消费品 / 视觉品类 → A01 Google + A03 IG/TikTok + A11 Maps + A06 RFQ</code>
-                    <code data-copy>B2B 设备 / 机械 → A01 Google + A02 LinkedIn + A07 海关 + A08 展会</code>
-                    <code data-copy>工程 / 项目类 → A08 展会 + A13 招投标 + A12 合作伙伴 + A09 竞品反查</code>
-                    <code data-copy>区域批发 / 小 B → A04 FB 群 + A11 Maps + A05 YouTube + A01 Google</code>
-                    <code data-copy>大客户 / 决策周期长 → A07 海关 + A02 LinkedIn + A09 竞品 + A14 新闻事件</code>
+                    <code data-copy>消费品 / 视觉品类 → A01 Google + A03 IG + A04 TikTok + A12 Maps + A07 RFQ</code>
+                    <code data-copy>B2B 设备 / 机械 → A01 Google + A02 LinkedIn + A08 海关 + A09 展会</code>
+                    <code data-copy>工程 / 项目类 → A09 展会 + A14 招投标 + A13 合作伙伴 + A10 竞品反查</code>
+                    <code data-copy>区域批发 / 小 B → A05 FB 群 + A12 Maps + A06 YouTube + A01 Google</code>
+                    <code data-copy>大客户 / 决策周期长 → A08 海关 + A02 LinkedIn + A10 竞品 + A15 新闻事件</code>
                     <code data-copy>验证回报率：每周记录每渠道的候选数 + 后续回复率，淘汰底部</code>
                   </div>
                 </section>
@@ -2516,7 +564,7 @@
                     <code data-copy>强信号：海关 6 个月内进口 / 招聘采购 / 主动询盘 / 新店开张 / 融资落地</code>
                     <code data-copy>中信号：官网近期更新 / LinkedIn 公司动态 / 新品发布 / 同类内容互动</code>
                     <code data-copy>弱信号：有官网 + 在做相关业务（默认状态，不算信号）</code>
-                    <code data-copy>工具：A07 海关 / A02 LinkedIn 招聘 / A14 Google Alerts / Wappalyzer 网站更新</code>
+                    <code data-copy>工具：A08 海关 / A02 LinkedIn 招聘 / A15 Google Alerts / Wappalyzer 网站更新</code>
                     <code data-copy>证据格式：信号类型 + 时间 + 链接 + 1 句话摘录</code>
                   </div>
                 </section>
@@ -2738,7 +786,7 @@
                   <h4>① 输入 / 前置</h4>
                   <ul>
                     <li>05 完成 CRM 入库 + 评分。</li>
-                    <li>触达模板库已就绪（T01–T12）。</li>
+                    <li>触达模板库已就绪（T01–T13）。</li>
                     <li>每客户的"匹配理由 / 信号引用"已写好。</li>
                   </ul>
                 </section>
@@ -2758,11 +806,11 @@
                   <h4>③ 渠道选择矩阵（点击复制）</h4>
                   <div class="query-list">
                     <code data-copy>有公司邮箱 + 决策人 → T01 邮件主 + T02 WhatsApp 轻提醒</code>
-                    <code data-copy>展会 / 询盘高上下文 → T09 / T02 24h 内推进规格</code>
+                    <code data-copy>展会 / 询盘高上下文 → T10 / T02 24h 内推进规格</code>
                     <code data-copy>视觉品类 + 社媒活跃 → T04 IG DM 引用具体内容</code>
                     <code data-copy>找到 LinkedIn 没邮箱 → T03 LinkedIn 互动 → 连接 → DM</code>
-                    <code data-copy>大企业找不到人 → T08 网站表单 + T03 LinkedIn 找人</code>
-                    <code data-copy>群组 / Marketplace → T05 Messenger 引用上下文</code>
+                    <code data-copy>大企业找不到人 → T09 网站表单 + T03 LinkedIn 找人</code>
+                    <code data-copy>群组 / Marketplace → T06 Messenger 引用上下文</code>
                   </div>
                 </section>
 
@@ -2832,7 +880,7 @@
                     <li>D+3：补一个具体价值点（案例 / 数据 / 行业洞察）。</li>
                     <li>D+7：礼貌收尾 + 问"是否正确负责人"。</li>
                     <li>每轮换角度，不重复同一信息。</li>
-                    <li>3 轮无回 → 进 T11 Newsletter 长期培育。</li>
+                    <li>3 轮无回 → 进 T12 Newsletter 长期培育。</li>
                   </ol>
                 </section>
 
@@ -2853,7 +901,7 @@
                     <li>D+1 / D+3 / D+7 三轮全部发完</li>
                     <li>CRM 记每轮发送时间 + 渠道 + 模板版本</li>
                     <li>回复 / 三次未回状态明确</li>
-                    <li>无回客户转入 T11 培育队列</li>
+                    <li>无回客户转入 T12 培育队列</li>
                   </ul>
                 </section>
 
@@ -2923,7 +971,7 @@
                     <code data-copy>必问 7 项：规格 / 数量 / 认证 / 包装 / 交期 / 目标价 / 样品需求</code>
                     <code data-copy>报价格式：单价 + MOQ + 包装 + 交期 + 付款条件 + 报价有效期 + 认证</code>
                     <code data-copy>样品 SOP：客户付样品费 + 物流费 → 24h 内发出 + 提供 tracking</code>
-                    <code data-copy>视频会议触发：定制 / 多角色决策 / 单值 ≥5 万 USD → T07 视频</code>
+                    <code data-copy>视频会议触发：定制 / 多角色决策 / 单值 ≥5 万 USD → T08 视频</code>
                     <code data-copy>跟进节奏：报价后 D+3 提醒 / D+7 确认 / D+14 复活</code>
                     <code data-copy>钩子话术：If price works, I can hold stock / lock production slot till [日期]</code>
                   </div>
@@ -3075,28 +1123,29 @@
             </div>
           </div>
 
-          <nav class="channel-strip" aria-label="14 个获客渠道快速跳转">
+          <nav class="channel-strip" aria-label="15 个获客渠道快速跳转">
             <a href="#A01"><strong>A01</strong>Google</a>
             <a href="#A02"><strong>A02</strong>LinkedIn</a>
-            <a href="#A03"><strong>A03</strong>IG/TT</a>
-            <a href="#A04"><strong>A04</strong>FB 群</a>
-            <a href="#A05"><strong>A05</strong>YouTube</a>
-            <a href="#A06"><strong>A06</strong>B2B/RFQ</a>
-            <a href="#A07"><strong>A07</strong>海关</a>
-            <a href="#A08"><strong>A08</strong>展会</a>
-            <a href="#A09"><strong>A09</strong>竞品</a>
-            <a href="#A10"><strong>A10</strong>独立站</a>
-            <a href="#A11"><strong>A11</strong>Maps</a>
-            <a href="#A12"><strong>A12</strong>转介绍</a>
-            <a href="#A13"><strong>A13</strong>招投标</a>
-            <a href="#A14"><strong>A14</strong>新闻</a>
+            <a href="#A03"><strong>A03</strong>Instagram</a>
+            <a href="#A04"><strong>A04</strong>TikTok</a>
+            <a href="#A05"><strong>A05</strong>FB 群</a>
+            <a href="#A06"><strong>A06</strong>YouTube</a>
+            <a href="#A07"><strong>A07</strong>B2B/RFQ</a>
+            <a href="#A08"><strong>A08</strong>海关</a>
+            <a href="#A09"><strong>A09</strong>展会</a>
+            <a href="#A10"><strong>A10</strong>竞品</a>
+            <a href="#A11"><strong>A11</strong>独立站</a>
+            <a href="#A12"><strong>A12</strong>Maps</a>
+            <a href="#A13"><strong>A13</strong>转介绍</a>
+            <a href="#A14"><strong>A14</strong>招投标</a>
+            <a href="#A15"><strong>A15</strong>新闻</a>
           </nav>
 
           <div class="section-toolbar" role="note">
             <span class="toolbar-label">点上方快跳条或矩阵任一行进入完整 SOP 详情</span>
           </div>
 
-          <div class="table-wrap" aria-label="14 渠道对比矩阵">
+          <div class="table-wrap" aria-label="15 渠道对比矩阵">
             <table class="compare-table">
               <thead>
                 <tr>
@@ -3126,15 +1175,23 @@
                   <td>6–12 min/家</td>
                 </tr>
                 <tr>
-                  <td><a href="#A03">A03 Instagram / TikTok</a></td>
-                  <td>视觉品类 D2C / 小 B</td>
+                  <td><a href="#A03">A03 Instagram</a></td>
+                  <td>视觉品类 D2C / boutique / 设计师店</td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
                   <td><span class="compare-pill compare-pill--lo">低</span></td>
                   <td>IG Creator Studio</td>
                   <td>4–8 min/家</td>
                 </tr>
                 <tr>
-                  <td><a href="#A04">A04 Facebook 群组</a></td>
+                  <td><a href="#A04">A04 TikTok</a></td>
+                  <td>新锐 D2C / TikTok Shop / 主播带货</td>
+                  <td><span class="compare-pill compare-pill--mid">中</span></td>
+                  <td><span class="compare-pill compare-pill--mid">中</span></td>
+                  <td>TikTok 原生搜索 / Creator Marketplace</td>
+                  <td>4–8 min/家</td>
+                </tr>
+                <tr>
+                  <td><a href="#A05">A05 Facebook 群组</a></td>
                   <td>区域批发 / 小 B / 兴趣社群</td>
                   <td><span class="compare-pill compare-pill--hi">高</span></td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
@@ -3142,7 +1199,7 @@
                   <td>30 min 潜伏 + 5 min/线索</td>
                 </tr>
                 <tr>
-                  <td><a href="#A05">A05 YouTube</a></td>
+                  <td><a href="#A06">A06 YouTube</a></td>
                   <td>设备 / 户外 / 家具 / 工程类</td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
@@ -3150,7 +1207,7 @@
                   <td>8–15 min/视频</td>
                 </tr>
                 <tr>
-                  <td><a href="#A06">A06 B2B 平台 / RFQ</a></td>
+                  <td><a href="#A07">A07 B2B 平台 / RFQ</a></td>
                   <td>客户主动询盘 / 新市场测试</td>
                   <td><span class="compare-pill compare-pill--hi">高</span></td>
                   <td><span class="compare-pill compare-pill--lo">低</span></td>
@@ -3158,7 +1215,7 @@
                   <td>15–30 min/条</td>
                 </tr>
                 <tr>
-                  <td><a href="#A07">A07 海关数据</a></td>
+                  <td><a href="#A08">A08 海关数据</a></td>
                   <td>实物贸易 / 验证采购事实</td>
                   <td><span class="compare-pill compare-pill--hi">高</span></td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
@@ -3166,7 +1223,7 @@
                   <td>10–20 min/家</td>
                 </tr>
                 <tr>
-                  <td><a href="#A08">A08 展会 / 协会</a></td>
+                  <td><a href="#A09">A09 展会 / 协会</a></td>
                   <td>全品类 / 高上下文</td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
@@ -3174,7 +1231,7 @@
                   <td>4–8 h/展会</td>
                 </tr>
                 <tr>
-                  <td><a href="#A09">A09 竞品反查</a></td>
+                  <td><a href="#A10">A10 竞品反查</a></td>
                   <td>已有竞品市场 / 新市场摸网</td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
@@ -3182,7 +1239,7 @@
                   <td>1–3 h/竞品</td>
                 </tr>
                 <tr>
-                  <td><a href="#A10">A10 独立站 / 广告 / 表单</a></td>
+                  <td><a href="#A11">A11 独立站 / 广告 / 表单</a></td>
                   <td>有自有流量 / 客户主动</td>
                   <td><span class="compare-pill compare-pill--hi">高</span></td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
@@ -3190,7 +1247,7 @@
                   <td>10–20 min/线索</td>
                 </tr>
                 <tr>
-                  <td><a href="#A11">A11 Maps / 本地目录</a></td>
+                  <td><a href="#A12">A12 Maps / 本地目录</a></td>
                   <td>区域门店 / 安装商 / 批发</td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
                   <td><span class="compare-pill compare-pill--lo">低</span></td>
@@ -3198,7 +1255,7 @@
                   <td>30–60 min/城市</td>
                 </tr>
                 <tr>
-                  <td><a href="#A12">A12 转介绍 / 合作伙伴</a></td>
+                  <td><a href="#A13">A13 转介绍 / 合作伙伴</a></td>
                   <td>已有客户网络 / 信任背书</td>
                   <td><span class="compare-pill compare-pill--hi">高</span></td>
                   <td><span class="compare-pill compare-pill--lo">低</span></td>
@@ -3206,7 +1263,7 @@
                   <td>30 min/次索取</td>
                 </tr>
                 <tr>
-                  <td><a href="#A13">A13 招投标 / 政府采购</a></td>
+                  <td><a href="#A14">A14 招投标 / 政府采购</a></td>
                   <td>工程 / 设备 / 公共项目</td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
                   <td><span class="compare-pill compare-pill--hi">高</span></td>
@@ -3214,7 +1271,7 @@
                   <td>1–2 h 评估 + 40h 投</td>
                 </tr>
                 <tr>
-                  <td><a href="#A14">A14 新闻 / 招聘 / 扩张</a></td>
+                  <td><a href="#A15">A15 新闻 / 招聘 / 扩张</a></td>
                   <td>触发型机会捕捉</td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
@@ -3319,8 +1376,8 @@
                   <h4>⑥ 衔接其他渠道</h4>
                   <ul>
                     <li>拿到 named contact → 用 <strong>A02 LinkedIn</strong> 验证职位和在职状态。</li>
-                    <li>邮箱验证不过 → 转 <strong>T03 LinkedIn DM</strong> 或 <strong>T08 网站表单</strong>。</li>
-                    <li>找到公司但没联系人 → 用 <strong>A07 海关数据</strong> 反查 / <strong>A11 Google Maps</strong> 找门店。</li>
+                    <li>邮箱验证不过 → 转 <strong>T03 LinkedIn DM</strong> 或 <strong>T09 网站表单</strong>。</li>
+                    <li>找到公司但没联系人 → 用 <strong>A08 海关数据</strong> 反查 / <strong>A12 Google Maps</strong> 找门店。</li>
                     <li>判断完成、ICP 高匹配 → 直接进入 <strong>T01 邮件 + T02 WhatsApp 轻提醒</strong>组合。</li>
                   </ul>
                 </section>
@@ -3430,8 +1487,8 @@
                   <ul>
                     <li>拿到邮箱格式 → 用 <strong>A01 Google</strong> + Hunter 验证 → 转 <strong>T01 邮件</strong>。</li>
                     <li>连接通过 → <strong>T03 LinkedIn DM</strong> 发第一条对话。</li>
-                    <li>对方不是负责人 → 请求转介绍到正确角色，走 <strong>T12 转介绍</strong>。</li>
-                    <li>对方在动态发过痛点 → 用 <strong>A14 新闻事件</strong>角度切入。</li>
+                    <li>对方不是负责人 → 请求转介绍到正确角色，走 <strong>T13 转介绍</strong>。</li>
+                    <li>对方在动态发过痛点 → 用 <strong>A15 新闻事件</strong>角度切入。</li>
                   </ul>
                 </section>
               </div>
@@ -3447,35 +1504,37 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="A03" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="A03" data-collapsed="false">
               <header class="sop-header">
                 <div class="sop-meta">
                   <strong class="sop-id">A03</strong>
                   <span class="tag">视觉品类</span>
+                  <span class="tag tag--new">含批量工具 · 预研中</span>
                 </div>
-                <h3>Instagram / TikTok</h3>
-                <p class="sop-summary">视觉驱动品类（服装、美妆、家居、礼品、宠物、包装、生活方式）的 D2C 品牌和小 B 渠道入口。预计单家品牌 4–8 分钟。</p>
+                <h3>Instagram</h3>
+                <p class="sop-summary">D2C 品牌 / 设计师店 / boutique / 网红店在 IG 上的品牌入口。靠 bio、Highlight、Tagged 反查找到联系方式或转 DM。预计单家品牌 4–8 分钟。<br /><em>新增：</em>支持 keyword 批量异步拉取 IG 帖子线索（Bright Data，预研中，不是实时搜索）。</p>
               </header>
 
               <div class="sop-body">
                 <section class="sop-block sop-block--always">
                   <h4>① 什么时候用</h4>
                   <ul>
-                    <li>视觉决定购买决策的品类。</li>
-                    <li>找 D2C 品牌、设计师品牌、网红店、boutique。</li>
-                    <li>对方在 Google 没有官网或 SEO 弱，但社媒非常活跃。</li>
-                    <li>用对方内容做触达上下文（"看到你 X 视频"），回复率最高。</li>
+                    <li>视觉决定购买决策的品类（服装 / 美妆 / 家居 / 礼品 / 宠物 / 包装 / 生活方式）。</li>
+                    <li>D2C 品牌 / 设计师品牌 / boutique / 买手店为主，对方常常没正规官网。</li>
+                    <li>对方在 Google SEO 弱，但 IG 帖子、Story、Reels 高频更新。</li>
+                    <li>需要"具体帖子上下文"提升触达回复率（"看到你 X 系列"）。</li>
                   </ul>
                 </section>
 
                 <section class="sop-block">
                   <h4>② 操作步骤</h4>
                   <ol>
-                    <li>用 hashtag + 关键词 + 地理标签搜账号。</li>
-                    <li>看 bio 链接（Linktree / 官网 / 邮箱 / WhatsApp）。</li>
-                    <li>看 highlight 是否有 "stockist" "wholesale" "press"。</li>
-                    <li>看最近 5 条帖子的产品风格和发帖频次。</li>
-                    <li>有 bio 邮箱 → 走 T01；没邮箱有互动 → 走 T04 DM。</li>
+                    <li>用 hashtag + 地理标签 + 关键词搜账号；优先看 Reels 而不是 Posts，分发更广。</li>
+                    <li>看 bio 链接（Linktree / 官网 / 邮箱 / WhatsApp），bio 邮箱是最高质量入口。</li>
+                    <li>翻 Highlight：找 "stockist" "wholesale" "press" "lookbook"，里面常有正式联系方式。</li>
+                    <li>看 Tagged 列表 + Mentions：能反查出他们的经销、联名、大客户。</li>
+                    <li>用 Following 列表反查竞品的圈层（小品牌常互关同行）。</li>
+                    <li>有 bio 邮箱 → 走 T01；没邮箱有互动 → 走 T04 IG DM。</li>
                   </ol>
                   <div class="sub-warn">
                     <h5>⚠ 避免</h5>
@@ -3483,9 +1542,9 @@
                       <li>IG 新号每天 DM ≤20，超量限流 24–48 小时。</li>
                       <li>同一模板 DM 群发触发反垃圾，账号短期回复率清零。</li>
                       <li>头像和 bio 必须像品牌方，个人号 DM 商家容易被忽略。</li>
-                      <li>DM 默认进 Requests 文件夹，要在内容里提示对方查。</li>
-                      <li>TikTok 在印度、部分中东国家不可用，确认市场再投入。</li>
-                      <li>不要私聊推 PDF 目录，文件链接常被屏蔽。</li>
+                      <li>DM 默认进 Requests 文件夹，要在内容里提示对方查（或用 Story 反应破冰）。</li>
+                      <li>不要私聊推 PDF 目录，IG 内文件链接常被屏蔽。</li>
+                      <li>Story 寿命 24h，引用要立刻发，过期失去上下文。</li>
                     </ul>
                   </div>
                 </section>
@@ -3496,9 +1555,9 @@
                     <code data-copy>#wholesale[品类] #[品类]boutique #[品类]supplier</code>
                     <code data-copy>#[国家][品类] #[城市]boutique（区域 + 品类组合）</code>
                     <code data-copy>从竞品账号的 Following / Tagged / Mentions 反查</code>
-                    <code data-copy>TikTok 搜 "[品类] vendor" / "[品类] wholesale" / "where to buy [品类]"</code>
-                    <code data-copy>IG Map 功能搜区域 boutique（仅部分版本支持）</code>
+                    <code data-copy>IG Map 搜区域 boutique（部分版本支持，按城市抓门店账号）</code>
                     <code data-copy>看品牌的 "tagged in" 列表 → 找经销 / 联名 / 大客户</code>
+                    <code data-copy>Highlight 关键词：stockist / wholesale / press / lookbook</code>
                   </div>
                   <p class="sop-tip">小品牌看粉丝绝对值没用，看互动率（点赞 / 粉丝 ≥ 2%）和发帖一致性更准。</p>
                 </section>
@@ -3507,11 +1566,11 @@
                   <h4>④ ICP / 账号质量判断</h4>
                   <ul class="check-list">
                     <li><label><input type="checkbox"> bio 有官网链接（说明在做品牌）</label></li>
-                    <li><label><input type="checkbox"> bio 或 highlight 有 wholesale / contact 入口</label></li>
+                    <li><label><input type="checkbox"> bio 或 Highlight 有 wholesale / contact 入口</label></li>
                     <li><label><input type="checkbox"> 最近 30 天发帖 ≥8 次（账号真活跃）</label></li>
                     <li><label><input type="checkbox"> 互动率 ≥2%，评论是真用户不是机器人</label></li>
                     <li><label><input type="checkbox"> 有线下门店、市集或快闪痕迹</label></li>
-                    <li><label><input type="checkbox"> 已上 Shopify / IG Shop / TikTok Shop</label></li>
+                    <li><label><input type="checkbox"> 已上 Shopify / IG Shop（侧重直购）</label></li>
                   </ul>
                 </section>
 
@@ -3525,10 +1584,10 @@
                   <div class="sub-fields">
                     <h5>CRM 必填字段</h5>
                     <ul class="field-list">
-                      <li>平台（IG / TikTok）+ handle</li>
+                      <li>平台（IG）+ handle</li>
                       <li>粉丝数 / 互动率 / 发帖频次</li>
                       <li>主营品类 / 价格段</li>
-                      <li>是否有官网 / 是否上 Shop</li>
+                      <li>是否有官网 / 是否上 IG Shop</li>
                       <li>来源 hashtag / 引用的具体帖子链接</li>
                       <li>触达渠道（bio 邮箱 / DM / 转 WhatsApp）</li>
                     </ul>
@@ -3540,8 +1599,206 @@
                   <ul>
                     <li>bio 有官网 → 转 <strong>A01 Google</strong> 深挖联系人。</li>
                     <li>bio 有邮箱 → 直接进 <strong>T01 邮件</strong>。</li>
-                    <li>没有正式入口 → <strong>T04 IG / TikTok DM</strong> 引用具体内容。</li>
-                    <li>账号大且活跃 → 用 <strong>A14 新店 / 新品事件</strong>角度建上下文。</li>
+                    <li>没有正式入口 → <strong>T04 Instagram DM</strong> 引用具体帖子或 Story。</li>
+                    <li>对方在 TikTok 同样活跃 → 同步看 <strong>A04 TikTok</strong>。</li>
+                    <li>账号大且活跃 → 用 <strong>A15 新店 / 新品事件</strong>角度建上下文。</li>
+                  </ul>
+                </section>
+
+                <section class="sop-block sop-block--tool sop-block--always">
+                  <div class="tool-head">
+                    <h4>⑦ 批量找线索 · Bright Data Instagram Posts</h4>
+                    <span class="tool-badge">预研中 · 未上线</span>
+                    <span class="tool-source">数据源 <code>Bright Data / Instagram Posts Dataset</code></span>
+                  </div>
+
+                  <div class="tool-body">
+                    <div class="tool-cell tool-cell--full">
+                      <h5><span class="num">1</span>一句话定位</h5>
+                      <ul>
+                        <li>用 keyword 批量拉 IG 帖子线索，<strong>补 ② ③ 手工搜索的覆盖盲区</strong>。</li>
+                        <li><strong>异步任务</strong> —— 提交后系统在后台跑，几分钟到几十分钟出结果，<u>不是实时搜索</u>。</li>
+                        <li>当前阶段：接口预研已完成（description keyword 搜索已验证通），研发接入评估中。</li>
+                      </ul>
+                    </div>
+
+                    <div class="tool-cell">
+                      <h5><span class="num">2</span>什么时候用（不是替代 ②③）</h5>
+                      <ul>
+                        <li>单个 keyword 想<strong>一次拿 50–500 条</strong> IG 帖子。</li>
+                        <li>想<strong>离开界面</strong>，稍后回来看结果。</li>
+                        <li>手工 hashtag 搜过一遍后，想<strong>批量扩量</strong>。</li>
+                        <li>关键词偏品类（"jewelry" "ceramic mug"），不偏国家或人群。</li>
+                      </ul>
+                    </div>
+
+                    <div class="tool-cell tool-cell--avoid">
+                      <h5>⚠ 不要承诺 / 不要这样用</h5>
+                      <ul>
+                        <li>实时搜（接口架构本身就不支持）</li>
+                        <li>按国家精准筛 —— <code style="color:var(--amber)">location</code> 字段 ≠ 国家</li>
+                        <li>搜评论内容（未验证）</li>
+                        <li>把 hashtag 当主搜索字段（稳定性未验证）</li>
+                        <li>把 IG handle 当公司名（<code style="color:var(--amber)">gumpssf</code> ≠ Gump's）</li>
+                      </ul>
+                    </div>
+
+                    <div class="tool-cell tool-cell--full">
+                      <h5><span class="num">3</span>业务侧使用流程</h5>
+                      <div class="tool-flow">
+                        <div class="tool-flow-row"><span class="step">1</span><span>输入 keyword <span class="tool-flow-arrow">→</span> 提交批量任务</span></div>
+                        <div class="tool-flow-row"><span class="step">2</span><span>任务异步跑　<span class="pill">排队中</span> <span class="pill">构建中</span> <span class="pill ok">可下载</span></span></div>
+                        <div class="tool-flow-row"><span class="step">3</span><span>完成后回任务列表，查看结果列表（帖子卡片 + 主页链接）</span></div>
+                        <div class="tool-flow-row"><span class="step">4</span><span>系统自动尝试识别 <strong>官网 / 公司主体</strong></span></div>
+                        <div class="tool-flow-row indent"><span>识别成功 <span class="pill ok">自动进 A01 潜客分析链路</span></span></div>
+                        <div class="tool-flow-row indent"><span>识别失败 <span class="pill warn">保留为 IG 社媒线索</span> · 可点主页 DM，或手动补公司名后回流</span></div>
+                      </div>
+                    </div>
+
+                    <div class="tool-cell">
+                      <h5><span class="num">4</span>每条线索能拿到的字段</h5>
+                      <div class="field-chips">
+                        <code>帖子链接</code>
+                        <code>主页链接</code>
+                        <code>handle</code>
+                        <code>帖子描述</code>
+                        <code>话题标签</code>
+                        <code>位置</code>
+                        <code>粉丝数</code>
+                        <code>发布时间</code>
+                        <code>点赞数</code>
+                        <code>评论数</code>
+                        <code>alt_text</code>
+                        <code>tagged_users</code>
+                      </div>
+                    </div>
+
+                    <div class="tool-cell">
+                      <h5><span class="num">5</span>与现有 SOP 的衔接</h5>
+                      <ul>
+                        <li>识别出官网 → 转 <strong>A01 Google</strong> 深挖联系人</li>
+                        <li>识别出邮箱 → 转 <strong>T01 邮件</strong></li>
+                        <li>识别失败的 IG 线索 → 回 <strong>A03 ②③</strong> 手工流程，或走 <strong>T04 IG DM</strong></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="tool-meta">
+                    <div><strong>状态　　</strong>预研完成，研发接入评估中 · 还未在产品中上线。</div>
+                    <div><strong>一期不上</strong>国家过滤 / 评论搜索 / hashtag 主搜 / 实时搜索。</div>
+                    <div><strong>待验证　</strong>records_limit 上限耗时（10 / 50 / 100 / 500）· AI 主体识别准确率 · 官网识别准确率 · 成本模型。</div>
+                  </div>
+                </section>
+              </div>
+
+              <footer class="sop-footer">
+                <span>最近更新 2026-05-26</span>
+                <span>所属阶段：02 多渠道找线索 / 03 验证需求信号</span>
+                <span>预计耗时：4–8 分钟 / 家 · 批量任务异步等待</span>
+                <button type="button" class="sop-toggle">
+                  <span class="toggle-label-collapsed">展开完整 SOP</span>
+                  <span class="toggle-label-expanded">折叠</span>
+                </button>
+              </footer>
+            </article>
+
+            <article class="channel-card channel-card--full" id="A04" data-collapsed="true">
+              <header class="sop-header">
+                <div class="sop-meta">
+                  <strong class="sop-id">A04</strong>
+                  <span class="tag">视觉品类</span>
+                </div>
+                <h3>TikTok</h3>
+                <p class="sop-summary">视觉品类的算法分发型入口：靠 FYP / 直播 / TikTok Shop 找新锐 D2C、网红店、地区代理。和 IG 不同，搜索权重低、bio 链接受限、市场差异大。预计单家品牌 4–8 分钟。</p>
+              </header>
+
+              <div class="sop-body">
+                <section class="sop-block sop-block--always">
+                  <h4>① 什么时候用</h4>
+                  <ul>
+                    <li>新锐 D2C / 短视频原生品牌 / "病毒爆款"型 SKU（美妆、家居小件、玩具、宠物）。</li>
+                    <li>TikTok Shop 已开通市场（US / UK / 东南亚 / 部分 EU）找有带货能力的店铺或主播。</li>
+                    <li>对方 IG 不活跃但 TikTok 高频更新（年轻团队 / 新品牌常见）。</li>
+                    <li>需要看"实际销售场景"判断对方真实出货能力 → 看直播。</li>
+                  </ul>
+                </section>
+
+                <section class="sop-block">
+                  <h4>② 操作步骤</h4>
+                  <ol>
+                    <li>用 TikTok 原生搜索（不是 hashtag）："[品类] vendor / wholesale / where to buy / supplier"。</li>
+                    <li>看 FYP 推荐：刷 3–5 个目标品类视频后算法会持续推同类账号。</li>
+                    <li>看 TikTok Shop 橱窗（蓝色购物袋图标）→ 直接验证有无电商能力 / 出货量。</li>
+                    <li>看直播回放：能看到主播一手讲 MOQ / 价格段 / 物流方式，信息密度高。</li>
+                    <li>看 bio：仅商业账号且粉丝 ≥1000 才能挂外链，否则只有邮箱。</li>
+                    <li>有 bio 邮箱 → 走 T01；只能 DM → 走 T05 TikTok DM。</li>
+                  </ol>
+                  <div class="sub-warn">
+                    <h5>⚠ 避免</h5>
+                    <ul>
+                      <li>TikTok 在印度 / 部分中东国家不可用，确认市场再投入，避免选错池子。</li>
+                      <li>TikTok DM 权限比 IG 严：未互关 / 新号几乎发不出，先评论 + 关注再试。</li>
+                      <li>不要在评论区留邮箱 / WhatsApp 号，触发关键词过滤会被隐藏。</li>
+                      <li>TikTok Shop 商家可能只做本地配送，跨境合作前确认物流意愿。</li>
+                      <li>不要直接给 PDF 目录链接，TikTok 站内文件链常被打断。</li>
+                      <li>主播个人号 ≠ 品牌方，要回到主页核对是不是真采购决策人。</li>
+                    </ul>
+                  </div>
+                </section>
+
+                <section class="sop-block sop-block--wide">
+                  <h4>③ 找客户的搜索词 / 标签（点击复制）</h4>
+                  <div class="query-list">
+                    <code data-copy>[品类] vendor / [品类] wholesale / [品类] supplier / where to buy [品类]</code>
+                    <code data-copy>[国家] [品类] / [city] [品类] shop（区域 + 品类组合）</code>
+                    <code data-copy>TikTok Shop 搜索 → 按 [品类] 看排行榜店铺</code>
+                    <code data-copy>TikTok Creator Marketplace（限部分市场）反查 B 端合作记录</code>
+                    <code data-copy>看竞品账号的"喜欢" / "粉丝"列表反查同类商家</code>
+                    <code data-copy>直播切片：搜 "[品类] live" / "[品类] haul" 看实际带货场</code>
+                  </div>
+                  <p class="sop-tip">TikTok 流量靠算法不靠 hashtag，连续看 / 互动同品类内容 5–10 分钟，FYP 会持续推出新候选账号 — 比 hashtag 反查效率更高。</p>
+                </section>
+
+                <section class="sop-block">
+                  <h4>④ ICP / 账号质量判断</h4>
+                  <ul class="check-list">
+                    <li><label><input type="checkbox"> 商业账号（profile 显示分类标签 + 数据面板入口）</label></li>
+                    <li><label><input type="checkbox"> 已挂 TikTok Shop 橱窗或粉丝 ≥1000 有 bio 外链</label></li>
+                    <li><label><input type="checkbox"> 近 14 天发布 ≥6 条视频（算法存活线）</label></li>
+                    <li><label><input type="checkbox"> 单条平均播放 ≥1 万 或 直播场观 ≥500</label></li>
+                    <li><label><input type="checkbox"> 评论区有真实买家提问（不是机器人）</label></li>
+                    <li><label><input type="checkbox"> 所在市场允许 TikTok Shop / 跨境合作</label></li>
+                  </ul>
+                </section>
+
+                <section class="sop-block sop-block--done sop-block--always">
+                  <h4>⑤ 完成标准 + CRM 必填字段</h4>
+                  <ul class="check-list">
+                    <li><label><input type="checkbox"> 拿到 bio 邮箱或外链官网 OR 通过 DM / 评论建立对话</label></li>
+                    <li><label><input type="checkbox"> 写下 1 句具体匹配理由（引用对方某条视频或直播）</label></li>
+                    <li><label><input type="checkbox"> CRM 建档：handle / 粉丝 / 主营品类 / 市场 / 是否 TikTok Shop</label></li>
+                  </ul>
+                  <div class="sub-fields">
+                    <h5>CRM 必填字段</h5>
+                    <ul class="field-list">
+                      <li>平台（TikTok）+ handle + 所在市场</li>
+                      <li>粉丝数 / 平均播放 / 直播频次</li>
+                      <li>是否开通 TikTok Shop / 橱窗 SKU 数</li>
+                      <li>主营品类 / 价格段 / 出货模式（自营 / 联营 / 主播分销）</li>
+                      <li>来源搜索词或视频链接</li>
+                      <li>触达渠道（bio 邮箱 / 评论 / DM / 转 WhatsApp）</li>
+                    </ul>
+                  </div>
+                </section>
+
+                <section class="sop-block sop-block--handoff">
+                  <h4>⑥ 衔接其他渠道</h4>
+                  <ul>
+                    <li>bio 有官网 → 转 <strong>A01 Google</strong> 深挖联系人和公司主体。</li>
+                    <li>bio 有邮箱 → 直接进 <strong>T01 邮件</strong>。</li>
+                    <li>没有正式入口 → <strong>T05 TikTok DM</strong> 先评论再 DM 引用具体视频。</li>
+                    <li>对方在 IG 同样活跃 → 同步看 <strong>A03 Instagram</strong>。</li>
+                    <li>有 TikTok Shop 出货量 → 用 <strong>A08 海关数据</strong>验证实际出货国 / 量级。</li>
                   </ul>
                 </section>
               </div>
@@ -3557,10 +1814,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="A04" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="A05" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">A04</strong>
+                  <strong class="sop-id">A05</strong>
                   <span class="tag">社群获客</span>
                 </div>
                 <h3>Facebook 群组 / Marketplace</h3>
@@ -3648,7 +1905,7 @@
                     <li>拿到正式邮箱 → <strong>T01 邮件</strong>正式报价。</li>
                     <li>拿到 WhatsApp → <strong>T02 WhatsApp</strong> 快速确认规格。</li>
                     <li>有官网 → <strong>A01 Google</strong> 补公司信息。</li>
-                    <li>群里活跃发帖人 → 长期关注，建 <strong>A14 新闻事件</strong>触发库。</li>
+                    <li>群里活跃发帖人 → 长期关注，建 <strong>A15 新闻事件</strong>触发库。</li>
                   </ul>
                 </section>
               </div>
@@ -3664,10 +1921,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="A05" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="A06" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">A05</strong>
+                  <strong class="sop-id">A06</strong>
                   <span class="tag">内容信号</span>
                 </div>
                 <h3>YouTube / 行业内容评论</h3>
@@ -3755,8 +2012,8 @@
                   <ul>
                     <li>频道主 → <strong>T01 邮件</strong>引用具体视频。</li>
                     <li>评论人有公司 → <strong>A01 Google</strong> 补背景。</li>
-                    <li>评论人有 IG → <strong>A03 Instagram / TikTok</strong>。</li>
-                    <li>视频中品牌 → 走 <strong>A09 竞品 / 供应链反查</strong>。</li>
+                    <li>评论人有 IG → <strong>A03 Instagram</strong>；TikTok 同号 → <strong>A04 TikTok</strong>。</li>
+                    <li>视频中品牌 → 走 <strong>A10 竞品 / 供应链反查</strong>。</li>
                   </ul>
                 </section>
               </div>
@@ -3772,10 +2029,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="A06" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="A07" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">A06</strong>
+                  <strong class="sop-id">A07</strong>
                   <span class="tag">平台询盘</span>
                 </div>
                 <h3>B2B 平台 / RFQ</h3>
@@ -3864,7 +2121,7 @@
                   <ul>
                     <li>拿到邮箱 → 立刻转 <strong>T01 邮件</strong>正式报价。</li>
                     <li>拿到 WhatsApp → <strong>T02 WhatsApp</strong> 快速确认。</li>
-                    <li>买家公司有官网 → <strong>A01 Google</strong> + <strong>A07 海关</strong>验证规模。</li>
+                    <li>买家公司有官网 → <strong>A01 Google</strong> + <strong>A08 海关</strong>验证规模。</li>
                     <li>买家是 KP（采购）→ <strong>A02 LinkedIn</strong> 验证职位再深谈。</li>
                   </ul>
                 </section>
@@ -3881,10 +2138,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="A07" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="A08" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">A07</strong>
+                  <strong class="sop-id">A08</strong>
                   <span class="tag">采购事实</span>
                 </div>
                 <h3>海关与进口数据</h3>
@@ -3975,7 +2232,7 @@
                     <li>找到公司 → <strong>A01 Google</strong> 补官网 / 邮箱。</li>
                     <li>找到公司 → <strong>A02 LinkedIn</strong> 补采购负责人。</li>
                     <li>大客户高优 → <strong>T01 高上下文开发信</strong>（合规切入）。</li>
-                    <li>反查到的竞品供应链 → <strong>A09 竞品反查</strong>深挖。</li>
+                    <li>反查到的竞品供应链 → <strong>A10 竞品反查</strong>深挖。</li>
                   </ul>
                 </section>
               </div>
@@ -3991,10 +2248,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="A08" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="A09" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">A08</strong>
+                  <strong class="sop-id">A09</strong>
                   <span class="tag">行业活跃</span>
                 </div>
                 <h3>展会名录 / 行业协会</h3>
@@ -4082,10 +2339,10 @@
 <section class="sop-block sop-block--handoff">
                   <h4>⑥ 衔接其他渠道</h4>
                   <ul>
-                    <li>当面见过 → <strong>T09 展会面访 / 名片后跟进</strong>。</li>
+                    <li>当面见过 → <strong>T10 展会面访 / 名片后跟进</strong>。</li>
                     <li>没见到只有名 → <strong>T01 邮件</strong>引用 "在 X 展看到您"。</li>
                     <li>展位规模大但联系方式不全 → <strong>A02 LinkedIn</strong>找负责人。</li>
-                    <li>反查展会参展商 → <strong>A09 竞品供应链反查</strong>。</li>
+                    <li>反查展会参展商 → <strong>A10 竞品供应链反查</strong>。</li>
                   </ul>
                 </section>
               </div>
@@ -4101,10 +2358,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="A09" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="A10" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">A09</strong>
+                  <strong class="sop-id">A10</strong>
                   <span class="tag">竞品反查</span>
                 </div>
                 <h3>竞品客户 / 供应链反查</h3>
@@ -4194,7 +2451,7 @@
                     <li>大分销 → <strong>T01 邮件</strong> "增加产品线 / 第二来源" 角度。</li>
                     <li>小分销 → <strong>T03 LinkedIn DM</strong>。</li>
                     <li>找到分销 → <strong>A02 LinkedIn</strong> 找具体负责人。</li>
-                    <li>反查到的供应链关系 → <strong>A07 海关数据</strong>交叉验证。</li>
+                    <li>反查到的供应链关系 → <strong>A08 海关数据</strong>交叉验证。</li>
                   </ul>
                 </section>
               </div>
@@ -4210,10 +2467,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="A10" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="A11" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">A10</strong>
+                  <strong class="sop-id">A11</strong>
                   <span class="tag">自有流量</span>
                 </div>
                 <h3>独立站 SEO / 广告 / 表单</h3>
@@ -4302,7 +2559,7 @@
                   <h4>⑥ 衔接其他渠道</h4>
                   <ul>
                     <li>表单 → <strong>T01 邮件</strong> + <strong>T02 WhatsApp</strong> 双触。</li>
-                    <li>下载白皮书 → <strong>T11 Newsletter</strong> 培育。</li>
+                    <li>下载白皮书 → <strong>T12 Newsletter</strong> 培育。</li>
                     <li>Live Chat → 立刻 <strong>T02 WhatsApp</strong> 转私聊。</li>
                     <li>同 IP 多次访问 → 用 IP 反查公司 → <strong>A01 Google</strong> 主动开发。</li>
                   </ul>
@@ -4320,10 +2577,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="A11" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="A12" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">A11</strong>
+                  <strong class="sop-id">A12</strong>
                   <span class="tag">本地目录</span>
                 </div>
                 <h3>Google Maps / 黄页 / 本地目录</h3>
@@ -4410,8 +2667,8 @@
 <section class="sop-block sop-block--handoff">
                   <h4>⑥ 衔接其他渠道</h4>
                   <ul>
-                    <li>没邮箱有电话 → <strong>T06 电话</strong>。</li>
-                    <li>有 FB → <strong>T05 Messenger</strong>。</li>
+                    <li>没邮箱有电话 → <strong>T07 电话</strong>。</li>
+                    <li>有 FB → <strong>T06 Messenger</strong>。</li>
                     <li>有官网 → <strong>A01 Google</strong> 深挖联系人。</li>
                     <li>多店连锁 → <strong>A02 LinkedIn</strong> 找总部采购。</li>
                   </ul>
@@ -4429,10 +2686,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="A12" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="A13" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">A12</strong>
+                  <strong class="sop-id">A13</strong>
                   <span class="tag">合作网络</span>
                 </div>
                 <h3>老客户转介绍 / 代理伙伴</h3>
@@ -4518,10 +2775,10 @@
 <section class="sop-block sop-block--handoff">
                   <h4>⑥ 衔接其他渠道</h4>
                   <ul>
-                    <li>拿到推荐 → 直接进 <strong>T12 转介绍触达</strong>（提名推荐人）。</li>
+                    <li>拿到推荐 → 直接进 <strong>T13 转介绍触达</strong>（提名推荐人）。</li>
                     <li>客户有需求 → <strong>T01 邮件</strong>正式资料。</li>
-                    <li>急 / 高价值 → <strong>T06 电话</strong>。</li>
-                    <li>合作伙伴持续维护 → 长期当 <strong>T11 Newsletter</strong>受众。</li>
+                    <li>急 / 高价值 → <strong>T07 电话</strong>。</li>
+                    <li>合作伙伴持续维护 → 长期当 <strong>T12 Newsletter</strong>受众。</li>
                   </ul>
                 </section>
               </div>
@@ -4537,10 +2794,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="A13" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="A14" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">A13</strong>
+                  <strong class="sop-id">A14</strong>
                   <span class="tag">采购公告</span>
                 </div>
                 <h3>招投标 / 政府采购 / NGO 项目</h3>
@@ -4628,10 +2885,10 @@
 <section class="sop-block sop-block--handoff">
                   <h4>⑥ 衔接其他渠道</h4>
                   <ul>
-                    <li>找到当地代理 → 走 <strong>A12 转介绍 / 合作伙伴</strong>维护。</li>
-                    <li>直接投 → <strong>T07 视频会议</strong>跟评标方答疑。</li>
+                    <li>找到当地代理 → 走 <strong>A13 转介绍 / 合作伙伴</strong>维护。</li>
+                    <li>直接投 → <strong>T08 视频会议</strong>跟评标方答疑。</li>
                     <li>采购方有公开联系人 → <strong>T01 邮件</strong>预热（不违规前提）。</li>
-                    <li>中标后 → 持续 <strong>T11 Newsletter</strong>维护下次机会。</li>
+                    <li>中标后 → 持续 <strong>T12 Newsletter</strong>维护下次机会。</li>
                   </ul>
                 </section>
               </div>
@@ -4647,10 +2904,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="A14" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="A15" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">A14</strong>
+                  <strong class="sop-id">A15</strong>
                   <span class="tag">新闻事件</span>
                 </div>
                 <h3>招聘 / 融资 / 新店 / 扩张新闻</h3>
@@ -4739,7 +2996,7 @@
                     <li>事件 + 有邮箱 → <strong>T01 高上下文开发信</strong>。</li>
                     <li>事件 + 没人 → <strong>A02 LinkedIn</strong> 找新职位。</li>
                     <li>事件 + 招聘 → 招聘 JD 反推采购痛点。</li>
-                    <li>事件后无回 → <strong>T11 Newsletter</strong>放进培育序列。</li>
+                    <li>事件后无回 → <strong>T12 Newsletter</strong>放进培育序列。</li>
                   </ul>
                 </section>
               </div>
@@ -4818,26 +3075,27 @@
             </div>
           </div>
 
-          <nav class="channel-strip channel-strip--touch" aria-label="12 个触达渠道快速跳转">
+          <nav class="channel-strip channel-strip--touch" aria-label="13 个触达渠道快速跳转">
             <a href="#T01"><strong>T01</strong>Email</a>
             <a href="#T02"><strong>T02</strong>WhatsApp</a>
             <a href="#T03"><strong>T03</strong>LinkedIn</a>
-            <a href="#T04"><strong>T04</strong>IG/TT DM</a>
-            <a href="#T05"><strong>T05</strong>Messenger</a>
-            <a href="#T06"><strong>T06</strong>电话</a>
-            <a href="#T07"><strong>T07</strong>视频会议</a>
-            <a href="#T08"><strong>T08</strong>表单</a>
-            <a href="#T09"><strong>T09</strong>展会面访</a>
-            <a href="#T10"><strong>T10</strong>SMS/TG/WX</a>
-            <a href="#T11"><strong>T11</strong>Newsletter</a>
-            <a href="#T12"><strong>T12</strong>转介绍</a>
+            <a href="#T04"><strong>T04</strong>IG DM</a>
+            <a href="#T05"><strong>T05</strong>TikTok DM</a>
+            <a href="#T06"><strong>T06</strong>Messenger</a>
+            <a href="#T07"><strong>T07</strong>电话</a>
+            <a href="#T08"><strong>T08</strong>视频会议</a>
+            <a href="#T09"><strong>T09</strong>表单</a>
+            <a href="#T10"><strong>T10</strong>展会面访</a>
+            <a href="#T11"><strong>T11</strong>SMS/TG/WX</a>
+            <a href="#T12"><strong>T12</strong>Newsletter</a>
+            <a href="#T13"><strong>T13</strong>转介绍</a>
           </nav>
 
           <div class="section-toolbar" role="note">
             <span class="toolbar-label">点上方快跳条或矩阵任一行进入完整 SOP 详情</span>
           </div>
 
-          <div class="table-wrap" aria-label="12 触达渠道对比矩阵">
+          <div class="table-wrap" aria-label="13 触达渠道对比矩阵">
             <table class="compare-table compare-table--touch">
               <thead>
                 <tr>
@@ -4875,15 +3133,23 @@
                   <td>5–10 min/条</td>
                 </tr>
                 <tr>
-                  <td><a href="#T04">T04 Instagram / TikTok DM</a></td>
-                  <td>视觉品类 / 小 B 批发</td>
+                  <td><a href="#T04">T04 Instagram DM</a></td>
+                  <td>D2C / boutique / 小 B 批发</td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
                   <td>IG Creator Studio</td>
                   <td>3–6 min/条</td>
                 </tr>
                 <tr>
-                  <td><a href="#T05">T05 Facebook Messenger</a></td>
+                  <td><a href="#T05">T05 TikTok DM</a></td>
+                  <td>TikTok Shop / 主播 / 短视频原生品牌</td>
+                  <td><span class="compare-pill compare-pill--mid">中</span></td>
+                  <td><span class="compare-pill compare-pill--hi">高</span></td>
+                  <td>TikTok 原生评论 + DM / Creator Marketplace</td>
+                  <td>3–6 min/条</td>
+                </tr>
+                <tr>
+                  <td><a href="#T06">T06 Facebook Messenger</a></td>
                   <td>群组 / Marketplace 承接</td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
@@ -4891,7 +3157,7 @@
                   <td>5–8 min/条</td>
                 </tr>
                 <tr>
-                  <td><a href="#T06">T06 电话 / 语音</a></td>
+                  <td><a href="#T07">T07 电话 / 语音</a></td>
                   <td>高价值 / 展会后 / 邮件没回</td>
                   <td><span class="compare-pill compare-pill--hi">高</span></td>
                   <td><span class="compare-pill compare-pill--hi">高</span></td>
@@ -4899,7 +3165,7 @@
                   <td>5–15 min/通</td>
                 </tr>
                 <tr>
-                  <td><a href="#T07">T07 视频会议</a></td>
+                  <td><a href="#T08">T08 视频会议</a></td>
                   <td>需求复杂 / 多角色决策</td>
                   <td><span class="compare-pill compare-pill--hi">高</span></td>
                   <td><span class="compare-pill compare-pill--lo">低</span></td>
@@ -4907,7 +3173,7 @@
                   <td>30–60 min 准备 + 会议</td>
                 </tr>
                 <tr>
-                  <td><a href="#T08">T08 网站表单 / 在线客服</a></td>
+                  <td><a href="#T09">T09 网站表单 / 在线客服</a></td>
                   <td>找不到邮箱或负责人</td>
                   <td><span class="compare-pill compare-pill--lo">低</span></td>
                   <td><span class="compare-pill compare-pill--lo">低</span></td>
@@ -4915,7 +3181,7 @@
                   <td>5–10 min/次</td>
                 </tr>
                 <tr>
-                  <td><a href="#T09">T09 展会面访 / 名片后跟进</a></td>
+                  <td><a href="#T10">T10 展会面访 / 名片后跟进</a></td>
                   <td>展会期 / 黄金 14 天</td>
                   <td><span class="compare-pill compare-pill--hi">高</span></td>
                   <td><span class="compare-pill compare-pill--lo">低</span></td>
@@ -4923,7 +3189,7 @@
                   <td>5–10 min/张名片</td>
                 </tr>
                 <tr>
-                  <td><a href="#T10">T10 SMS / Telegram / WeChat</a></td>
+                  <td><a href="#T11">T11 SMS / Telegram / WeChat</a></td>
                   <td>区域工具 / 已有上下文</td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
                   <td><span class="compare-pill compare-pill--hi">高</span></td>
@@ -4931,7 +3197,7 @@
                   <td>3–5 min/条</td>
                 </tr>
                 <tr>
-                  <td><a href="#T11">T11 Newsletter / 内容触达</a></td>
+                  <td><a href="#T12">T12 Newsletter / 内容触达</a></td>
                   <td>长期培育 / 客户未到周期</td>
                   <td><span class="compare-pill compare-pill--mid">中</span></td>
                   <td><span class="compare-pill compare-pill--lo">低</span></td>
@@ -4939,7 +3205,7 @@
                   <td>4–8 h 内容生产 / 月</td>
                 </tr>
                 <tr>
-                  <td><a href="#T12">T12 转介绍触达</a></td>
+                  <td><a href="#T13">T13 转介绍触达</a></td>
                   <td>信任背书 / 推荐线索</td>
                   <td><span class="compare-pill compare-pill--hi">高</span></td>
                   <td><span class="compare-pill compare-pill--lo">低</span></td>
@@ -5045,9 +3311,9 @@
                   <h4>⑥ 衔接其他渠道</h4>
                   <ul>
                     <li>48h 无回 → <strong>T02 WhatsApp</strong> 轻提醒（"我刚发了邮件，方便看一下吗"）。</li>
-                    <li>邮件 hard bounce → <strong>T03 LinkedIn DM</strong> 或 <strong>T08 网站表单</strong>。</li>
-                    <li>邮件回复客户要细聊 → <strong>T07 视频会议</strong>。</li>
-                    <li>客户反复打开未回 → <strong>T06 电话</strong>直接确认意向。</li>
+                    <li>邮件 hard bounce → <strong>T03 LinkedIn DM</strong> 或 <strong>T09 网站表单</strong>。</li>
+                    <li>邮件回复客户要细聊 → <strong>T08 视频会议</strong>。</li>
+                    <li>客户反复打开未回 → <strong>T07 电话</strong>直接确认意向。</li>
                   </ul>
                 </section>
               </div>
@@ -5154,9 +3420,9 @@
                   <h4>⑥ 衔接其他渠道</h4>
                   <ul>
                     <li>客户要看完整资料 → <strong>T01 邮件</strong>附 PDF + WhatsApp 通知。</li>
-                    <li>客户要细聊 → <strong>T07 视频会议</strong>。</li>
+                    <li>客户要细聊 → <strong>T08 视频会议</strong>。</li>
                     <li>邮件没回想换路径 → 此卡轻提醒。</li>
-                    <li>客户在用 Telegram / WeChat → <strong>T10 区域通讯</strong>。</li>
+                    <li>客户在用 Telegram / WeChat → <strong>T11 区域通讯</strong>。</li>
                   </ul>
                 </section>
               </div>
@@ -5264,8 +3530,8 @@
                   <ul>
                     <li>拿到邮箱 → <strong>T01 邮件</strong>正式资料。</li>
                     <li>客户允许 + 给号码 → <strong>T02 WhatsApp</strong>。</li>
-                    <li>高价值要细聊 → <strong>T07 视频会议</strong>。</li>
-                    <li>转介绍场景 → <strong>T12 转介绍触达</strong>。</li>
+                    <li>高价值要细聊 → <strong>T08 视频会议</strong>。</li>
+                    <li>转介绍场景 → <strong>T13 转介绍触达</strong>。</li>
                   </ul>
                 </section>
               </div>
@@ -5287,8 +3553,8 @@
                   <strong class="sop-id">T04</strong>
                   <span class="tag">视觉互动</span>
                 </div>
-                <h3>Instagram / TikTok DM</h3>
-                <p class="sop-summary">D2C 品牌 / 网红店 / 小 B 批发的对话入口。先用内容互动建上下文，再 DM 引用具体帖子。账号"像不像品牌"决定第一印象。预计单条 DM 准备 3–6 分钟。</p>
+                <h3>Instagram DM</h3>
+                <p class="sop-summary">D2C 品牌 / 网红店 / 小 B 批发在 IG 的对话入口。靠 Story 反应、帖子评论破冰，再 DM 引用具体内容。Requests 文件夹是隐性门槛。预计单条 DM 准备 3–6 分钟。</p>
               </header>
 
               <div class="sop-body">
@@ -5296,8 +3562,8 @@
                   <h4>① 什么时候用</h4>
                   <ul>
                     <li>视觉品类 D2C 品牌（服装 / 美妆 / 家居 / 礼品）。</li>
-                    <li>对方 bio 无邮箱但社媒活跃。</li>
-                    <li>已 follow 1-2 周 + 真互动 → 切换 DM。</li>
+                    <li>对方 bio 无邮箱但 IG 帖子 / Story 高频更新。</li>
+                    <li>已 follow 1-2 周 + 真互动（点赞 / 评论 / Story 反应）→ 切换 DM。</li>
                     <li>样品确认 / 视觉沟通（直接发图最快）。</li>
                   </ul>
                 </section>
@@ -5305,11 +3571,11 @@
                 <section class="sop-block">
                   <h4>② 操作步骤</h4>
                   <ol>
-                    <li>看对方最近 5 条帖子，挑一条真做评论 / 转发。</li>
-                    <li>1-2 次互动后再 DM（不冷开 DM）。</li>
-                    <li>DM 引用具体帖子 + 产品 + 一个低成本问题。</li>
-                    <li>对方有兴趣 → 提示查 Requests 文件夹。</li>
-                    <li>转邮箱 / WhatsApp 承接正式资料。</li>
+                    <li>看对方最近 5 条帖子 + 当前 Story，挑一条真做评论 / Story 反应。</li>
+                    <li>1-2 次互动后再 DM（冷开 DM 直接进 Requests，回复率 &lt;5%）。</li>
+                    <li>DM 引用具体帖子 / Story + 产品 + 一个低成本问题。</li>
+                    <li>对方有兴趣 → 提示查 Requests 文件夹（"in case it landed in Requests"）。</li>
+                    <li>转邮箱 / WhatsApp 承接正式资料 / lookbook。</li>
                   </ol>
                   <div class="sub-warn">
                     <h5>⚠ 避免</h5>
@@ -5318,8 +3584,8 @@
                       <li>同一模板 DM 群发 → 反垃圾算法识别，回复率清零。</li>
                       <li>个人号 DM 商家：识别度低，主页必须像品牌方。</li>
                       <li>DM 默认进 Requests 文件夹，对方常常看不到。</li>
-                      <li>TikTok 在印度 / 部分中东不可用，确认市场再投入。</li>
                       <li>不要私信推 PDF 链接 → IG 会把链接消息屏蔽 / 降权。</li>
+                      <li>Story 反应回复有 24h 窗口，过期就是冷开 DM 了。</li>
                     </ul>
                   </div>
                 </section>
@@ -5329,22 +3595,23 @@
                   <div class="query-list">
                     <code data-copy>Hi [Name], saw your [具体产品/系列] post — the [细节] really stood out. We make [品类] for similar brands. Open to a 2-min chat?</code>
                     <code data-copy>Hi [Name], love the [品牌] aesthetic. We supply [品类] to [类似客户]. Mind if I share 2-3 sample options matching your vibe?</code>
+                    <code data-copy>Story 反应破冰：直接对 Story 发 emoji + 一句具体反馈，进主收件箱概率最高</code>
                     <code data-copy>提示对方查：DMs often land in Requests folder — just a heads-up if you don't see it in main inbox</code>
                     <code data-copy>转邮箱：Easier to share full lookbook via email — what's the best inbox?</code>
-                    <code data-copy>工具：IG Creator Studio + Meta Business Suite + Inflact（节制）</code>
-                    <code data-copy>账号像品牌：商业头像 + brand bio + highlight 分品类 + 帖子有视觉一致性</code>
+                    <code data-copy>工具：IG Creator Studio + Meta Business Suite（节制使用第三方自动化）</code>
                   </div>
-                  <p class="sop-tip">D2C 品牌主收 DM 前会 100% 点开你的主页。主页不像品牌 = DM 直接忽略。</p>
+                  <p class="sop-tip">D2C 品牌主收 DM 前会 100% 点开你的主页。主页不像品牌 = DM 直接忽略。商业头像 + brand bio + Highlight 分品类是最低门槛。</p>
                 </section>
 
                 <section class="sop-block">
                   <h4>④ DM 质量自检</h4>
                   <ul class="check-list">
-                    <li><label><input type="checkbox"> DM 引用对方具体帖子 / 产品 / 细节</label></li>
+                    <li><label><input type="checkbox"> DM 引用对方具体帖子 / Story / 产品细节</label></li>
                     <li><label><input type="checkbox"> 单条 ≤2 行</label></li>
                     <li><label><input type="checkbox"> 一个低成本问题（不是"想合作吗"）</label></li>
                     <li><label><input type="checkbox"> 没有 PDF / 长链接 / 大段产品介绍</label></li>
                     <li><label><input type="checkbox"> 我方主页像品牌（不是个人号）</label></li>
+                    <li><label><input type="checkbox"> 已通过点赞 / 评论 / Story 反应预热 ≥1 次</label></li>
                   </ul>
                 </section>
 
@@ -5358,9 +3625,10 @@
                   <div class="sub-fields">
                     <h5>CRM 必填字段</h5>
                     <ul class="field-list">
-                    <li>平台 + handle</li>
-                    <li>互动历史（点赞 / 评论 / 帖链接）</li>
+                    <li>平台（IG）+ handle</li>
+                    <li>互动历史（点赞 / 评论 / Story 反应 / 帖链接）</li>
                     <li>DM 模板版本 + 时间 + 回复</li>
+                    <li>是否进 Requests / 主收件箱</li>
                     <li>转邮箱 / WhatsApp 状态</li>
                     <li>本周 DM 发出量（账号限流自检）</li>
                   </ul>
@@ -5372,8 +3640,9 @@
                   <ul>
                     <li>客户感兴趣要资料 → <strong>T01 邮件</strong>附 lookbook。</li>
                     <li>拿到 WhatsApp → <strong>T02 WhatsApp</strong>。</li>
-                    <li>邀请视频电话 → <strong>T07 视频会议</strong>。</li>
-                    <li>客户内容沉淀 → <strong>T11 Newsletter</strong>长期培育。</li>
+                    <li>对方在 TikTok 同样活跃 → 也起 <strong>T05 TikTok DM</strong> 同步触达。</li>
+                    <li>邀请视频电话 → <strong>T08 视频会议</strong>。</li>
+                    <li>客户内容沉淀 → <strong>T12 Newsletter</strong>长期培育。</li>
                   </ul>
                 </section>
               </div>
@@ -5393,6 +3662,117 @@
               <header class="sop-header">
                 <div class="sop-meta">
                   <strong class="sop-id">T05</strong>
+                  <span class="tag">视觉互动</span>
+                </div>
+                <h3>TikTok DM</h3>
+                <p class="sop-summary">TikTok 商家 / 创作者 / 主播的对话入口。和 IG 不同：DM 权限要靠关注 + 互动累计，评论区是更高效的破冰位。建议评论 + 关注 ≥2 次再 DM。预计单条准备 3–6 分钟。</p>
+              </header>
+
+              <div class="sop-body">
+                <section class="sop-block sop-block--always">
+                  <h4>① 什么时候用</h4>
+                  <ul>
+                    <li>对方在 TikTok 高频更新 / 直播带货，IG 不活跃或没账号。</li>
+                    <li>有 TikTok Shop 橱窗的商家，需要谈跨境 / 分销合作。</li>
+                    <li>对方 bio 无外链（粉丝 &lt;1000 或个人号挂不了链）。</li>
+                    <li>评论区有真实买家提问 → 借势加入对话再切 DM。</li>
+                  </ul>
+                </section>
+
+                <section class="sop-block">
+                  <h4>② 操作步骤</h4>
+                  <ol>
+                    <li>关注 + 看 3–5 条视频 + 至少 1 次直播，建账号权重。</li>
+                    <li>挑一条新视频做有信息量的评论（不是"nice"），目标被作者回复。</li>
+                    <li>对方回复后 24h 内发 DM，引用具体视频 / 直播片段。</li>
+                    <li>如果未互关 DM 发不出 → 先在视频评论区留"DM you sth"，再试。</li>
+                    <li>对方有兴趣 → 转邮箱 / WhatsApp / Linktree 承接，TikTok 站内尽量不传文件。</li>
+                  </ol>
+                  <div class="sub-warn">
+                    <h5>⚠ 避免</h5>
+                    <ul>
+                      <li>TikTok 在印度 / 部分中东不可用，搜不到 ≠ 没账号，先查市场。</li>
+                      <li>未互关 / 新号几乎发不出 DM，硬试会被限流。</li>
+                      <li>评论区留邮箱 / WA 号 / 链接会被关键词过滤隐藏，要换说法。</li>
+                      <li>不要给主播个人号谈采购，找回品牌官方账号确认决策方。</li>
+                      <li>TikTok 不支持完整 PDF / 大文件传输，落到 lookbook 走邮箱。</li>
+                      <li>直播间私聊弹幕回复率极低，目标是引导对方点关注后再私信。</li>
+                    </ul>
+                  </div>
+                </section>
+
+                <section class="sop-block sop-block--wide">
+                  <h4>③ DM / 评论模板 + 工具（点击复制）</h4>
+                  <div class="query-list">
+                    <code data-copy>评论：This is exactly the kind of [品类] we manufacture — happy to share specs if helpful.</code>
+                    <code data-copy>DM：Hi [Name], saw your [日期] video on [产品] — we supply [品类] to [类似客户]. Any chance you'd want to compare specs?</code>
+                    <code data-copy>DM（TikTok Shop）：Hi [Name], noticed your TikTok Shop has [SKU]. We're a [国家] manufacturer of [品类] — open to cross-border supply chat?</code>
+                    <code data-copy>关键词回避：把 "email" 写成 "e-mail"，把 "WhatsApp" 写成 "WA" 避免过滤</code>
+                    <code data-copy>转外链：Drop your Linktree / e-mail and I'll send a lookbook</code>
+                    <code data-copy>工具：TikTok Creator Marketplace（B 端合作）+ 第三方批量看直播工具（节制）</code>
+                  </div>
+                  <p class="sop-tip">TikTok 用户判断"对方是不是合规商家"，主要看你账号的视频数量和内容专业度，比 IG 的"主页颜值"权重低，但比"完全空白"高。至少发 5–10 条品牌内容再开始 DM。</p>
+                </section>
+
+                <section class="sop-block">
+                  <h4>④ DM 质量自检</h4>
+                  <ul class="check-list">
+                    <li><label><input type="checkbox"> 已关注 + 视频互动 ≥2 次再 DM</label></li>
+                    <li><label><input type="checkbox"> DM 引用具体视频日期 / 内容 / 直播片段</label></li>
+                    <li><label><input type="checkbox"> 单条 ≤2 行，无敏感关键词触发过滤</label></li>
+                    <li><label><input type="checkbox"> 一个低成本问题（不是"想合作吗"）</label></li>
+                    <li><label><input type="checkbox"> 我方账号有 ≥5 条品牌视频沉淀</label></li>
+                    <li><label><input type="checkbox"> 对方市场允许 TikTok / 跨境合作</label></li>
+                  </ul>
+                </section>
+
+                <section class="sop-block sop-block--done sop-block--always">
+                  <h4>⑤ 完成标准 + CRM 必填字段</h4>
+                  <ul class="check-list">
+                    <li><label><input type="checkbox"> 评论 + 关注互动 ≥2 次后 DM 发出</label></li>
+                    <li><label><input type="checkbox"> 拿到回复 OR 转邮箱 / WhatsApp / Linktree</label></li>
+                    <li><label><input type="checkbox"> CRM 记 handle + 引用视频链接 + 是否 TikTok Shop</label></li>
+                  </ul>
+                  <div class="sub-fields">
+                    <h5>CRM 必填字段</h5>
+                    <ul class="field-list">
+                    <li>平台（TikTok）+ handle + 所在市场</li>
+                    <li>互动历史（关注 / 评论 / 直播观看 / 视频链接）</li>
+                    <li>DM 模板版本 + 时间 + 回复</li>
+                    <li>是否开通 TikTok Shop / 是否能跨境</li>
+                    <li>转邮箱 / WhatsApp / Linktree 状态</li>
+                    <li>本周 DM 发出量（账号限流自检）</li>
+                  </ul>
+                  </div>
+                </section>
+
+                <section class="sop-block sop-block--handoff">
+                  <h4>⑥ 衔接其他渠道</h4>
+                  <ul>
+                    <li>客户感兴趣要资料 → <strong>T01 邮件</strong>附 lookbook。</li>
+                    <li>拿到 WhatsApp → <strong>T02 WhatsApp</strong> 直接谈规格。</li>
+                    <li>对方在 IG 也活跃 → 同步起 <strong>T04 Instagram DM</strong>。</li>
+                    <li>邀请视频电话 → <strong>T08 视频会议</strong>。</li>
+                    <li>客户内容沉淀 → <strong>T12 Newsletter</strong>长期培育。</li>
+                  </ul>
+                </section>
+              </div>
+
+              <footer class="sop-footer">
+                <span>最近更新 2026-05-26</span>
+                <span>所属阶段：06 首轮触达 / 07 三轮跟进</span>
+                <span>预计耗时：3–6 分钟 / 条 DM</span>
+                <button type="button" class="sop-toggle">
+                  <span class="toggle-label-collapsed">展开完整 SOP</span>
+                  <span class="toggle-label-expanded">折叠</span>
+                </button>
+              </footer>
+            </article>
+
+            <article class="channel-card channel-card--full" id="T06" data-collapsed="true">
+              <header class="sop-header">
+                <div class="sop-meta">
+                  <strong class="sop-id">T06</strong>
                   <span class="tag">社群私信</span>
                 </div>
                 <h3>Facebook Messenger</h3>
@@ -5480,8 +3860,8 @@
                   <ul>
                     <li>拿到正式邮箱 → <strong>T01 邮件</strong>正式资料。</li>
                     <li>拿到 WhatsApp → <strong>T02 WhatsApp</strong>。</li>
-                    <li>对方是本地店 → <strong>T06 电话</strong>直接联系。</li>
-                    <li>对方在群里活跃 → 长期关注，挖更多 <strong>A04 群组</strong>线索。</li>
+                    <li>对方是本地店 → <strong>T07 电话</strong>直接联系。</li>
+                    <li>对方在群里活跃 → 长期关注，挖更多 <strong>A05 群组</strong>线索。</li>
                   </ul>
                 </section>
               </div>
@@ -5497,10 +3877,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="T06" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="T07" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">T06</strong>
+                  <strong class="sop-id">T07</strong>
                   <span class="tag">高价值线索</span>
                 </div>
                 <h3>电话 / 语音</h3>
@@ -5592,8 +3972,8 @@
                   <ul>
                     <li>通话后 → <strong>T01 邮件总结</strong>（24h 内必发）。</li>
                     <li>客户要看资料 → 邮件附 + <strong>T02 WhatsApp</strong>通知。</li>
-                    <li>高价值复杂需求 → 约 <strong>T07 视频会议</strong>。</li>
-                    <li>电话不通 → <strong>T08 表单</strong>或<strong>T05 Messenger</strong>。</li>
+                    <li>高价值复杂需求 → 约 <strong>T08 视频会议</strong>。</li>
+                    <li>电话不通 → <strong>T09 表单</strong>或<strong>T06 Messenger</strong>。</li>
                   </ul>
                 </section>
               </div>
@@ -5609,10 +3989,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="T07" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="T08" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">T07</strong>
+                  <strong class="sop-id">T08</strong>
                   <span class="tag">方案推进</span>
                 </div>
                 <h3>视频会议</h3>
@@ -5705,8 +4085,8 @@
                   <ul>
                     <li>会后报价 → <strong>T01 邮件</strong>附正式报价 + 纪要。</li>
                     <li>客户要样品 → 物流跟进 + <strong>T02 WhatsApp</strong>同步状态。</li>
-                    <li>议价 / 合同细节 → 下一次 <strong>T07 视频</strong>或<strong>T06 电话</strong>。</li>
-                    <li>长期培育 → <strong>T11 Newsletter</strong>保温。</li>
+                    <li>议价 / 合同细节 → 下一次 <strong>T08 视频</strong>或<strong>T07 电话</strong>。</li>
+                    <li>长期培育 → <strong>T12 Newsletter</strong>保温。</li>
                   </ul>
                 </section>
               </div>
@@ -5722,10 +4102,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="T08" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="T09" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">T08</strong>
+                  <strong class="sop-id">T09</strong>
                   <span class="tag">低打扰</span>
                 </div>
                 <h3>网站表单 / 在线客服</h3>
@@ -5814,7 +4194,7 @@
                     <li>48h 无回 → <strong>T01 邮件</strong>找 info@ + <strong>T03 LinkedIn DM</strong>找人。</li>
                     <li>自动回复邮箱有效 → 直接回邮件 → <strong>T01 邮件</strong>触发人工。</li>
                     <li>客服在线接触 → 转 <strong>T02 WhatsApp</strong>。</li>
-                    <li>大企业流程长 → 进 <strong>T11 Newsletter</strong>保温。</li>
+                    <li>大企业流程长 → 进 <strong>T12 Newsletter</strong>保温。</li>
                   </ul>
                 </section>
               </div>
@@ -5830,10 +4210,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="T09" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="T10" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">T09</strong>
+                  <strong class="sop-id">T10</strong>
                   <span class="tag">现场上下文</span>
                 </div>
                 <h3>展会面访 / 名片后跟进</h3>
@@ -5923,8 +4303,8 @@
                   <ul>
                     <li>A 级 → <strong>T01 邮件</strong> + <strong>T02 WhatsApp</strong>双触。</li>
                     <li>B 级 → <strong>T01 邮件</strong>单触。</li>
-                    <li>C 级 → <strong>T11 Newsletter</strong>培育。</li>
-                    <li>需要深聊 → <strong>T07 视频会议</strong>。</li>
+                    <li>C 级 → <strong>T12 Newsletter</strong>培育。</li>
+                    <li>需要深聊 → <strong>T08 视频会议</strong>。</li>
                   </ul>
                 </section>
               </div>
@@ -5940,10 +4320,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="T10" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="T11" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">T10</strong>
+                  <strong class="sop-id">T11</strong>
                   <span class="tag">区域习惯</span>
                 </div>
                 <h3>SMS / Telegram / WeChat / Viber / Line</h3>
@@ -6030,7 +4410,7 @@
                   <h4>⑥ 衔接其他渠道</h4>
                   <ul>
                     <li>拿到回复 → 看对方倾向转 <strong>T01 邮件</strong>或<strong>T02 WhatsApp</strong>。</li>
-                    <li>高价值 → <strong>T06 电话</strong>。</li>
+                    <li>高价值 → <strong>T07 电话</strong>。</li>
                     <li>客户在工具上活跃 → 长期保持当备份渠道。</li>
                     <li>当地代理合作 → 用本地工具更顺畅。</li>
                   </ul>
@@ -6048,10 +4428,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="T11" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="T12" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">T11</strong>
+                  <strong class="sop-id">T12</strong>
                   <span class="tag">长期培育</span>
                 </div>
                 <h3>再营销 / Newsletter / 内容触达</h3>
@@ -6142,7 +4522,7 @@
                     <li>高意向（评分达阈值）→ <strong>T01 个性化邮件</strong>。</li>
                     <li>反复打开未回 → <strong>T02 WhatsApp</strong>触达。</li>
                     <li>退订 → 永久标记 + 停所有触达。</li>
-                    <li>沉睡客户活化 → <strong>T06 电话</strong>主动确认意向。</li>
+                    <li>沉睡客户活化 → <strong>T07 电话</strong>主动确认意向。</li>
                   </ul>
                 </section>
               </div>
@@ -6158,10 +4538,10 @@
               </footer>
             </article>
 
-            <article class="channel-card channel-card--full" id="T12" data-collapsed="true">
+            <article class="channel-card channel-card--full" id="T13" data-collapsed="true">
               <header class="sop-header">
                 <div class="sop-meta">
-                  <strong class="sop-id">T12</strong>
+                  <strong class="sop-id">T13</strong>
                   <span class="tag">信任背书</span>
                 </div>
                 <h3>转介绍触达</h3>
@@ -6250,16 +4630,16 @@
                   <h4>⑥ 衔接其他渠道</h4>
                   <ul>
                     <li>客户有具体需求 → <strong>T01 邮件</strong>正式资料。</li>
-                    <li>急 / 高价值 → <strong>T06 电话</strong>。</li>
-                    <li>需细聊 → <strong>T07 视频会议</strong>。</li>
-                    <li>推荐礼发出 → <strong>A12 转介绍 / 合作伙伴</strong>闭环维护。</li>
+                    <li>急 / 高价值 → <strong>T07 电话</strong>。</li>
+                    <li>需细聊 → <strong>T08 视频会议</strong>。</li>
+                    <li>推荐礼发出 → <strong>A13 转介绍 / 合作伙伴</strong>闭环维护。</li>
                   </ul>
                 </section>
               </div>
 
               <footer class="sop-footer">
                 <span>最近更新 2026-05-26</span>
-                <span>所属阶段：06 首轮触达 / 闭环 A12</span>
+                <span>所属阶段：06 首轮触达 / 闭环 A13</span>
                 <span>预计耗时：5–10 分钟 / 条（含闭环）</span>
                 <button type="button" class="sop-toggle">
                   <span class="toggle-label-collapsed">展开完整 SOP</span>
@@ -6604,8 +4984,8 @@ If you're not the right person, could you kindly tell me who handles sourcing fo
                   <h4>⑥ 衔接其他字段域</h4>
                   <ul>
                     <li>决策角色 → 决定 <strong>H04 触达</strong>用哪个渠道哪个模板。</li>
-                    <li>转介绍路径 → 进 <strong>T12 转介绍</strong>触达卡。</li>
-                    <li>验证状态 invalid → 必须切换到 <strong>T03 LinkedIn</strong>或<strong>T08 表单</strong>。</li>
+                    <li>转介绍路径 → 进 <strong>T13 转介绍</strong>触达卡。</li>
+                    <li>验证状态 invalid → 必须切换到 <strong>T03 LinkedIn</strong>或<strong>T09 表单</strong>。</li>
                   </ul>
                 </section>
               </div>
@@ -6631,7 +5011,7 @@ If you're not the right person, could you kindly tell me who handles sourcing fo
                 <section class="sop-block">
                   <h4>① 必填字段</h4>
                   <ul class="field-list">
-                    <li>触达渠道（T01–T12 对应卡 id）</li>
+                    <li>触达渠道（T01–T13 对应卡 id）</li>
                     <li>模板版本（如 T01.v3.cookware）</li>
                     <li>发送时间（精确到分钟 + 时区）</li>
                     <li>回复状态（已读 / 已回 / 已读未回 / 未读 / 弹回 / 退订）</li>
@@ -6695,7 +5075,7 @@ If you're not the right person, could you kindly tell me who handles sourcing fo
                     <li>触达数据 → <strong>P09 复盘</strong>算渠道 + 模板胜率。</li>
                     <li>失败原因 L01-L99 → 季度分布分析，找根因。</li>
                     <li>阶段切换 → 驱动下方 <strong>Pipeline 流转表</strong>。</li>
-                    <li>停止触达 → 进 <strong>T11 Newsletter</strong>培育队列。</li>
+                    <li>停止触达 → 进 <strong>T12 Newsletter</strong>培育队列。</li>
                   </ul>
                 </section>
               </div>
@@ -6839,7 +5219,7 @@ If you're not the right person, could you kindly tell me who handles sourcing fo
                   <tr>
                     <td><strong>培育中</strong></td>
                     <td>C 级 / 三轮未回 / 时机不到。</td>
-                    <td>T11 Newsletter 月度 + 评分超阈值自动转销售。</td>
+                    <td>T12 Newsletter 月度 + 评分超阈值自动转销售。</td>
                     <td>邮件打开 / 点击 / 评分变化。</td>
                     <td>3–18 月</td>
                     <td>培育内容太销售导向 → 退订暴增。</td>
@@ -6884,7 +5264,7 @@ If you're not the right person, could you kindly tell me who handles sourcing fo
                     <td><strong>L03</strong></td>
                     <td>时机不对</td>
                     <td>采购周期未到 / 已签他家 / 内部预算冻结。</td>
-                    <td>进 T11 培育 / 设下次触发时间 / 改进 A14 监控。</td>
+                    <td>进 T12 培育 / 设下次触发时间 / 改进 A15 监控。</td>
                   </tr>
                   <tr>
                     <td><strong>L04</strong></td>
@@ -6937,302 +5317,6 @@ If you're not the right person, could you kindly tell me who handles sourcing fo
         <footer>外贸知识合集 | 用获客和触达两条主线，管理从 0 到 1 的客户开发。</footer>
       </main>
     </div>
-
-    <script>
-      const navLinks = [...document.querySelectorAll(".nav-link")];
-      const routeLinks = [...document.querySelectorAll('a[href^="#"]')];
-      const views = [...document.querySelectorAll(".view")];
-      const companionBlocks = [...document.querySelectorAll("[data-parent-view]")];
-      const validViewIds = new Set(views.map((view) => view.id));
-
-      function getRequestedView() {
-        const requestedId = window.location.hash.replace("#", "");
-        return validViewIds.has(requestedId) ? requestedId : "overview";
-      }
-
-      function renderView(viewId, shouldScroll = false) {
-        views.forEach((view) => {
-          const isCurrent = view.id === viewId;
-          view.hidden = !isCurrent;
-          view.classList.toggle("is-current", isCurrent);
-        });
-
-        companionBlocks.forEach((block) => {
-          const isCurrent = block.dataset.parentView === viewId;
-          block.hidden = !isCurrent;
-          block.classList.toggle("is-current", isCurrent);
-        });
-
-        navLinks.forEach((link) => {
-          const isCurrent = link.getAttribute("href") === `#${viewId}`;
-          link.classList.toggle("is-active", isCurrent);
-          if (isCurrent) {
-            link.setAttribute("aria-current", "page");
-          } else {
-            link.removeAttribute("aria-current");
-          }
-        });
-
-        document.body.dataset.currentView = viewId;
-
-        if (shouldScroll) {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-      }
-
-      const cardPrefixToView = {
-        A: "acquisition",
-        T: "outreach",
-        P: "process",
-        H: "handoff",
-        L: "handoff",
-      };
-
-      function exitDetail() {
-        delete document.body.dataset.detailCard;
-        document.querySelectorAll(".channel-card--full.detail-hidden").forEach((c) => {
-          c.classList.remove("detail-hidden");
-        });
-        document.querySelectorAll(".detail-bar").forEach((bar) => {
-          bar.hidden = true;
-        });
-      }
-
-      function enterDetail(cardId, opts = {}) {
-        const { pushState = false } = opts;
-        const target = document.getElementById(cardId);
-        if (!target) return false;
-
-        const sectionEl = target.closest(".section.view");
-        if (!sectionEl) return false;
-        const parentView = sectionEl.id;
-
-        renderView(parentView, false);
-
-        const cards = [...sectionEl.querySelectorAll(".channel-card--full[id]")];
-        cards.forEach((card) => {
-          card.classList.toggle("detail-hidden", card.id !== cardId);
-        });
-
-        target.dataset.collapsed = "false";
-        document.body.dataset.detailCard = cardId;
-
-        const detailBar = sectionEl.querySelector(".detail-bar");
-        if (detailBar) {
-          detailBar.hidden = false;
-          const idx = cards.findIndex((c) => c.id === cardId);
-          const titleEl = target.querySelector(".sop-header h3");
-          const title = titleEl ? titleEl.textContent.trim() : cardId;
-          const posEl = detailBar.querySelector(".detail-position");
-          const titleNode = detailBar.querySelector(".detail-title");
-          if (posEl) posEl.textContent = `${idx + 1} / ${cards.length}`;
-          if (titleNode) titleNode.textContent = title;
-
-          const prevId = idx > 0 ? cards[idx - 1].id : "";
-          const nextId = idx >= 0 && idx < cards.length - 1 ? cards[idx + 1].id : "";
-          const prevBtn = detailBar.querySelector(".detail-prev");
-          const nextBtn = detailBar.querySelector(".detail-next");
-          if (prevBtn) {
-            prevBtn.dataset.target = prevId;
-            prevBtn.disabled = !prevId;
-          }
-          if (nextBtn) {
-            nextBtn.dataset.target = nextId;
-            nextBtn.disabled = !nextId;
-          }
-        }
-
-        if (pushState) history.pushState(null, "", `#${cardId}`);
-        window.scrollTo({ top: 0, behavior: "auto" });
-        return true;
-      }
-
-      function navigateTo(hashId, options = {}) {
-        const { pushState = false, allowScroll = true } = options;
-
-        if (!hashId) {
-          exitDetail();
-          renderView("overview", allowScroll);
-          return;
-        }
-
-        if (validViewIds.has(hashId)) {
-          exitDetail();
-          if (pushState) history.pushState(null, "", `#${hashId}`);
-          renderView(hashId, allowScroll);
-          return;
-        }
-
-        const prefix = hashId.charAt(0).toUpperCase();
-        const parentView = cardPrefixToView[prefix];
-        if (!parentView) {
-          exitDetail();
-          renderView("overview", allowScroll);
-          return;
-        }
-
-        enterDetail(hashId, { pushState });
-      }
-
-      function backToListFromDetail() {
-        const cardId = document.body.dataset.detailCard;
-        if (!cardId) return;
-        const prefix = cardId.charAt(0).toUpperCase();
-        const parentView = cardPrefixToView[prefix] || "overview";
-        navigateTo(parentView, { pushState: true });
-      }
-
-      routeLinks.forEach((link) => {
-        link.addEventListener("click", (event) => {
-          const hashId = link.getAttribute("href").replace("#", "");
-          if (!hashId) return;
-
-          if (validViewIds.has(hashId)) {
-            event.preventDefault();
-            navigateTo(hashId, { pushState: true });
-            return;
-          }
-
-          const prefix = hashId.charAt(0).toUpperCase();
-          if (!cardPrefixToView[prefix]) return;
-
-          event.preventDefault();
-          navigateTo(hashId, { pushState: true });
-        });
-      });
-
-      document.addEventListener("click", (event) => {
-        const back = event.target.closest(".detail-back");
-        if (back) {
-          event.preventDefault();
-          backToListFromDetail();
-          return;
-        }
-
-        const navBtn = event.target.closest(".detail-prev, .detail-next");
-        if (navBtn && !navBtn.disabled) {
-          const targetId = navBtn.dataset.target;
-          if (targetId) {
-            event.preventDefault();
-            navigateTo(targetId, { pushState: true });
-          }
-        }
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (!document.body.dataset.detailCard) return;
-        if (event.target.matches("input, textarea, [contenteditable]")) return;
-
-        if (event.key === "Escape") {
-          event.preventDefault();
-          backToListFromDetail();
-        } else if (event.key === "ArrowLeft") {
-          const bar = document.querySelector(".detail-bar:not([hidden])");
-          if (!bar) return;
-          const prevBtn = bar.querySelector(".detail-prev");
-          if (prevBtn && !prevBtn.disabled && prevBtn.dataset.target) {
-            event.preventDefault();
-            navigateTo(prevBtn.dataset.target, { pushState: true });
-          }
-        } else if (event.key === "ArrowRight") {
-          const bar = document.querySelector(".detail-bar:not([hidden])");
-          if (!bar) return;
-          const nextBtn = bar.querySelector(".detail-next");
-          if (nextBtn && !nextBtn.disabled && nextBtn.dataset.target) {
-            event.preventDefault();
-            navigateTo(nextBtn.dataset.target, { pushState: true });
-          }
-        }
-      });
-
-      window.addEventListener("popstate", () => {
-        navigateTo(window.location.hash.replace("#", ""), { pushState: false });
-      });
-      window.addEventListener("hashchange", () => {
-        navigateTo(window.location.hash.replace("#", ""), { pushState: false });
-      });
-      navigateTo(window.location.hash.replace("#", ""), { pushState: false, allowScroll: false });
-
-      document.querySelectorAll("[data-copy]").forEach((node) => {
-        node.addEventListener("click", async () => {
-          const text = node.textContent.trim();
-          try {
-            await navigator.clipboard.writeText(text);
-          } catch {
-            const ta = document.createElement("textarea");
-            ta.value = text;
-            ta.style.position = "fixed";
-            ta.style.opacity = "0";
-            document.body.appendChild(ta);
-            ta.select();
-            try { document.execCommand("copy"); } catch {}
-            document.body.removeChild(ta);
-          }
-          node.classList.add("is-copied");
-          clearTimeout(node._copyTimer);
-          node._copyTimer = setTimeout(() => node.classList.remove("is-copied"), 1400);
-        });
-      });
-
-      document.querySelectorAll(".channel-card--full[id]").forEach((card) => {
-        const lists = [...card.querySelectorAll(".check-list")];
-        lists.forEach((list, listIdx) => {
-          const boxes = [...list.querySelectorAll('input[type="checkbox"]')];
-          boxes.forEach((box, boxIdx) => {
-            const key = `sop:${card.id}:${listIdx}:${boxIdx}`;
-            if (localStorage.getItem(key) === "1") box.checked = true;
-            box.addEventListener("change", () => {
-              localStorage.setItem(key, box.checked ? "1" : "0");
-            });
-          });
-        });
-
-        const reset = document.createElement("button");
-        reset.type = "button";
-        reset.className = "sop-reset";
-        reset.textContent = "重置本卡勾选";
-        reset.addEventListener("click", () => {
-          card.querySelectorAll('.check-list input[type="checkbox"]').forEach((box) => {
-            box.checked = false;
-          });
-          Object.keys(localStorage)
-            .filter((k) => k.startsWith(`sop:${card.id}:`))
-            .forEach((k) => localStorage.removeItem(k));
-        });
-        const footer = card.querySelector(".sop-footer");
-        if (footer) footer.appendChild(reset);
-      });
-
-      document.querySelectorAll(".channel-card--full[id]").forEach((card) => {
-        if (!card.querySelector(".sop-block--always")) return;
-        const stored = localStorage.getItem(`sop-collapsed:${card.id}`);
-        card.dataset.collapsed = stored === null ? "true" : stored;
-      });
-
-      document.addEventListener("click", (event) => {
-        const toggle = event.target.closest(".sop-toggle");
-        if (toggle) {
-          const card = toggle.closest(".channel-card--full[id]");
-          if (!card) return;
-          const next = card.dataset.collapsed === "true" ? "false" : "true";
-          card.dataset.collapsed = next;
-          localStorage.setItem(`sop-collapsed:${card.id}`, next);
-          return;
-        }
-
-        const bulk = event.target.closest("[data-bulk]");
-        if (bulk) {
-          const action = bulk.dataset.bulk;
-          const section = bulk.closest(".section");
-          if (!section) return;
-          const value = action === "expand" ? "false" : "true";
-          section.querySelectorAll(".channel-card--full[id]").forEach((card) => {
-            if (!card.querySelector(".sop-block--always")) return;
-            card.dataset.collapsed = value;
-            localStorage.setItem(`sop-collapsed:${card.id}`, value);
-          });
-        }
-      });
-    </script>
+    <script src="src/trade.js?v=20260527" defer></script>
   </body>
 </html>
